@@ -1,0 +1,48 @@
+﻿@page
+@model BookSmart.Pages.Books.GetBooksModel
+@{
+    ViewData["Title"] = "GetBooks";
+}
+
+<h3 style="color:red"> List of Books</h3>
+@*<p>
+    <a asp-page="/Books/Create">Create New Book</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th> Book Id  </th>
+            <th> Title </th>
+            <th> Author  </th>
+            <th> Year  </th>
+            <th> SubjectId  </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Books)
+            {
+                <tr>
+                    <td>  @item.BookId </td>
+                    <td>  @item.Title </td>
+                    <td>  @item.Author </td>
+                    <td>  @item.Year </td>
+                    <td>  @item.SubjectId </td>
+
+                    @*<td>
+                        <p>
+                            <a asp-page="/Books/Book" asp-route-sid="@item.BookId">  Courses </a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Books/Delete" asp-route-id="@item.BookId">Delete </a>
+                    @*    </p>*@
+                    @*</td>*@
+                </tr>
+            }
+        }
+</table>
+

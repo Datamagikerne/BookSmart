@@ -7,6 +7,6 @@ namespace BookSmart.Services.Interfaces
 {
     public interface IBookService
     {
-        IEnumerable<Book> GetAll();
+        IEnumerable<Book> GetBooks();
     }
 }

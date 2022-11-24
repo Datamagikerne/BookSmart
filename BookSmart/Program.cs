@@ -1,7 +1,13 @@
+using BookSmart.Models;
+using BookSmart.Services.EFServices;
+using BookSmart.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddTransient<IBookService, EFBookService>();
+builder.Services.AddDbContext<BookSmartDBContext>();
 
 var app = builder.Build();
 

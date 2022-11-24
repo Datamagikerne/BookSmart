@@ -14,9 +14,11 @@ namespace BookSmart.Services.EFServices
 
 
 
-        public IEnumerable<Book> GetAll()
+        public IEnumerable<Book> GetBooks()
         {
             return context.Books; 
         }
+
+
     }
 }
