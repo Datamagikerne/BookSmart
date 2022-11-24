@@ -13,4 +13,12 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Classes\" />
+    <Folder Include="Pages\Subjects\" />
+    <Folder Include="Pages\Teachers\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Services\EFServices\" />
+  </ItemGroup>
+
 </Project>
