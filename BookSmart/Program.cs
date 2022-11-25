@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<IBookService, EFBookService>();
+builder.Services.AddTransient<ISubjectService, EFSubjectService>();
 builder.Services.AddDbContext<BookSmartDBContext>();
 
 var app = builder.Build();

@@ -1,6 +1,6 @@
 ﻿namespace BookSmart.Services.Interfaces
 {
-    public class IClassService
+    public interface IClassService
     {
     }
 }
