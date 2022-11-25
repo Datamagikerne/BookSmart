@@ -1,4 +1,40 @@
 ﻿@page
 @model BookSmart.Pages.Subjects.GetSubjectsModel
 @{
+    ViewData["Title"] = "GetSubjects";
 }
+
+<h3 style="color:red"> List of Subjects</h3>
+<p>
+    <a asp-page="/Books/CreateBook">Create New Subject</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Subject Id  </th>
+            <th> Name </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Subjects)
+            {
+                <tr>
+                    <td>  @item.SubjectId </td>
+                    <td>  @item.Name </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Subjects/DeleteSubject" asp-route-id="@item.SubjectId"> Update </a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Subjects/DeleteSubject" asp-route-id="@item.SubjectId">Delete </a>
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+</table>
