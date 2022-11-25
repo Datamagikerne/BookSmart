@@ -9,13 +9,17 @@ namespace BookSmart.Models
 {
     public partial class BookSmartDBContext : DbContext
     {
-        public BookSmartDBContext()
+        private readonly IConfiguration _configuration;
+        public BookSmartDBContext(IConfiguration configuration)
         {
+            _configuration = configuration;
+
         }
 
-        public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options)
+        public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options, IConfiguration configuration)
             : base(options)
         {
+            _configuration = configuration;
         }
 
         public virtual DbSet<Book> Books { get; set; }
@@ -29,8 +33,9 @@ namespace BookSmart.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BookSmartDB;Integrated Security=True");
+               var username = _configuration.GetValue<string>("DBLogin");
+               var password = _configuration.GetValue<string>("Password");
+                optionsBuilder.UseSqlServer($"Server=tcp:booksmartdbserver.database.windows.net,1433;Initial Catalog=BookSmartDB;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
