@@ -12,6 +12,11 @@
             <div asp-validation-summary="  ModelOnly  " class="text-danger">
             </div>
             <div class="form-group">
+                <label asp-for="@Model.Book.BookId" class="control-label"></label>
+                <input asp-for="@Model.Book.BookId" class="form-control" />
+                <span asp-validation-for="@Model.Book.BookId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="@Model.Book.Title" class="control-label"></label>
                 <input asp-for="@Model.Book.Title" class="form-control" />
                 <span asp-validation-for="@Model.Book.Title" class="text-danger"></span>

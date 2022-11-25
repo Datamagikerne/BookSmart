@@ -10,5 +10,9 @@ namespace BookSmart.Services.Interfaces
         IEnumerable<Book> GetBooks();
 
         void CreateBook(Book book);
+
+        void DeleteBook(Book book); 
+
+        Book GetBook(int id);
     }
 }

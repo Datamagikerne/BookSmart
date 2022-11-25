@@ -19,6 +19,17 @@ namespace BookSmart.Services.EFServices
             context.SaveChanges();
         }
 
+        public void DeleteBook(Book book)
+        {
+            context.Books.Remove(book);
+            context.SaveChanges();
+        }
+
+        public Book GetBook(int id)
+        {
+            return context.Books.Find(id);
+        }
+
         public IEnumerable<Book> GetBooks()
         {
             return context.Books.Include(b => b.Subject);

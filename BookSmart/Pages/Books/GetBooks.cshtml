@@ -31,16 +31,16 @@
                     <td>  @item.Year </td>
                     <td>  @item.Subject.Name </td>
 
-                    @*<td>
+                   @* <td>
                         <p>
                             <a asp-page="/Books/Book" asp-route-sid="@item.BookId">  Courses </a>
                         </p>
-                    </td>
+                    </td>*@
                     <td>
                         <p>
-                            <a asp-page="/Books/Delete" asp-route-id="@item.BookId">Delete </a>
-                    @*    </p>*@
-                    @*</td>*@
+                            <a asp-page="/Books/DeleteBook" asp-route-id="@item.BookId">Delete </a>
+                       </p>
+                    </td>
                 </tr>
             }
         }
