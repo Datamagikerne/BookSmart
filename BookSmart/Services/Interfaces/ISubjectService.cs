@@ -1,6 +1,12 @@
-﻿namespace BookSmart.Services.Interfaces
+﻿using BookSmart.Models;
+
+namespace BookSmart.Services.Interfaces
 {
-    public class ISubjectService
+    public interface ISubjectService
     {
+        IEnumerable<Subject> GetSubjects();
+        
+
+        
     }
 }
