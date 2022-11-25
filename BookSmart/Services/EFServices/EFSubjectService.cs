@@ -13,10 +13,15 @@ namespace BookSmart.Services.EFServices
             this.context = context;
         }
 
+        public void DeleteSubject(Subject subject)
+        {
+            context.Subjects.Remove(subject);
+            context.SaveChanges();
+        }
+            
         public IEnumerable<Subject> GetSubjects()
         {
             return context.Subjects;
-
         }
     }
 }
