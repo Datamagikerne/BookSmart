@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookSmart.Services.EFServices
 {
-    public class EFSubjectService
+    public class EFSubjectService : ISubjectService
     {
         BookSmartDBContext context;
 
@@ -17,6 +17,11 @@ namespace BookSmart.Services.EFServices
         {
             context.Subjects.Remove(subject);
             context.SaveChanges();
+        }
+            
+        public IEnumerable<Subject> GetSubjects()
+        {
+            return context.Subjects;
         }
     }
 }
