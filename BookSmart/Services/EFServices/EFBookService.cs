@@ -25,6 +25,13 @@ namespace BookSmart.Services.EFServices
             context.SaveChanges();
         }
 
+        public void UpdateBook(Book book)
+        {
+            Book b = GetBook(book.BookId);
+            context.Entry(b).CurrentValues.SetValues(book);
+            context.SaveChanges();
+        }
+
         public Book GetBook(int id)
         {
             return context.Books.Find(id);
