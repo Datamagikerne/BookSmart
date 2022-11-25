@@ -2,15 +2,12 @@ using BookSmart.Models;
 using BookSmart.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using BookSmart.Models;
-using BookSmart.Services.Interfaces;
+
 namespace BookSmart.Pages.Subjects
 {
     public class GetSubjectsModel : PageModel
     {
         public IEnumerable<Subject> Subjects { get; set; }
-
-
 
         private ISubjectService context;
         public GetSubjectsModel(ISubjectService service)

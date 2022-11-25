@@ -9,11 +9,15 @@ namespace BookSmart.Pages.Subjects
     public class UpdateSubjectModel : PageModel
     {
         ISubjectService subjectService;
+
         public UpdateSubjectModel(ISubjectService subjectService)
         {
             this.subjectService = subjectService;
         }
+
+        [BindProperty]
         public Subject Subject { get; set; }
+        
         public void OnGet(int id)
         {
             Subject = subjectService.GetSubject(id);

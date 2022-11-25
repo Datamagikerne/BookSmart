@@ -13,26 +13,20 @@ namespace BookSmart.Services.EFServices
             this.context = context;
         }
 
-
         public void CreateSubject(Subject Subject)
         {
             context.Subjects.Add(Subject);
             context.SaveChanges();
         }
 
-        public Subject GetSubjects(int id)
+        public Subject GetSubject(int id)
         {
             return context.Subjects.Find(id);
         }
 
         public IEnumerable<Subject> GetSubjects()
         {
-            return context.Subjects.Include(b => b.Name);
-
-
-        public Subject GetSubject(int id)
-        {
-            return context.Subjects.Find(id);
+            return context.Subjects;
         }
 
         public void UpdateSubject(Subject subject)
@@ -41,19 +35,11 @@ namespace BookSmart.Services.EFServices
             context.Entry(s).CurrentValues.SetValues(subject);
             context.SaveChanges();
         }
-        
 
         public void DeleteSubject(Subject subject)
         {
             context.Subjects.Remove(subject);
             context.SaveChanges();
-        }
-            
-        public IEnumerable<Subject> GetSubjects()
-        {
-            return context.Subjects;
-
-
         }
     }
 }
