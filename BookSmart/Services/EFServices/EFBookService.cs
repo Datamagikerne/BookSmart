@@ -1,5 +1,6 @@
 ﻿using BookSmart.Models;
 using BookSmart.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookSmart.Services.EFServices
 {
@@ -12,11 +13,16 @@ namespace BookSmart.Services.EFServices
             this.context = context; 
         }
 
-
+        public void CreateBook(Book book)
+        {
+            context.Books.Add(book);
+            context.SaveChanges();
+        }
 
         public IEnumerable<Book> GetBooks()
         {
-            return context.Books; 
+            return context.Books.Include(b => b.Subject);
+            
         }
 
 

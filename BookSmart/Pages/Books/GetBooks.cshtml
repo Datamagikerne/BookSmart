@@ -5,9 +5,9 @@
 }
 
 <h3 style="color:red"> List of Books</h3>
-@*<p>
-    <a asp-page="/Books/Create">Create New Book</a>
-</p>*@
+<p>
+    <a asp-page="/Books/CreateBook">Create New Book</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -15,7 +15,7 @@
             <th> Title </th>
             <th> Author  </th>
             <th> Year  </th>
-            <th> SubjectId  </th>
+            <th> Subject  </th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
                     <td>  @item.Title </td>
                     <td>  @item.Author </td>
                     <td>  @item.Year </td>
-                    <td>  @item.SubjectId </td>
+                    <td>  @item.Subject.Name </td>
 
                     @*<td>
                         <p>

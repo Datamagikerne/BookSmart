@@ -23,5 +23,6 @@ namespace BookSmart.Models
         public int? Year { get; set; }
         [Column("Subject_id")]
         public int? SubjectId { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }
