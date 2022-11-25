@@ -1,0 +1,39 @@
+﻿@page
+@model BookSmart.Pages.Books.EditBookModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="@Model.Book.BookId" />
+    <div class="overskrift form-group">
+        <label asp-for="@Model.Book.Title" class="control-label"></label>
+        <input asp-for="@Model.Book.Title" class="form-control" />
+        <span asp-validation-for="@Model.Book.Title" class="text-danger"></span>
+    </div>
+    <div class="overskrift form-group">
+        <label asp-for="@Model.Book.Author" class="control-label"></label>
+        <input asp-for="@Model.Book.Author" class="form-control" />
+        <span asp-validation-for="@Model.Book.Author" class="text-danger"></span>
+    </div>
+    <div class="overskrift form-group">
+        <label asp-for="@Model.Book.Year" class="control-label"></label>
+        <input asp-for="@Model.Book.Year" class="form-control" />
+        <span asp-validation-for="@Model.Book.Year" class="text-danger"></span>
+    </div>
+    <div class="overskrift form-group">
+        <label asp-for="@Model.Book.SubjectId" class="control-label"></label>
+        <input asp-for="@Model.Book.SubjectId" class="form-control" />
+        <span asp-validation-for="@Model.Book.SubjectId" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Update" class="btn btn-danger" /> |
+    <a asp-page="GetBooks">Back to List</a>
+   
+</form>
+@*<div>
+    <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-1">Tilbage</a>
+</div>*@
