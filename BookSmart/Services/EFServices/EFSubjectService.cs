@@ -13,6 +13,18 @@ namespace BookSmart.Services.EFServices
             this.context = context;
         }
 
+
+        public Subject GetSubject(int id)
+        {
+            return context.Subjects.Find(id);
+        }
+
+        public void UpdateSubject(Subject subject)
+        {
+            Subject s = GetSubject(subject.SubjectId);
+            context.Entry(s).CurrentValues.SetValues(subject);
+            context.SaveChanges();
+
         public void DeleteSubject(Subject subject)
         {
             context.Subjects.Remove(subject);
@@ -22,6 +34,7 @@ namespace BookSmart.Services.EFServices
         public IEnumerable<Subject> GetSubjects()
         {
             return context.Subjects;
+
         }
     }
 }
