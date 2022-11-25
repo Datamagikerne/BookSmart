@@ -24,6 +24,8 @@ namespace BookSmart.Services.EFServices
             Subject s = GetSubject(subject.SubjectId);
             context.Entry(s).CurrentValues.SetValues(subject);
             context.SaveChanges();
+        }
+        
 
         public void DeleteSubject(Subject subject)
         {
