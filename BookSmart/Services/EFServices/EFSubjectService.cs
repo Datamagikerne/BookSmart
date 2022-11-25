@@ -14,6 +14,22 @@ namespace BookSmart.Services.EFServices
         }
 
 
+        public void CreateSubject(Subject Subject)
+        {
+            context.Subjects.Add(Subject);
+            context.SaveChanges();
+        }
+
+        public Subject GetSubjects(int id)
+        {
+            return context.Subjects.Find(id);
+        }
+
+        public IEnumerable<Subject> GetSubjects()
+        {
+            return context.Subjects.Include(b => b.Name);
+
+
         public Subject GetSubject(int id)
         {
             return context.Subjects.Find(id);
@@ -36,6 +52,7 @@ namespace BookSmart.Services.EFServices
         public IEnumerable<Subject> GetSubjects()
         {
             return context.Subjects;
+
 
         }
     }
