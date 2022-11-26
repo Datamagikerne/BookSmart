@@ -26,6 +26,7 @@
                     <th> Initials </th>
                     <th> Name  </th>
                     <th> Mail </th>
+                    <th> Classes </th>
                     <th class="th-g"> </th>
 
                 </tr>
@@ -40,6 +41,7 @@
                             <td>  @item.Initials </td>
                             <td>  @item.Name </td>
                             <td>  @item.Mail </td>
+                            
                             <td>
                                 <p>
                                     <a asp-page="/Teachers/UpdateTeacher" class="btn btn-crud float-lg-end" role="button" asp-route-sid="@item.Initials"> Update </a>

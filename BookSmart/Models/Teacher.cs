@@ -21,5 +21,7 @@ namespace BookSmart.Models
         [StringLength(40)]
         [Unicode(false)]
         public string Mail { get; set; }
+        public virtual Class Class { get; set; }
+
     }
 }

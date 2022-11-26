@@ -21,6 +21,8 @@ namespace BookSmart.Models
         {
             _configuration = configuration;
         }
+        
+       
 
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<BookClass> BookClasses { get; set; }
@@ -41,6 +43,13 @@ namespace BookSmart.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            //modelBuilder.Entity<Teacher>()
+            //        .HasMany(t => t.Classes)
+            //        .WithMany(t => t.Teachers)
+            //        .UsingEntity(j => j.ToTable("ClassTeacher"));
+
+
             modelBuilder.Entity<Book>(entity =>
             {
                 entity.Property(e => e.BookId).ValueGeneratedNever();
