@@ -20,5 +20,6 @@ namespace BookSmart.Models
         [StringLength(7)]
         [Unicode(false)]
         public string Name { get; set; }
+        
     }
 }

@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<IBookService, EFBookService>();
 builder.Services.AddTransient<ISubjectService, EFSubjectService>();
+builder.Services.AddTransient<ITeacherService, EFTeacherService>();
+builder.Services.AddTransient<IClassService, EFClassService>();
 builder.Services.AddDbContext<BookSmartDBContext>();
 
 var app = builder.Build();

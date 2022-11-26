@@ -13,9 +13,9 @@ namespace BookSmart.Services.EFServices
             this.context = context;
         }
 
-        public void CreateSubject(Subject Subject)
+        public void CreateSubject(Subject subject)
         {
-            context.Subjects.Add(Subject);
+            context.Subjects.Add(subject);
             context.SaveChanges();
         }
 
