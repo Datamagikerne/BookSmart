@@ -20,8 +20,7 @@ namespace BookSmart.Models
         [StringLength(7)]
         [Unicode(false)]
         public string Name { get; set; }
-        public virtual Teacher Teacher { get; set; }
-        public virtual Class Class { get; set; }
+        
 
     }
 }
