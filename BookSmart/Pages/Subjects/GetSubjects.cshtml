@@ -3,17 +3,31 @@
 @{
     ViewData["Title"] = "GetSubjects";
 }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+</script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js">
+</script>
 
-<h3 style="color:red"> List of Subjects</h3>
-<p>
-    <a asp-page="/Subjects/CreateSubject">Create New Subject</a>
-</p>
-<table class="table">
+<h3 style="color:black"> List of Subjects</h3>
+
+<body>
+    <div class="container" style="width:110%" ;>
+        <table class="table" id="sortTable">
     <thead>
         <tr>
             <th> Subject Id  </th>
             <th> Name </th>
-        </tr>
+            <th class="th-g"> </th>
+            
+            </tr>
     </thead>
     <tbody>
 
@@ -26,15 +40,21 @@
                     <td>  @item.Name </td>
                     <td>
                         <p>
-                            <a asp-page="/Subjects/UpdateSubject" asp-route-id="@item.SubjectId"> Update </a>
+                             <a asp-page="/Subjects/UpdateSubject" class="btn btn-crud float-lg-end" role="button" asp-route-id="@item.SubjectId"> Update </a>
+                                    <a asp-page="/Subjects/DeleteSubject" class="btn btn-crud float-lg-end mr-1 " role="button" asp-route-id="@item.SubjectId">Delete </a>
                         </p>
                     </td>
-                    <td>
-                        <p>
-                            <a asp-page="/Subjects/DeleteSubject" asp-route-id="@item.SubjectId">Delete </a>
-                        </p>
-                    </td>
+                    
                 </tr>
             }
         }
 </table>
+    </div>
+    <script>
+        $('#sortTable').DataTable();
+    </script>
+</body>
+<p>
+    
+    <a asp-page="/Subjects/CreateSubject" class="btn btn-crud float-lg-start" role="button">Create New Subject</a>
+</p>

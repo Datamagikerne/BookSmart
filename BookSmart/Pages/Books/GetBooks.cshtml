@@ -22,7 +22,7 @@
 
 <body>
     <div class="container" style="width:100%" ;>
-<table class="table" id="sortTable">
+        <table class="table" id="sortTable">
     <thead>
         <tr>
             <th> Book Id  </th>
@@ -30,8 +30,7 @@
             <th> Author  </th>
             <th> Year  </th>
             <th> Subject  </th>
-            <th></th>
-            <th></th>
+            <th class="th-g"></th>
         </tr>
     </thead>
     <tbody>
@@ -49,24 +48,20 @@
 
                     <td>
                         <p>
-                            <a asp-page="/Books/UpdateBook" asp-route-id="@item.BookId"> Update </a>
+                                    <a asp-page="/Books/UpdateBook" class="btn btn-crud float-lg-end" role="button" asp-route-id="@item.BookId"> Update </a>
+                                    <a asp-page="/Books/DeleteBook" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.BookId">Delete </a>
                         </p>
-                    </td>
-                    <td>
-                        <p>
-                            <a asp-page="/Books/DeleteBook" asp-route-id="@item.BookId">Delete </a>
-                       </p>
                     </td>
                 </tr>
             }
         }
-</table>
+        </table>
     </div>
     <script>
         $('#sortTable').DataTable();
     </script>
 </body>
 <p>
-    <a asp-page="/Books/CreateBook">Create New Book</a>
+    <a asp-page="/Books/CreateBook" class="btn btn-crud float-lg-start">Create New Book</a>
 </p>
 

@@ -16,4 +16,17 @@ html {
 body {
   margin-bottom: 60px;
 }
+.btn-crud {
+    background-color: #fff387 !important;
+    outline-color: red;    
+   
+}
+
+
+
+.th-g {
+    font-size: 1px;
+   
+}
+
 
