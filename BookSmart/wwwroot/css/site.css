@@ -36,9 +36,13 @@ body {
     font-size: 1px;
 }
 .img-login {
-    display: block;
-    max-width: 100%;
-    height: auto;
+    max-width: 50%;
+    margin-left: auto;
 }
 
-
+.container {
+    margin-right: auto;
+    margin-top: 200px;
+    max-width: 100%;
+    vertical-align: middle;
+}
