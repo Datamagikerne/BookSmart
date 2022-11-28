@@ -20,6 +20,11 @@
                 <label asp-for="@Model.Subject.Name" class="control-label"></label>
                 <input asp-for="@Model.Subject.Name" class="form-control" />
                 <span asp-validation-for="@Model.Subject.Name" class="text-danger"></span>
+                <script>
+                    $('#sortTable').dataTable({
+                        "oSearch": { "sSearch": @Model.Subject.Name }
+                    });
+                </script>
             </div>
             
             <div class="form-group">

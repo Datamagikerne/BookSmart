@@ -9,6 +9,8 @@ namespace BookSmart.Pages.SubjectTeachers
 {
     public class GetSubjectTeachersModel : PageModel
     {
+        [BindProperty(SupportsGet = true)]
+        public string SearchCriteria { get; set; } 
         public IEnumerable<SubjectTeacher> SubjectTeachers { get; set; }
 
         ISubjectTeacherService context;
@@ -17,8 +19,9 @@ namespace BookSmart.Pages.SubjectTeachers
         {
             context = service;
         }
-        public void OnGet()
+        public void OnGet(string sid)
         {
+            SearchCriteria = sid;
             SubjectTeachers = context.GetSubjectTeachers();
         }
     }

@@ -1,27 +1,71 @@
 ﻿@page
 @model BookSmart.Pages.SubjectTeachers.GetSubjectTeachersModel
 @{
+    ViewData["Title"] = "GetSubjects";
 }
-<h3 style="color:red">All Enrollments</h3>
-<table class="table">
-    <thead>
-        <tr>
-            <th>  Name</th>
-            <th>  Subject </th>
-            
-        </tr>
-    </thead>
-    <tbody>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+</script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js">
+</script>
 
-        @if (Model.SubjectTeachers != null)
-        {
-            @foreach (var item in Model.SubjectTeachers)
-            {
+<h3 style="color:black"> List of SubjectTeachers</h3>
+
+<body>
+    <div class="container" style="width:110%" ;>
+        <table class="table" id="sortTable">
+            <thead>
                 <tr>
-                    <td> @item.InitialsNavigation.Name </td>
-                    <td> @item.Subject.Name </td>
-                    
+                    <th> Teacher Name  </th>
+                    <th> Subject name </th>
+                    <th> Initials </th>    
+                    <th> @Model.SearchCriteria </th>
+                    <th class="th-g"> </th>
+
                 </tr>
-            }
-        }
-</table>
+            </thead>
+            <tbody>
+
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.SubjectTeachers)
+                    {
+                        <tr>
+                            <td>  @item.InitialsNavigation.Name </td>
+                            <td>  @item.Subject.Name </td>
+                            <td>  @item.InitialsNavigation.Initials </td>
+                            <td>
+                                <p>
+                                    <a asp-page="/Subjects/UpdateSubject" class="btn btn-crud float-lg-end" role="button" asp-route-id="@item.SubjectId"> Update </a>
+                                    <a asp-page="/Subjects/DeleteSubject" class="btn btn-crud float-lg-end mr-1 " role="button" asp-route-sid="@item.SubjectId">Delete </a>
+                                </p>
+                               
+                            </td>
+
+                        </tr>
+                    }
+                }
+                    
+        </table>
+       
+    </div>
+   
+   
+   
+</body>
+<p>
+    <script>
+        $('#sortTable').dataTable({
+            "oSearch": { "sSearch": @Model.SearchCriteria }
+        });
+    </script>
+    @Model.SearchCriteria
+    <a asp-page="/Subjects/CreateSubject" class="btn btn-crud float-lg-start" role="button">Create New Subject</a>
+</p>
