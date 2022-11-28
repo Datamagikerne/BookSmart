@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <Folder Include="Pages\Classes\" />
+    <Folder Include="Services\EFServices\STabel\" />
+    <Folder Include="Services\Interfaces\STabel\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

@@ -46,7 +46,8 @@
                             
                             <td>
                                 <p>
-                                    <a asp-page="/Teachers/UpdateTeacher" class="btn btn-crud float-lg-end" role="button" asp-route-sid="@item.Initials"> Update </a>
+                                    <a asp-page="/Teachers/GetSubjectTeacher" class="btn btn-crud float-lg-end" role="button" asp-route-sid="@item.Initials"> Teacher Info </a>
+                                    <a asp-page="/Teachers/UpdateTeacher" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-sid="@item.Initials"> Update </a>
                                     <a asp-page="/Teachers/DeleteTeacher" class="btn btn-crud float-lg-end mr-1 " role="button" asp-route-sid="@item.Initials">Delete </a>
                                 </p>
                             </td>
