@@ -1,0 +1,27 @@
+﻿@page
+@model BookSmart.Pages.SubjectTeachers.GetSubjectTeachersModel
+@{
+}
+<h3 style="color:red">All Enrollments</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>  Name</th>
+            <th>  Subject </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model.SubjectTeachers != null)
+        {
+            @foreach (var item in Model.SubjectTeachers)
+            {
+                <tr>
+                    <td> @item.InitialsNavigation.Name </td>
+                    <td> @item.Subject </td>
+                    
+                </tr>
+            }
+        }
+</table>

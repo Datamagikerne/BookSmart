@@ -1,6 +1,8 @@
 using BookSmart.Models;
 using BookSmart.Services.EFServices;
+using BookSmart.Services.EFServices.STabel;
 using BookSmart.Services.Interfaces;
+using BookSmart.Services.Interfaces.STabel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ builder.Services.AddTransient<IBookService, EFBookService>();
 builder.Services.AddTransient<ISubjectService, EFSubjectService>();
 builder.Services.AddTransient<ITeacherService, EFTeacherService>();
 builder.Services.AddTransient<IClassService, EFClassService>();
+builder.Services.AddTransient<ISubjectTeacherService, EFSubjectTeacherService>();
 builder.Services.AddDbContext<BookSmartDBContext>();
 
 var app = builder.Build();
