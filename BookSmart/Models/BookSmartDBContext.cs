@@ -9,17 +9,13 @@ namespace BookSmart.Models
 {
     public partial class BookSmartDBContext : DbContext
     {
-        private readonly IConfiguration _configuration;
-        public BookSmartDBContext(IConfiguration configuration)
+        public BookSmartDBContext()
         {
-            _configuration = configuration;
-
         }
 
-        public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options, IConfiguration configuration)
+        public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options)
             : base(options)
         {
-            _configuration = configuration;
         }
 
         public virtual DbSet<Book> Books { get; set; }
@@ -27,15 +23,15 @@ namespace BookSmart.Models
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<ClassTeacher> ClassTeachers { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<SubjectTeacher> SubjectTeachers { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-               var username = _configuration.GetValue<string>("DBLogin");
-               var password = _configuration.GetValue<string>("Password");
-                optionsBuilder.UseSqlServer($"Server=tcp:booksmartdbserver.database.windows.net,1433;Initial Catalog=BookSmartDB;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=booksmartdbserver.database.windows.net;Initial Catalog=BookSmartDB;User ID=booksmartadmin;Password=lars1234!");
             }
         }
 
@@ -43,29 +39,52 @@ namespace BookSmart.Models
         {
             modelBuilder.Entity<Book>(entity =>
             {
-                entity.Property(e => e.BookId).ValueGeneratedNever();
+                entity.HasOne(d => d.Subject)
+                    .WithMany(p => p.Books)
+                    .HasForeignKey(d => d.SubjectId)
+                    .HasConstraintName("FK__Book__Subject_id__75A278F5");
             });
 
             modelBuilder.Entity<BookClass>(entity =>
             {
                 entity.HasKey(e => e.BcId)
-                    .HasName("PK__Book-Cla__29E9961601C151D0");
+                    .HasName("PK__Book-Cla__29E996161354D952");
 
                 entity.Property(e => e.BcId).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Book)
+                    .WithMany(p => p.BookClasses)
+                    .HasForeignKey(d => d.BookId)
+                    .HasConstraintName("FK__Book-Clas__Book___778AC167");
+
+                entity.HasOne(d => d.NameNavigation)
+                    .WithMany(p => p.BookClasses)
+                    .HasForeignKey(d => d.Name)
+                    .HasConstraintName("FK__Book-Class__Name__76969D2E");
             });
 
             modelBuilder.Entity<Class>(entity =>
             {
                 entity.HasKey(e => e.Name)
-                    .HasName("PK__Class__737584F72FA11E43");
+                    .HasName("PK__Class__737584F7FF7D021B");
             });
 
             modelBuilder.Entity<ClassTeacher>(entity =>
             {
                 entity.HasKey(e => e.CtId)
-                    .HasName("PK__Class-Te__DC4E3A7329D191B5");
+                    .HasName("PK__Class-Te__DC4E3A73CFC41E96");
 
                 entity.Property(e => e.CtId).ValueGeneratedNever();
+
+                entity.HasOne(d => d.InitialsNavigation)
+                    .WithMany(p => p.ClassTeachers)
+                    .HasForeignKey(d => d.Initials)
+                    .HasConstraintName("FK__Class-Tea__Initi__787EE5A0");
+
+                entity.HasOne(d => d.NameNavigation)
+                    .WithMany(p => p.ClassTeachers)
+                    .HasForeignKey(d => d.Name)
+                    .HasConstraintName("FK__Class-Teac__Name__797309D9");
             });
 
             modelBuilder.Entity<Subject>(entity =>
@@ -73,10 +92,28 @@ namespace BookSmart.Models
                 entity.Property(e => e.SubjectId).ValueGeneratedNever();
             });
 
+            modelBuilder.Entity<SubjectTeacher>(entity =>
+            {
+                entity.HasKey(e => e.StId)
+                    .HasName("PK__Subject-__EBD417B72FCF8FAD");
+
+                entity.Property(e => e.StId).ValueGeneratedNever();
+
+                entity.HasOne(d => d.InitialsNavigation)
+                    .WithMany(p => p.SubjectTeachers)
+                    .HasForeignKey(d => d.Initials)
+                    .HasConstraintName("FK__Subject-T__Initi__7C4F7684");
+
+                entity.HasOne(d => d.Subject)
+                    .WithMany(p => p.SubjectTeachers)
+                    .HasForeignKey(d => d.SubjectId)
+                    .HasConstraintName("FK__Subject-T__Subje__7D439ABD");
+            });
+
             modelBuilder.Entity<Teacher>(entity =>
             {
                 entity.HasKey(e => e.Initials)
-                    .HasName("PK__Teacher__F6EBAFF7C9157C4A");
+                    .HasName("PK__Teacher__F6EBAFF723CDF5FE");
             });
 
             OnModelCreatingPartial(modelBuilder);

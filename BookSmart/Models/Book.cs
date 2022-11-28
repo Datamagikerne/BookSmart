@@ -11,6 +11,11 @@ namespace BookSmart.Models
     [Table("Book")]
     public partial class Book
     {
+        public Book()
+        {
+            BookClasses = new HashSet<BookClass>();
+        }
+
         [Key]
         [Column("Book_id")]
         public int BookId { get; set; }
@@ -23,6 +28,11 @@ namespace BookSmart.Models
         public int? Year { get; set; }
         [Column("Subject_id")]
         public int? SubjectId { get; set; }
+
+        [ForeignKey("SubjectId")]
+        [InverseProperty("Books")]
         public virtual Subject Subject { get; set; }
+        [InverseProperty("Book")]
+        public virtual ICollection<BookClass> BookClasses { get; set; }
     }
 }
