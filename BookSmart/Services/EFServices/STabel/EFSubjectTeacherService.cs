@@ -1,4 +1,5 @@
 ﻿using BookSmart.Models;
+using BookSmart.Services.Interfaces.STabel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookSmart.Services.EFServices.STabel
 {
-    public class EFSubjectTeacherService
+    public class EFSubjectTeacherService : ISubjectTeacherService
     {
         BookSmartDBContext context;
         public EFSubjectTeacherService(BookSmartDBContext service)
