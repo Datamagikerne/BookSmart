@@ -70,7 +70,7 @@ namespace BookSmart.Models
 
             modelBuilder.Entity<Subject>(entity =>
             {
-                entity.Property(e => e.SubjectId).ValueGeneratedNever();
+                entity.Property(e => e.SubjectId);
             });
 
             modelBuilder.Entity<Teacher>(entity =>
