@@ -6,6 +6,6 @@ namespace BookSmart.Services.Interfaces.STabel
     public interface ISubjectTeacherService
     {
         IEnumerable<SubjectTeacher> GetSubjectTeachers();
-        void AddSubjectTeacher(SubjectTeacher SubjectTeacher);
+        void CreateSubjectTeacher(SubjectTeacher SubjectTeacher);
     }
 }

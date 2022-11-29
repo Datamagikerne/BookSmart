@@ -31,7 +31,8 @@ namespace BookSmart.Services.EFServices
 
         public Teacher GetTeacher(string sid)
         {
-            return context.Teachers.Find(sid);
+            var teacher = context.Teachers.Include(t => t.SubjectTeachers).ThenInclude(st => st.Subject).AsNoTracking().FirstOrDefault(m => m.Initials == sid);
+            return teacher;
         }
 
         

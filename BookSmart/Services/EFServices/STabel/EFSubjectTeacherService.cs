@@ -19,10 +19,10 @@ namespace BookSmart.Services.EFServices.STabel
         {
             return context.SubjectTeachers.Include(s => s.InitialsNavigation).Include(c => c.Subject);
         }
-        public void AddSubjectTeacher(SubjectTeacher SubjectTeacher)
+        public void CreateSubjectTeacher(SubjectTeacher SubjectTeacher)
         {
             context.SubjectTeachers.Add(SubjectTeacher);
             context.SaveChanges();
         }
     }
-}
+}   

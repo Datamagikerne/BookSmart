@@ -16,56 +16,51 @@
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js">
 </script>
 
+
 <h3 style="color:black"> List of SubjectTeachers</h3>
 
+
 <body>
-    <div class="container" style="width:110%" ;>
+    <div class="container" style="width:100%" ;>
         <table class="table" id="sortTable">
             <thead>
                 <tr>
-                    <th> Teacher Name  </th>
-                    <th> Subject name </th>
-                    <th> Initials </th>    
-                    <th> @Model.SearchCriteria </th>
-                    <th class="th-g"> </th>
-
+                    <th> Name  </th>
+                    <th> Initials </th>
+                    <th> Subject  </th>
+                    <th> @Model.SearchCriteria  </th>
+                    <th class="th-g"></th>
                 </tr>
             </thead>
             <tbody>
 
                 @if (Model != null)
                 {
-                    @foreach (var item in Model.SubjectTeachers)
+                    @foreach (var item in Model.Teacher.SubjectTeachers)
                     {
                         <tr>
                             <td>  @item.InitialsNavigation.Name </td>
-                            <td>  @item.Subject.Name </td>
                             <td>  @item.InitialsNavigation.Initials </td>
+                            <td>  @item.Subject.Name </td>
                             <td>
                                 <p>
-                                    <a asp-page="/Subjects/UpdateSubject" class="btn btn-crud float-lg-end" role="button" asp-route-id="@item.SubjectId"> Update </a>
-                                    <a asp-page="/Subjects/DeleteSubject" class="btn btn-crud float-lg-end mr-1 " role="button" asp-route-sid="@item.SubjectId">Delete </a>
+                                    <a asp-page="/SubjectTeachers/GetSubjectTeachers" class="btn btn-crud float-lg-end " role="button" asp-route-id="@item.Initials">Teacher Info </a>
+                                    <a asp-page="/SubjectTeachers/UpdateSubjectTeachers" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Initials"> Update </a>
+                                    <a asp-page="/SubjectTeachers/DeleteTeacherSubjectTeachers" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Initials">Delete </a>
                                 </p>
-                               
                             </td>
-
                         </tr>
                     }
                 }
-                    
         </table>
-       
     </div>
-   
-   
-   
-</body>
-<p>
     <script>
         $('#sortTable').dataTable({
-            "oSearch": { "sSearch": @Model.SearchCriteria }
+            "oSearch": { "sSearch":  }
         });
     </script>
-    @Model.SearchCriteria
-    <a asp-page="/Subjects/CreateSubject" class="btn btn-crud float-lg-start" role="button">Create New Subject</a>
+</body>
+<p>
+    <a asp-page="/Teachers/CreateTeacher" class="btn btn-crud float-lg-start">Create New Teacher</a>
 </p>
+

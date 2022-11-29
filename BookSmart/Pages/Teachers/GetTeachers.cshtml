@@ -20,17 +20,16 @@
 
 <h3 style="color:black"> List of Teachers</h3>
 
+
 <body>
-    <div class="container" style="width:110%" ;>
+    <div class="container" style="width:100%" ;>
         <table class="table" id="sortTable">
             <thead>
                 <tr>
-                    <th> Initials </th>
-                    <th> Name  </th>
-                    <th> Mail </th>
-                    <th> Classes </th>
-                    <th class="th-g"> </th>
-
+                    <th> Initials  </th>
+                    <th> Name </th>
+                    <th> Mail  </th>
+                    <th class="th-g"></th>
                 </tr>
             </thead>
             <tbody>
@@ -43,15 +42,13 @@
                             <td>  @item.Initials </td>
                             <td>  @item.Name </td>
                             <td>  @item.Mail </td>
-                            
                             <td>
                                 <p>
-                                    <a asp-page="/SubjectTeachers/GetSubjectTeachers" class="btn btn-crud float-lg-end" role="button" asp-route-sid="@item.Initials"> Teacher Info </a>
-                                    <a asp-page="/Teachers/UpdateTeacher" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-sid="@item.Initials"> Update </a>
-                                    <a asp-page="/Teachers/DeleteTeacher" class="btn btn-crud float-lg-end mr-1 " role="button" asp-route-sid="@item.Initials">Delete </a>
+                                    <a asp-page="/Teachers/UpdateTeacher" class="btn btn-crud float-lg-end" role="button" asp-route-id="@item.Initials"> Update </a>
+                                    <a asp-page="/Teachers/DeleteTeacher" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Initials">Delete </a>
+                                    <a asp-page="/SubjectTeachers/GetSubjectTeachers" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-sid="@item.Initials">Teacher Info </a>
                                 </p>
                             </td>
-
                         </tr>
                     }
                 }
@@ -62,6 +59,6 @@
     </script>
 </body>
 <p>
-
-    <a asp-page="/Teachers/CreateTeacher" class="btn btn-crud float-lg-start" role="button">Create New Teacher</a>
+    <a asp-page="/Teachers/CreateTeacher" class="btn btn-crud float-lg-start">Create New Teacher</a>
 </p>
+
