@@ -42,33 +42,7 @@ namespace BookSmart.Services.EFServices
             context.Entry(b).CurrentValues.SetValues(Teacher);
             context.SaveChanges();
         }
-        public void DeleteSubjectFromTeacher(SubjectTeacher ST)
-        {
-            context.SubjectTeachers.Remove(ST);
-            context.SaveChanges();
-        }
-        SubjectTeacher GetSubjectTeachers(string tid, int sid)
-        {
-            foreach(var st in context.SubjectTeachers)
-            {
-                if(tid == st.Initials && sid == st.SubjectId)
-                {
-                    return st;
-                }
-            }
-            return null;
-        }
-
-        SubjectTeacher ITeacherService.GetSubjectTeachers(string tid, int sid)
-        {
-            foreach (var st in context.SubjectTeachers)
-            {
-                if (tid == st.Initials && sid == st.SubjectId)
-                {
-                    return st;
-                }
-            }
-            return null;
-        }
+        
+        
     }
 }

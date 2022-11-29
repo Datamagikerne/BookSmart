@@ -10,19 +10,21 @@ namespace BookSmart.Pages.Teachers
         public Teacher Teacher { get; set; }
 
         ITeacherService context;
+        ISubjectTeacherService _subjectTeacherService;
         public SubjectTeacher ST { get; set; } 
 
-        public TeacherInfoModel(ITeacherService service)
+        public TeacherInfoModel(ITeacherService service, ISubjectTeacherService subjectTeacherService)
         {
             context = service;
+            _subjectTeacherService = subjectTeacherService;
         }
         public void OnGet(string tid, int sid)
         {
             if(sid>0)
             {
                 
-                ST = context.GetSubjectTeachers(tid, sid);
-                context.DeleteSubjectFromTeacher(ST);
+                ST = _subjectTeacherService.GetSubjectTeachers(tid, sid);
+                _subjectTeacherService.DeleteSubjectFromTeacher(ST);
             }
             Teacher = context.GetTeacher(tid);
         }
