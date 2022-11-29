@@ -1,0 +1,26 @@
+﻿@page
+@model BookSmart.Pages.Teachers.UpdateTeacherModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="@Model.Teacher.Initials" />
+    <div class="overskrift form-group">
+        <label asp-for="@Model.Teacher.Name" class="control-label"></label>
+        <input asp-for="@Model.Teacher.Name" class="form-control" />
+        <span asp-validation-for="@Model.Teacher.Name" class="text-danger"></span>
+    </div>
+    <div class="overskrift form-group">
+        <label asp-for="@Model.Teacher.Mail" class="control-label"></label>
+        <input asp-for="@Model.Teacher.Mail" class="form-control" />
+        <span asp-validation-for="@Model.Teacher.Mail" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Update" class="btn btn-danger" /> |
+    <a asp-page="GetTeachers">Back to List</a>
+
+</form>
+
