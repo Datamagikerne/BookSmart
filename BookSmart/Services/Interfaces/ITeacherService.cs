@@ -12,6 +12,6 @@ namespace BookSmart.Services.Interfaces
 
         void DeleteTeacher(Teacher Teacher);
 
-        Teacher GetTeacher(int id);
+        Teacher GetTeacher(string sid);
     }
 }
