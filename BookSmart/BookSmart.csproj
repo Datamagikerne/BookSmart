@@ -19,8 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Classes\"/>
-	<Folder Include="Pages\Teachers\"/>
+    <Folder Include="Pages\Classes\" />
   </ItemGroup>
 
 </Project>

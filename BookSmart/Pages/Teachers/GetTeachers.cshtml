@@ -36,6 +36,11 @@
                             <a asp-page="/Teachers/DeleteTeacher" asp-route-sid="@item.Initials">Delete </a>
                         </p>
                     </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-tid="@item.Initials">Teacher Info </a>
+                        </p>
+                    </td>
                 </tr>
             }
         }

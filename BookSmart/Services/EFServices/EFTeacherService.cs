@@ -1,6 +1,6 @@
 ﻿using BookSmart.Models;
 using BookSmart.Services.Interfaces;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace BookSmart.Services.EFServices
 {
@@ -25,10 +25,10 @@ namespace BookSmart.Services.EFServices
             context.SaveChanges();
         }
 
-        public Teacher GetTeacher(string sid)
+        public Teacher GetTeacher(string tid)
         {
-            return context.Teachers.Find(sid);
-
+            var teacher = context.Teachers.Include(t => t.SubjectTeachers).ThenInclude(st => st.Subject).AsNoTracking().FirstOrDefault(m => m.Initials == tid);
+            return teacher;
         }
 
         public IEnumerable<Teacher> GetTeachers()
