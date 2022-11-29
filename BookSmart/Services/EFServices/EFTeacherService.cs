@@ -38,7 +38,9 @@ namespace BookSmart.Services.EFServices
 
         public void UpdateTeacher(Teacher Teacher)
         {
-            throw new NotImplementedException();
+            Teacher b = GetTeacher(Teacher.Initials);
+            context.Entry(b).CurrentValues.SetValues(Teacher);
+            context.SaveChanges();
         }
     }
 }

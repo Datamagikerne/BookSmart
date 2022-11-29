@@ -7,8 +7,13 @@
 <h1>Update</h1>
 
 <form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="@Model.Teacher.Initials" />
+   
+  
+  @*  <div class="overskrift form-group">
+        <label asp-for="@Model.Teacher.Initials" class="control-label"></label>
+        <input asp-for="@Model.Teacher.Initials" class="form-control" />
+        <span asp-validation-for="@Model.Teacher.Initials" class="text-danger"></span>
+    </div>*@
     <div class="overskrift form-group">
         <label asp-for="@Model.Teacher.Name" class="control-label"></label>
         <input asp-for="@Model.Teacher.Name" class="form-control" />

@@ -17,11 +17,9 @@ namespace BookSmart.Pages.Teachers
             TeacherService = service;
         }
 
-        public IActionResult OnGet(string sid)
+        public void OnGet(string sid)
         {
-            Teacher = new Teacher();
-            Teacher = TeacherService.GetTeacher(sid);
-            return Page();
+            Teacher = TeacherService.GetTeacher(sid);   
         }
 
         public IActionResult OnPost()
