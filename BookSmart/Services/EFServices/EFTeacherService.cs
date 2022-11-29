@@ -21,12 +21,13 @@ namespace BookSmart.Services.EFServices
 
         public void DeleteTeacher(Teacher Teacher)
         {
-            throw new NotImplementedException();
+            context.Teachers.Remove(Teacher);
+            context.SaveChanges();
         }
 
-        public Teacher GetTeacher(int id)
+        public Teacher GetTeacher(string sid)
         {
-            return context.Teachers.Find(id);
+            return context.Teachers.Find(sid);
 
         }
 
