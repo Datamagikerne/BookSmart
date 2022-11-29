@@ -21,7 +21,7 @@ namespace BookSmart.Pages.Teachers
             if(sid>0)
             {
                 
-                ST = context.GetTeachersSubject(tid, sid);
+                ST = context.GetSubjectTeachers(tid, sid);
                 context.DeleteSubjectFromTeacher(ST);
             }
             Teacher = context.GetTeacher(tid);

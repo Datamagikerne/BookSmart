@@ -14,7 +14,7 @@ namespace BookSmart.Services.Interfaces
 
         Teacher GetTeacher(string tid);
         void DeleteSubjectFromTeacher(SubjectTeacher ST);
-        SubjectTeacher GetTeachersSubject(string tid, int sid);
+        SubjectTeacher GetSubjectTeachers(string tid, int sid);
 
     }
 }

@@ -47,7 +47,7 @@ namespace BookSmart.Services.EFServices
             context.SubjectTeachers.Remove(ST);
             context.SaveChanges();
         }
-        SubjectTeacher GetTeachersSubject(string tid, int sid)
+        SubjectTeacher GetSubjectTeachers(string tid, int sid)
         {
             foreach(var st in context.SubjectTeachers)
             {
@@ -59,7 +59,7 @@ namespace BookSmart.Services.EFServices
             return null;
         }
 
-        SubjectTeacher ITeacherService.GetTeachersSubject(string tid, int sid)
+        SubjectTeacher ITeacherService.GetSubjectTeachers(string tid, int sid)
         {
             foreach (var st in context.SubjectTeachers)
             {
