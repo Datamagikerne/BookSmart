@@ -39,7 +39,8 @@ namespace BookSmart.Services.EFServices
 
         public void DeleteClass(Class Class)
         {
-            throw new NotImplementedException();
+            context.Classes.Remove(Class);
+            context.SaveChanges();
         }
     }
 }
