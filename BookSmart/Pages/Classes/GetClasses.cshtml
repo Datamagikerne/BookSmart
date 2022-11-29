@@ -1,4 +1,41 @@
 ﻿@page
 @model BookSmart.Pages.Classes.GetClassesModel
 @{
+    ViewData["Title"] = "GetClasses";
 }
+
+<h3 style="color:red"> List of Classes</h3>
+<p>
+    <a asp-page="/Subjects/CreateClass">Create New Class</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Name </th>
+            <th> Education </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Classes)
+            {
+                <tr>
+                    <td>  @item.Name </td>
+                    <td>  @item.Education </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Subjects/UpdateClass" asp-route-id="@item.Name"> Update </a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Subjects/DeleteClass" asp-route-id="@item.Name">Delete </a>
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+</table>
+
