@@ -41,9 +41,9 @@
                             <td>  @item.Subject.Name </td>
                             <td>
                                 <p>
-                                    <a asp-page="/SubjectTeachers/GetSubjectTeachers" class="btn btn-crud float-lg-end " role="button" asp-route-id="@item.Initials">Teacher Info </a>
-                                    <a asp-page="/SubjectTeachers/UpdateSubjectTeachers" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Initials"> Update </a>
-                                    <a asp-page="/SubjectTeachers/DeleteTeacherSubjectTeachers" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Initials">Delete </a>
+                                    @*<a asp-page="/SubjectTeachers/GetSubjectTeachers" class="btn btn-crud float-lg-end " role="button" asp-route-id="@item.Initials">Teacher Info </a>
+                                    <a asp-page="/SubjectTeachers/UpdateSubjectTeachers" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Initials"> Update </a>*@
+                                    <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-sid="@item.SubjectId" asp-route-tid="@item.Initials">Delete </a>
                                 </p>
                             </td>
                         </tr>
