@@ -1,0 +1,20 @@
+﻿@page
+@model BookSmart.Pages.Classes.UpdateClassModel
+@{
+}
+<form method="post">
+    <div class="overskrift form-group">
+        <label asp-for="@Model.Class.Name" class="control-label"></label>
+        <input asp-for="@Model.Class.Name" class="form-control" />
+        <span asp-validation-for="@Model.Class.Name" class="text-danger"></span>
+    </div>
+    <div class="overskrift form-group">
+        <label asp-for="@Model.Class.Education" class="control-label"></label>
+        <input asp-for="@Model.Class.Education" class="form-control" />
+        <span asp-validation-for="@Model.Class.Education" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>
