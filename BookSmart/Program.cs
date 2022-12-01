@@ -1,6 +1,8 @@
 using BookSmart.Models;
 using BookSmart.Services.EFServices;
+using BookSmart.Services.EFServices.CorrelationTables;
 using BookSmart.Services.Interfaces;
+using BookSmart.Services.Interfaces.CorrelationTables;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,9 @@ builder.Services.AddTransient<ISubjectService, EFSubjectService>();
 builder.Services.AddDbContext<BookSmartDBContext>();
 builder.Services.AddTransient<ITeacherService, EFTeacherService>();
 builder.Services.AddTransient<IClassService, EFClassService>();
+builder.Services.AddTransient<IBookClassService, EFBookClassService>();
+builder.Services.AddTransient<ISubjectTeacherService, EFSubjectTeacherService>();
+builder.Services.AddTransient<IClassTeacherService, EFClassTeacherService>();
 
 var app = builder.Build();
 
