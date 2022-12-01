@@ -14,7 +14,7 @@
 </script>
 
 
-<h3 style="color:black"> List of SubjectTeachers</h3>
+<h3 style="color:black"> Info on @Model.Teacher.Initials </h3>
 
 
 <body>
@@ -22,8 +22,6 @@
         <table class="table" id="sortTable">
             <thead>
                 <tr>
-                    <th> Name  </th>
-                    <th> Initials </th>
                     <th> Subject  </th>
                   
                     <th class="th-g"></th>
@@ -36,16 +34,8 @@
                     @foreach (var item in Model.Teacher.SubjectTeachers)
                     {
                         <tr>
-                            <td>  @item.InitialsNavigation.Name </td>
-                            <td>  @item.InitialsNavigation.Initials </td>
                             <td>  @item.Subject.Name </td>
-                            <td>
-                                <p>
-                                    <a asp-page="/SubjectTeachers/GetSubjectTeachers" class="btn btn-crud float-lg-end " role="button" asp-route-id="@item.Initials">Teacher Info </a>
-                                    <a asp-page="/SubjectTeachers/UpdateSubjectTeachers" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Initials"> Update </a>
-                                    <a asp-page="/SubjectTeachers/DeleteTeacherSubjectTeachers" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Initials">Delete </a>
-                                </p>
-                            </td>
+                            
                         </tr>
                     }
                 }
@@ -57,6 +47,3 @@
         });
     </script>
 </body>
-<p>
-    <a asp-page="/Teachers/CreateTeacher" class="btn btn-crud float-lg-start">Create New Teacher</a>
-</p>
