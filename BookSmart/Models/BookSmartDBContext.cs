@@ -9,16 +9,13 @@ namespace BookSmart.Models
 {
     public partial class BookSmartDBContext : DbContext
     {
-        IConfiguration _configuration;
-        public BookSmartDBContext(IConfiguration configuration)
+        public BookSmartDBContext()
         {
-            _configuration = configuration; 
         }
 
-        public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options, IConfiguration configuration)
+        public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options)
             : base(options)
         {
-            _configuration = configuration;
         }
 
         public virtual DbSet<Book> Books { get; set; }
@@ -33,21 +30,21 @@ namespace BookSmart.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var username = _configuration.GetValue<string>("DBLogin");
-                var password = _configuration.GetValue<string>("Password");
-                optionsBuilder.UseSqlServer($"Server=tcp:booksmartdbserver.database.windows.net,1433;Initial Catalog=BookSmartDB;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=booksmartdbserver.database.windows.net;Initial Catalog=BookSmartDB;User ID=booksmartadmin;Password=lars1234!");
             }
-        
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>(entity =>
             {
+                entity.Property(e => e.BookId).ValueGeneratedNever();
+
                 entity.HasOne(d => d.Subject)
                     .WithMany(p => p.Books)
                     .HasForeignKey(d => d.SubjectId)
-                    .HasConstraintName("FK__Book__Subject_id__00200768");
+                    .HasConstraintName("FK__Book__Subject_id__3493CFA7");
             });
 
             modelBuilder.Entity<BookClass>(entity =>
@@ -59,7 +56,7 @@ namespace BookSmart.Models
                     .WithMany(p => p.BookClasses)
                     .HasForeignKey(d => d.BookId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__Book-Clas__Book___30C33EC3");
+                    .HasConstraintName("FK__Book-Clas__Book___339FAB6E");
 
                 entity.HasOne(d => d.Class)
                     .WithMany(p => p.BookClasses)

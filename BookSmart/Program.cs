@@ -11,6 +11,7 @@ builder.Services.AddTransient<ISubjectService, EFSubjectService>();
 builder.Services.AddDbContext<BookSmartDBContext>();
 builder.Services.AddTransient<ITeacherService, EFTeacherService>();
 builder.Services.AddTransient<IClassService, EFClassService>();
+builder.Services.AddTransient<ISubjectTeacherService, EFSubjectTeacherService>();
 
 var app = builder.Build();
 
