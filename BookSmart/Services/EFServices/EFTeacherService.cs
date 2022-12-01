@@ -25,9 +25,9 @@ namespace BookSmart.Services.EFServices
             context.SaveChanges();
         }
 
-        public Teacher GetTeacher(string tid)
+        public Teacher GetTeacher(string id)
         {
-            var teacher = context.Teachers.Include(t => t.SubjectTeachers).ThenInclude(st => st.Subject).AsNoTracking().FirstOrDefault(m => m.Initials == tid);
+            var teacher = context.Teachers.Include(t => t.SubjectTeachers).ThenInclude(st => st.Subject).AsNoTracking().FirstOrDefault(m => m.Initials == id);
             return teacher;
         }
 
@@ -36,13 +36,19 @@ namespace BookSmart.Services.EFServices
             return context.Teachers;
         }
 
-        public void UpdateTeacher(Teacher Teacher)
+        public void UpdateTeacher(Teacher teacher)
         {
-            Teacher b = GetTeacher(Teacher.Initials);
-            context.Entry(b).CurrentValues.SetValues(Teacher);
+            foreach (var t in context.Teachers)
+            {
+                if (t.Initials.Contains(teacher.Initials))
+                {
+                    t.Initials = teacher.Initials;
+                    t.Name = teacher.Name;
+                    t.Mail = teacher.Mail;
+                }
+            }
             context.SaveChanges();
         }
-        
-        
+
     }
 }

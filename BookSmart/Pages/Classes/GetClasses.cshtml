@@ -11,6 +11,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th> Class id </th>
             <th> Name </th>
             <th> Education </th>
         </tr>
@@ -22,16 +23,17 @@
             @foreach (var item in Model.Classes)
             {
                 <tr>
+                    <td> @item.ClassId </td>
                     <td>  @item.Name </td>
                     <td>  @item.Education </td>
                     <td>
                         <p>
-                            <a asp-page="/Classes/UpdateClass" asp-route-cid="@item.Name"> Update </a>
+                            <a asp-page="/Classes/UpdateClass" asp-route-cid="@item.ClassId"> Update </a>
                         </p>
                     </td>
                     <td>
                         <p>
-                            <a asp-page="/Classes/DeleteClasses" asp-route-cid="@item.Name">Delete </a>
+                            <a asp-page="/Classes/DeleteClasses" asp-route-cid="@item.ClassId">Delete </a>
                         </p>
                     </td>
                 </tr>

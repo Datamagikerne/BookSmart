@@ -4,6 +4,10 @@
 }
 <form method="post">
     <div class="overskrift form-group">
+        <input asp-for="@Model.Class.ClassId" class="form-control" type="hidden" />
+        <span asp-validation-for="@Model.Class.ClassId" class="text-danger"></span>
+    </div>
+    <div class="overskrift form-group">
         <label asp-for="@Model.Class.Name" class="control-label"></label>
         <input asp-for="@Model.Class.Name" class="form-control" />
         <span asp-validation-for="@Model.Class.Name" class="text-danger"></span>

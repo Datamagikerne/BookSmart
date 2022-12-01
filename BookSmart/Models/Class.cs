@@ -18,6 +18,9 @@ namespace BookSmart.Models
         }
 
         [Key]
+        [Column("Class_id")]
+        public int ClassId { get; set; }
+        [Required]
         [StringLength(7)]
         [Unicode(false)]
         public string Name { get; set; }
@@ -25,9 +28,9 @@ namespace BookSmart.Models
         [Unicode(false)]
         public string Education { get; set; }
 
-        [InverseProperty("NameNavigation")]
+        [InverseProperty("Class")]
         public virtual ICollection<BookClass> BookClasses { get; set; }
-        [InverseProperty("NameNavigation")]
+        [InverseProperty("Class")]
         public virtual ICollection<ClassTeacher> ClassTeachers { get; set; }
     }
 }

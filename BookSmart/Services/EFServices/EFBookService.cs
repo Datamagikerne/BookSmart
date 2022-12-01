@@ -34,7 +34,8 @@ namespace BookSmart.Services.EFServices
 
         public Book GetBook(int id)
         {
-            return context.Books.Find(id);
+            var book = context.Books.Include(b => b.Subject).AsNoTracking().FirstOrDefault(m => m.BookId == id);
+            return book;
         }
 
         public IEnumerable<Book> GetBooks()

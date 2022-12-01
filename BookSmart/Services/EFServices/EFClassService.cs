@@ -20,17 +20,18 @@ namespace BookSmart.Services.EFServices
             context.SaveChanges();
         }
 
-        public Class GetClasses(string cid)
+        public Class GetClass(int id)
         {
-            return context.Classes.Find(cid);
+            return context.Classes.Find(id);
         }
 
         public void UpdateClass(Class Class)
         {
-            Class c = GetClasses(Class.Name);
+            Class c = GetClass(Class.ClassId);
             context.Entry(c).CurrentValues.SetValues(Class);
             context.SaveChanges();
         }
+
 
         public IEnumerable<Class> GetClasses()
         {

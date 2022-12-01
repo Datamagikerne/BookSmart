@@ -14,22 +14,25 @@
         <dl class="row">
 
             <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Class.ClassId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Class.ClassId)
+            </dd>
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Class.Name)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Class.Education)
-
+                @Html.DisplayFor(model => model.Class.Name)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Class.ClassTeachers)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Class.BookClasses)
             </dd>
         </dl>
+           
+        </dl>
 
-
-        <input type="hidden" asp-for="Class.Name" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-page="GetClass">Back to List</a>
     </form>

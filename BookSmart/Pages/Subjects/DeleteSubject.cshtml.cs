@@ -17,9 +17,9 @@ namespace BookSmart.Pages.Subjects
             this.SubjectService = service;
             Subject = new Subject();
         }
-        public void OnGet(int id)
+        public void OnGet(int sid)
         {
-            Subject = SubjectService.GetSubject(id);
+            Subject = SubjectService.GetSubject(sid);
         }
         public IActionResult OnPost()
         {
