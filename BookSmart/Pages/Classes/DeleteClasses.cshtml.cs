@@ -17,9 +17,9 @@ namespace BookSmart.Pages.Classes
             this.ClassService = service;
             Class = new Class();
         }
-        public void OnGet(string cid)
+        public void OnGet(int cid)
         {
-            Class = ClassService.GetClasses(cid);
+            Class = ClassService.GetClass(cid);
         }
         public IActionResult OnPost()
         {

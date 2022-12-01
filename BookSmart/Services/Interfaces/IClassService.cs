@@ -12,6 +12,6 @@ namespace BookSmart.Services.Interfaces
 
         void DeleteClass(Class Class);
 
-        Class GetClasses(string name);
+        Class GetClass(int id);
     }
 }

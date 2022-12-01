@@ -14,17 +14,16 @@ namespace BookSmart.Models
         [Key]
         [Column("BC_id")]
         public int BcId { get; set; }
-        [StringLength(7)]
-        [Unicode(false)]
-        public string Name { get; set; }
+        [Column("Class_id")]
+        public int? ClassId { get; set; }
         [Column("Book_id")]
         public int? BookId { get; set; }
 
         [ForeignKey("BookId")]
         [InverseProperty("BookClasses")]
         public virtual Book Book { get; set; }
-        [ForeignKey("Name")]
+        [ForeignKey("ClassId")]
         [InverseProperty("BookClasses")]
-        public virtual Class NameNavigation { get; set; }
+        public virtual Class Class { get; set; }
     }
 }

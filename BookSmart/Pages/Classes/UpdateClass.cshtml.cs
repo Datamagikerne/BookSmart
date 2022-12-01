@@ -18,9 +18,9 @@ namespace BookSmart.Pages.Classes
         [BindProperty]
         public Class Class { get; set; }
 
-        public void OnGet(string cid)
+        public void OnGet(int cid)
         {
-            Class = classService.GetClasses(cid);
+            Class = classService.GetClass(cid);
         }
         public IActionResult OnPost()
         {

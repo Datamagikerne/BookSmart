@@ -9,7 +9,7 @@ namespace BookSmart.Pages.Classes
     {
         [BindProperty]
         public Class Class { get; set; }
-        public IEnumerable<Class> Classs { get; set; }
+        public IEnumerable<Class> Classes { get; set; }
 
         IClassService ClassService;
         public CreateClassModel(IClassService service)
@@ -22,10 +22,10 @@ namespace BookSmart.Pages.Classes
         }
         public IActionResult OnPost()
         {
-            Classs = ClassService.GetClasses();
-            foreach (var c in Classs)
+            Classes = ClassService.GetClasses();
+            foreach (var c in Classes)
             {
-                if (c.Name == Class.Name)
+                if (c.ClassId == Class.ClassId)
                 {
                     return Page();
                 }

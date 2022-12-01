@@ -18,9 +18,9 @@ namespace BookSmart.Pages.Books
             this.BookService = service;
             Book = new Book();
         }
-       public void OnGet(int id)
+       public void OnGet(int bid)
         {
-            Book = BookService.GetBook(id);
+            Book = BookService.GetBook(bid);
         }
         public IActionResult OnPost()
         {

@@ -18,9 +18,9 @@ namespace BookSmart.Pages.Subjects
         [BindProperty]
         public Subject Subject { get; set; }
         
-        public void OnGet(int id)
+        public void OnGet(int sid)
         {
-            Subject = subjectService.GetSubject(id);
+            Subject = subjectService.GetSubject(sid);
         }
         public IActionResult OnPost()
         {

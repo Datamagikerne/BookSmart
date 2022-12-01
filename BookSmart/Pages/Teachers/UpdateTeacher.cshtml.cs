@@ -7,21 +7,20 @@ namespace BookSmart.Pages.Teachers
 {
     public class UpdateTeacherModel : PageModel
     {
-        private ITeacherService TeacherService;
+        ITeacherService TeacherService;
+
+        public UpdateTeacherModel(ITeacherService TeacherService)
+        {
+            this.TeacherService = TeacherService;
+        }
 
         [BindProperty]
         public Teacher Teacher { get; set; }
 
-        public UpdateTeacherModel(ITeacherService service)
-        {
-            TeacherService = service;
-        }
-
         public void OnGet(string tid)
         {
-            Teacher = TeacherService.GetTeacher(tid);   
+            Teacher = TeacherService.GetTeacher(tid);
         }
-
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -29,7 +28,7 @@ namespace BookSmart.Pages.Teachers
                 return Page();
             }
             TeacherService.UpdateTeacher(Teacher);
-            return RedirectToPage("Getteachers");
+            return RedirectToPage("GetTeachers");
         }
     }
 }
