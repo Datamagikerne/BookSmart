@@ -26,11 +26,26 @@
                 <input asp-for="@Model.Teacher.Mail" class="form-control" />
                 <span asp-validation-for="@Model.Teacher.Mail" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="@Model.Teacher.ClassId" class="control-label"></label>
-                <input asp-for="@Model.Teacher.ClassId" class="form-control" />
-                <span asp-validation-for="@Model.Teacher.ClassId" class="text-danger"></span>
-            </div>*@
+            <label class="custom-control-label text-black">Choose Subjects</label><br />
+            <div>
+                @foreach(var s in Model.Subjects)
+                {
+                    <input name="ChosenSubjectIds" type="checkbox" value="@s.SubjectId" checked="@(s.SubjectId == Model.InitialCheck)" />
+                    @s.Name
+                    <br />
+                }
+            </div>
+            <br />
+
+            <label class="custom-control-label text-black">Choose Classes</label><br />
+            <div>
+                @foreach (var c in Model.Classes)
+                {
+                    <input name="ChosenClassIds" type="checkbox" value="@c.ClassId " checked="@(c.ClassId == Model.InitialCheck)" />
+                    @c.Name
+                    <br />
+                }
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
