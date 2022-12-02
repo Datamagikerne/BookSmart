@@ -20,7 +20,8 @@ namespace BookSmart.Pages.Classes
 
         [BindProperty]
         public string InitialCheck { get; private set; }
-        public CreateClassModel(
+        public CreateClassModel
+            (
             IClassService service,
             ITeacherService teacherService,
             IClassTeacherService ctService,
@@ -34,7 +35,7 @@ namespace BookSmart.Pages.Classes
             BookService = bookService;
             BookClassService = bookClassService;
         }
-        #region Class Checkbox
+        #region Teacher Checkbox
 
         public IEnumerable<Teacher> Teachers { get; set; }
         public IEnumerable<Class> Classes { get; set; }
