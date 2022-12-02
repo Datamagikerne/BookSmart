@@ -20,5 +20,9 @@ namespace BookSmart.Services.EFServices.CorrelationTables
             context.SubjectTeachers.Remove(subjectTeacher);
             context.SaveChanges();
         }
+        public SubjectTeacher GetSubectTeacher(int subId, string initials)
+        {
+
+        }
     }
 }

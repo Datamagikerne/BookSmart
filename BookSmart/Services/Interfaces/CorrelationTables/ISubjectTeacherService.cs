@@ -6,5 +6,7 @@ namespace BookSmart.Services.Interfaces.CorrelationTables
     {
         void CreateSubjectTeacher(SubjectTeacher subjectTeacher);
         void DeleteSubjectTeacher(SubjectTeacher subjectTeacher);
+        SubjectTeacher GetSubectTeacher(int subId, string initials);
+
     }
 }
