@@ -26,10 +26,10 @@
                 <input asp-for="@Model.Class.Education" class="form-control" />
                 <span asp-validation-for="@Model.Class.Education" class="text-danger"></span>
             </div>
-            <div class="form-group">
+@*            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <a asp-page="GetClasses">Back to List</a>
-            </div>
+            </div>*@
             <label class="custom-control-label text-black">Choose Teachers</label><br />
             <div>
                 @foreach (var s in Model.Teachers)
