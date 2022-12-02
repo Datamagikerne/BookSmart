@@ -1,5 +1,6 @@
 ﻿using BookSmart.Models;
 using BookSmart.Services.Interfaces.CorrelationTables;
+using System.Security.Cryptography;
 
 namespace BookSmart.Services.EFServices.CorrelationTables
 {
@@ -22,7 +23,14 @@ namespace BookSmart.Services.EFServices.CorrelationTables
         }
         public SubjectTeacher GetSubectTeacher(int subId, string initials)
         {
-
+            foreach (var st in context.SubjectTeachers)
+            {
+                if (initials == st.Initials && subId == st.SubjectId)
+                {
+                    return st;
+                }
+            }
+            return null;
         }
     }
 }

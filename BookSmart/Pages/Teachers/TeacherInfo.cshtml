@@ -51,7 +51,11 @@
                     {
                         <tr>
                             <td>  @item.Class.Name</td>
-
+                            <td>
+                                <p>
+                                    <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-cid="@item.ClassId" asp-route-tid="@item.Initials">Delete </a>
+                                </p>
+                            </td>
                         </tr>
                     }
                 }
