@@ -19,7 +19,8 @@ namespace BookSmart.Pages.Classes
         IClassTeacherService ctService;
         ITeacherService teacherService;
         [BindProperty]
-        public string InitialCheck { get; private set; }
+        public int InitialCheck { get; private set; }
+        public string InitialCheck2 { get; private set; }
 
         #region Book Checkbox
         public IEnumerable<Book> Books { get; set; }
@@ -46,7 +47,7 @@ namespace BookSmart.Pages.Classes
         public void OnGet()
         {
             Books = bookService.GetBooks();
-            Teachers = teacherService.GetTeachers();
+            Teachers = teacherService.GetTeachers(); 
         }
         public IActionResult OnPost()
         {
@@ -73,10 +74,10 @@ namespace BookSmart.Pages.Classes
 
             foreach (var ct in ChosenTeacherIds)
             {
-                ClassTeacher = new ClassTeacher() { ClassId = Class.ClassId, Initials =  ct};
+                ClassTeacher = new ClassTeacher() { ClassId = Class.ClassId, Initials = ct };
                 ctService.CreateClassTeacher(ClassTeacher);
             }
-            return RedirectToPage("GetTeachers");
+            return RedirectToPage("GetClasses");
         }
     }
 }

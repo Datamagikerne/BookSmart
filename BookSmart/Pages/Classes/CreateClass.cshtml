@@ -31,8 +31,8 @@
             <div>
                 @foreach (var b in Model.Books)
                 {
-                        <input name="ChosenBookIds" type="checkbox" value="@b.Title" checked="@(b.Title == Model.InitialCheck)" />
-                    @b.Title
+                        <input name="ChosenBookIds" type="checkbox" value="@b.BookId" checked="@(b.BookId == Model.InitialCheck)" />
+                    @b.BookId
                         <br />
                 }
             </div>
@@ -41,7 +41,7 @@
             <div>
                 @foreach (var c in Model.Teachers)
                 {
-                        <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials " checked="@(c.Initials == Model.InitialCheck)" />
+                        <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials " checked="@(c.Initials == Model.InitialCheck2)" />
                     @c.Initials
                         <br />
                 }
