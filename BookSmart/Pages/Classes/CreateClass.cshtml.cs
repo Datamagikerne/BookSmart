@@ -62,6 +62,7 @@ namespace BookSmart.Pages.Classes
                 return Page();
             }
             ClassService.CreateClass(Class);
+            Class = ClassService.GetClass(Class.ClassId);
 
             foreach (var bc in ChosenBookIds)
             {
