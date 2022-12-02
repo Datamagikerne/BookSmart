@@ -24,7 +24,11 @@
                     {
                         <tr>
                             <td>  @item.InitialsNavigation.Name</td>
-
+                            <td>
+                                <p>
+                                    <a asp-page="/Classes/ClassInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-tid="@item.Initials" asp-route-cid="@item.ClassId">Delete</a>
+                                </p>
+                            </td>
                         </tr>
                     }
                 }
@@ -48,7 +52,11 @@
                     {
                         <tr>
                             <td>  @item.Book.Title</td>
-
+                            <td>
+                                <p>
+                                    <a asp-page="/Classes/ClassInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-bid="@item.BookId" asp-route-cid="@item.ClassId">Delete</a>
+                                </p>
+                            </td>
                         </tr>
                     }
                 }
