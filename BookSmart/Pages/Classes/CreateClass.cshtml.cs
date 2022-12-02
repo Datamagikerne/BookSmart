@@ -65,7 +65,7 @@ namespace BookSmart.Pages.Classes
 
             foreach (var bc in ChosenBookIds)
             {
-                BookClass = new BookClass() { BcId = BookClass.BcId , BookId = bc };
+                BookClass = new BookClass() { ClassId = Class.ClassId , BookId = bc };
                 bcService.CreateBookClass(BookClass);
             }
 
