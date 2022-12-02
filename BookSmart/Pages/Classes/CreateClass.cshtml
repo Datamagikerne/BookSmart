@@ -30,6 +30,21 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <a asp-page="GetClasses">Back to List</a>
             </div>
+            <label class="custom-control-label text-black">Choose Teachers</label><br />
+            <div>
+                @foreach (var s in Model.Teachers)
+                {
+                    <input name="ChosenSubjectIds" type="checkbox" value="@s.Initials" checked="@(s.Initials == Model.InitialCheck)" />
+                    @s.Name
+                    <br />
+                }
+            </div>
+            <br />
+
+      
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
         </form>
     </div>
 </div>

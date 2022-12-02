@@ -1,5 +1,6 @@
 using BookSmart.Models;
 using BookSmart.Services.Interfaces;
+using BookSmart.Services.Interfaces.CorrelationTables;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -9,16 +10,43 @@ namespace BookSmart.Pages.Classes
     {
         [BindProperty]
         public Class Class { get; set; }
-        public IEnumerable<Class> Classes { get; set; }
+        public Teacher Teacher { get; set; }
 
         IClassService ClassService;
-        public CreateClassModel(IClassService service)
+        ITeacherService TeacherService;
+        IClassTeacherService CtService;
+        IBookService BookService;
+        IBookClassService BookClassService;
+
+        [BindProperty]
+        public string InitialCheck { get; private set; }
+        public CreateClassModel(
+            IClassService service,
+            ITeacherService teacherService,
+            IClassTeacherService ctService,
+            IBookService bookService,
+            IBookClassService bookClassService
+            )
         {
             this.ClassService = service;
+            TeacherService = teacherService;
+            CtService = ctService;
+            BookService = bookService;
+            BookClassService = bookClassService;
         }
+        #region Class Checkbox
+
+        public IEnumerable<Teacher> Teachers { get; set; }
+        public IEnumerable<Class> Classes { get; set; }
+
+        [BindProperty]
+        public List<int> ChoosenClassIds { get; set; }
+        public ClassTeacher ClassTeacher { get; set; }
+        #endregion
         public void OnGet()
         {
-
+            Classes = ClassService.GetClasses();
+            Teachers = TeacherService.GetTeachers();
         }
         public IActionResult OnPost()
         {
@@ -35,6 +63,16 @@ namespace BookSmart.Pages.Classes
                 return Page();
             }
             ClassService.CreateClass(Class);
+
+            Class = ClassService.GetClass(Class.ClassId);
+            foreach (var classid in ChoosenClassIds)
+            {
+                ClassTeacher = new ClassTeacher() { ClassId = classid, Initials = Teacher.Initials };
+                CtService.CreateClassTeacher(ClassTeacher);
+            }
+
+
+
             return RedirectToPage("GetClasses");
         }
     }
