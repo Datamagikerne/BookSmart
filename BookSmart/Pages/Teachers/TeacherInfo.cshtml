@@ -22,14 +22,19 @@
                     {
                         <tr>
                             <td>  @item.Subject.Name </td>
-                            
+                            <td>
+                                <p>
+                                    <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-sid="@item.SubjectId" asp-route-tid="@item.Initials">Delete </a>
+                                </p>
+                            </td>
                         </tr>
                     }
                 }
+
         </table>
     </div>
 
-    <div class="container" style="width:100%" ;>
+    <div class="container" style="width:100%";>
         <table class="table" id="sortTable">
             <thead>
                 <tr>
@@ -46,7 +51,11 @@
                     {
                         <tr>
                             <td>  @item.Class.Name</td>
-
+                            <td>
+                                <p>
+                                    <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-cid="@item.ClassId" asp-route-tid="@item.Initials">Delete </a>
+                                </p>
+                            </td>
                         </tr>
                     }
                 }
