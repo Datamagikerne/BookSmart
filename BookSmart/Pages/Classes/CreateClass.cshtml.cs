@@ -27,6 +27,7 @@ namespace BookSmart.Pages.Classes
         public List<int> ChosenBookIds { get; set; }
         public BookClass BookClass { get; set; }
         #endregion
+
         #region Teacher Checkbox
         public IEnumerable<Teacher> Teachers { get; set; }
         [BindProperty]
