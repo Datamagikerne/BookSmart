@@ -22,8 +22,14 @@ namespace BookSmart.Services.EFServices
 
         public Class GetClass(int id)
         {
-            return context.Classes.Find(id);
+            return context.Classes.Include(c => c.ClassTeachers).ThenInclude(ct=> ct.InitialsNavigation).AsNoTracking().FirstOrDefault(m => m.ClassId == id);
         }
+        public Class GetClassBooks(int id)
+        {
+            return context.Classes.Include(c => c.BookClasses).ThenInclude(bc => bc.Book).AsNoTracking().FirstOrDefault(m => m.ClassId == id);
+
+        }
+
 
         public void UpdateClass(Class Class)
         {

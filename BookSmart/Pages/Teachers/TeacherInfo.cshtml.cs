@@ -8,6 +8,7 @@ namespace BookSmart.Pages.Teachers
     public class TeacherInfoModel : PageModel
     {
         public Teacher Teacher { get; set; }
+        public Teacher TeacherClasses { get; set; }
 
         ITeacherService context;
 
@@ -19,6 +20,7 @@ namespace BookSmart.Pages.Teachers
         {
 
             Teacher = context.GetTeacher(tid);
+            TeacherClasses = context.GetTeachersClasses(tid);
         }
     }
 }

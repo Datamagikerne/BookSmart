@@ -1,7 +1,9 @@
 ﻿@page
-@model BookSmart.Pages.Teachers.TeacherInfoModel
+@model BookSmart.Pages.Classes.ClassInfoModel
+@{
+}
 
-<h3 style="color:black"> Info on @Model.Teacher.Initials </h3>
+<h3 style="color:black"> Info on @Model.Class.Name </h3>
 
 
 <body>
@@ -9,8 +11,8 @@
         <table class="table" id="sortTable">
             <thead>
                 <tr>
-                    <th> Subjects  </th>
-                  
+                    <th> Teachers  </th>
+
                     <th class="th-g"></th>
                 </tr>
             </thead>
@@ -18,11 +20,11 @@
 
                 @if (Model != null)
                 {
-                    @foreach (var item in Model.Teacher.SubjectTeachers)
+                    @foreach (var item in Model.Class.ClassTeachers)
                     {
                         <tr>
-                            <td>  @item.Subject.Name </td>
-                            
+                            <td>  @item.InitialsNavigation.Name</td>
+
                         </tr>
                     }
                 }
@@ -33,7 +35,7 @@
         <table class="table" id="sortTable">
             <thead>
                 <tr>
-                    <th> Classes  </th>
+                    <th> Books  </th>
 
                     <th class="th-g"></th>
                 </tr>
@@ -42,10 +44,10 @@
 
                 @if (Model != null)
                 {
-                    @foreach (var item in Model.TeacherClasses.ClassTeachers)
+                    @foreach (var item in Model.ClassBooks.BookClasses)
                     {
                         <tr>
-                            <td>  @item.Class.Name</td>
+                            <td>  @item.Book.Title</td>
 
                         </tr>
                     }
