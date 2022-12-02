@@ -12,12 +12,24 @@ namespace BookSmart.Pages.Teachers
         public IEnumerable<Teacher> Teachers { get; set; }
 
         ITeacherService TeacherService;
-        public CreateTeacherModel(ITeacherService service)
+        ISubjectService subjectService;
+
+        public IEnumerable<Subject> Subjects { get; set; }
+        [BindProperty]
+        public List<int> ChosenSubjectIds { get; set; }
+        [BindProperty]
+        public int InitialCheck { get; private set; }
+
+        public SubjectTeacher SubjectTeacher { get; set; }
+        public CreateTeacherModel(ITeacherService service, ISubjectService subjectService)
         {
             this.TeacherService = service;
+            this.subjectService = subjectService;
         }
+        
         public void OnGet()
         {
+            Subjects = subjectService.GetSubjects();
 
         }
         public IActionResult OnPost()
@@ -35,6 +47,12 @@ namespace BookSmart.Pages.Teachers
                 return Page();
             }
             TeacherService.CreateTeacher(Teacher);
+            Teacher = TeacherService.GetTeacher(Teacher.Initials);
+            foreach (var cs in ChosenSubjectIds)
+            {
+                SubjectTeacher = new SubjectTeacher() { Initials = Teacher.Initials, SubjectId = cs };
+                subjectService.AddSubjectToTeacher(SubjectTeacher);
+            }
             return RedirectToPage("GetTeachers");
         }
     }
