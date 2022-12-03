@@ -9,11 +9,10 @@ namespace BookSmart.Models
 {
     public partial class BookSmartDBContext : DbContext
     {
-        private readonly IConfiguration _configuration;
+        IConfiguration _configuration;
         public BookSmartDBContext(IConfiguration configuration)
         {
-            _configuration = configuration;
-
+            _configuration = configuration; 
         }
 
         public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options, IConfiguration configuration)
@@ -29,16 +28,18 @@ namespace BookSmart.Models
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<ClassTeacher> ClassTeachers { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<SubjectTeacher> SubjectTeachers { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-               var username = _configuration.GetValue<string>("DBLogin");
-               var password = _configuration.GetValue<string>("Password");
+                var username = _configuration.GetValue<string>("DBLogin");
+                var password = _configuration.GetValue<string>("Password");
                 optionsBuilder.UseSqlServer($"Server=tcp:booksmartdbserver.database.windows.net,1433;Initial Catalog=BookSmartDB;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
+        
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -52,40 +53,75 @@ namespace BookSmart.Models
 
             modelBuilder.Entity<Book>(entity =>
             {
-                entity.Property(e => e.BookId).ValueGeneratedNever();
+                entity.HasOne(d => d.Subject)
+                    .WithMany(p => p.Books)
+                    .HasForeignKey(d => d.SubjectId)
+                    .HasConstraintName("FK__Book__Subject_id__00200768");
             });
 
             modelBuilder.Entity<BookClass>(entity =>
             {
                 entity.HasKey(e => e.BcId)
-                    .HasName("PK__Book-Cla__29E9961601C151D0");
+                    .HasName("PK__tmp_ms_x__29E996164F04194C");
 
-                entity.Property(e => e.BcId).ValueGeneratedNever();
+                entity.HasOne(d => d.Book)
+                    .WithMany(p => p.BookClasses)
+                    .HasForeignKey(d => d.BookId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK__Book-Clas__Book___30C33EC3");
+
+                entity.HasOne(d => d.Class)
+                    .WithMany(p => p.BookClasses)
+                    .HasForeignKey(d => d.ClassId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK__Book-Clas__Class__2FCF1A8A");
             });
 
             modelBuilder.Entity<Class>(entity =>
             {
-                entity.HasKey(e => e.Name)
-                    .HasName("PK__Class__737584F72FA11E43");
+                entity.Property(e => e.ClassId).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<ClassTeacher>(entity =>
             {
                 entity.HasKey(e => e.CtId)
-                    .HasName("PK__Class-Te__DC4E3A7329D191B5");
+                    .HasName("PK__tmp_ms_x__DC4E3A73A1DCC1BF");
 
-                entity.Property(e => e.CtId).ValueGeneratedNever();
+                entity.HasOne(d => d.Class)
+                    .WithMany(p => p.ClassTeachers)
+                    .HasForeignKey(d => d.ClassId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK__Class-Tea__Class__29221CFB");
+
+                entity.HasOne(d => d.InitialsNavigation)
+                    .WithMany(p => p.ClassTeachers)
+                    .HasForeignKey(d => d.Initials)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK__Class-Tea__Initi__282DF8C2");
             });
 
-            modelBuilder.Entity<Subject>(entity =>
+            modelBuilder.Entity<SubjectTeacher>(entity =>
             {
-                entity.Property(e => e.SubjectId).ValueGeneratedNever();
+                entity.HasKey(e => e.StId)
+                    .HasName("PK__tmp_ms_x__EBD417B737E4F1A8");
+
+                entity.HasOne(d => d.InitialsNavigation)
+                    .WithMany(p => p.SubjectTeachers)
+                    .HasForeignKey(d => d.Initials)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK__Subject-T__Initi__2CF2ADDF");
+
+                entity.HasOne(d => d.Subject)
+                    .WithMany(p => p.SubjectTeachers)
+                    .HasForeignKey(d => d.SubjectId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK__Subject-T__Subje__2BFE89A6");
             });
 
             modelBuilder.Entity<Teacher>(entity =>
             {
                 entity.HasKey(e => e.Initials)
-                    .HasName("PK__Teacher__F6EBAFF7C9157C4A");
+                    .HasName("PK__Teacher__F6EBAFF723CDF5FE");
             });
 
             OnModelCreatingPartial(modelBuilder);

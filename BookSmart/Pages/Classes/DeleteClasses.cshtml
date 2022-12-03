@@ -1,0 +1,41 @@
+﻿@page
+@model BookSmart.Pages.Classes.DeleteClassModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this Class?</h3>
+<div>
+    <h4>Class</h4>
+    <hr />
+    <form method="post">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Class.ClassId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Class.ClassId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Class.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Class.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Class.Education)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Class.Education)
+
+            </dd>
+           
+        </dl>
+
+        <input type="hidden" asp-for="Class.ClassId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="GetClass">Back to List</a>
+    </form>
+</div>

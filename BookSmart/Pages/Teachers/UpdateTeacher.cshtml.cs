@@ -17,9 +17,8 @@ namespace BookSmart.Pages.Teachers
         [BindProperty]
         public Teacher Teacher { get; set; }
 
-        public void OnGet(string sid)
+        public void OnGet(string tid)
         {
-            Teacher = TeacherService.GetTeacher(sid);
         }
         public IActionResult OnPost()
         {

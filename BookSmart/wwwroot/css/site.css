@@ -16,18 +16,21 @@ html {
 body {
   margin-bottom: 60px;
 }
+
 .btn-crud {
     background-color: #fff387 !important;
-    outline-color: red;    
+    outline-color: red;
 }
+
 .btn-login {
     background-color: #ECF0F1 !important;
     outline-color: black;
-    padding: 1px 80px;
+    padding: 1px 100px;
     font-size: 40px;
-    border-radius: 80px;
+    border-radius: 100px;
     color: #3B5A77;
 }
+
 .btn-xs {
     padding: 1px 5px;
 }
@@ -35,18 +38,9 @@ body {
 .th-g {
     font-size: 1px;
 }
+
 .img-login {
-    max-width: 50%;
-}
-
-.img-responsive {
-    max-height: 50%;
-    max-width: 50%;
-    margin-top: 40px;
-}
-
-.container {
-    margin-right: 100px;
-    margin-top: 200px;
-    max-width: 250%;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }

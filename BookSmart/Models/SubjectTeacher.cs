@@ -8,23 +8,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookSmart.Models
 {
-    [Table("Class-Teacher")]
-    public partial class ClassTeacher
+    [Table("Subject-Teacher")]
+    public partial class SubjectTeacher
     {
         [Key]
-        [Column("CT_id")]
-        public int CtId { get; set; }
+        [Column("ST_id")]
+        public int StId { get; set; }
         [StringLength(4)]
         [Unicode(false)]
         public string Initials { get; set; }
-        [Column("Class_id")]
-        public int? ClassId { get; set; }
+        [Column("Subject_id")]
+        public int? SubjectId { get; set; }
 
-        [ForeignKey("ClassId")]
-        [InverseProperty("ClassTeachers")]
-        public virtual Class Class { get; set; }
         [ForeignKey("Initials")]
-        [InverseProperty("ClassTeachers")]
+        [InverseProperty("SubjectTeachers")]
         public virtual Teacher InitialsNavigation { get; set; }
+        [ForeignKey("SubjectId")]
+        [InverseProperty("SubjectTeachers")]
+        public virtual Subject Subject { get; set; }
     }
 }

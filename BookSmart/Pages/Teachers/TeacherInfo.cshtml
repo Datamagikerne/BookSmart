@@ -1,0 +1,64 @@
+﻿@page
+@model BookSmart.Pages.Teachers.TeacherInfoModel
+
+<h3 style="color:black"> Info on @Model.Teacher.Initials </h3>
+
+
+<body>
+    <div class="container" style="width:100%" ;>
+        <table class="table" id="sortTable">
+            <thead>
+                <tr>
+                    <th> Subjects  </th>
+                  
+                    <th class="th-g"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.Teacher.SubjectTeachers)
+                    {
+                        <tr>
+                            <td>  @item.Subject.Name </td>
+                            <td>
+                                <p>
+                                    <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-sid="@item.SubjectId" asp-route-tid="@item.Initials">Delete </a>
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                }
+
+        </table>
+    </div>
+
+    <div class="container" style="width:100%";>
+        <table class="table" id="sortTable">
+            <thead>
+                <tr>
+                    <th> Classes  </th>
+
+                    <th class="th-g"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.TeacherClasses.ClassTeachers)
+                    {
+                        <tr>
+                            <td>  @item.Class.Name</td>
+                            <td>
+                                <p>
+                                    <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-cid="@item.ClassId" asp-route-tid="@item.Initials">Delete </a>
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                }
+        </table>
+    </div>
+</body>

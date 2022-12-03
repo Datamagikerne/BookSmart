@@ -17,13 +17,13 @@ namespace BookSmart.Pages.Teachers
             this.TeacherService = service;
             Teacher = new Teacher();
         }
-        public void OnGet(string sid)
+        public void OnGet(string tid)
         {
-            Teacher = TeacherService.GetTeacher(sid);
         }
         public IActionResult OnPost()
         {
             TeacherService.DeleteTeacher(Teacher);
+
             return RedirectToPage("GetTeachers");
         }
     }

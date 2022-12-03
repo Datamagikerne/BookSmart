@@ -40,8 +40,12 @@
                     <td>  @item.Name </td>
                     <td>
                         <p>
-                             <a asp-page="/Subjects/UpdateSubject" class="btn btn-crud float-lg-end" role="button" asp-route-id="@item.SubjectId"> Update </a>
-                                    <a asp-page="/Subjects/DeleteSubject" class="btn btn-crud float-lg-end mr-1 " role="button" asp-route-sid="@item.SubjectId">Delete </a>
+                            <a asp-page="/Subjects/UpdateSubject" asp-route-sid="@item.SubjectId"> Update </a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Subjects/DeleteSubject" asp-route-sid="@item.SubjectId">Delete </a>
                         </p>
                     </td>
                     

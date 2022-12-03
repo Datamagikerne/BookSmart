@@ -3,63 +3,46 @@
 @{
     ViewData["Title"] = "GetClasses";
 }
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
-</script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
-</script>
-<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js">
-</script>
 
-
-<h3 style="color:black"> List of Classes</h3>
-
-
-<body>
-    <div class="container" style="width:100%" ;>
-        <table class="table" id="sortTable">
-            <thead>
-                <tr>
-                    <th> Class Name  </th>
-                    <th> Name </th>
-                    <th> Education  </th>
-                    <th> Teacher  </th>
-                    <th class="th-g"></th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @if (Model != null)
-                {
-                    @foreach (var item in Model.Classes)
-                    {
-                        <tr>
-                            <td>  @item.Name </td>
-                            <td>  @item.Education </td>
-                            
-                            
-                          
-
-                            <td>
-                                <p>
-                                    <a asp-page="/Classes/UpdateClass" class="btn btn-crud float-lg-end" role="button" asp-route-id="@item.Name"> Update </a>
-                                    <a asp-page="/Classes/DeleteClass" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.Name">Delete </a>
-                                </p>
-                            </td>
-                        </tr>
-                    }
-                }
-        </table>
-    </div>
-    <script>
-        $('#sortTable').DataTable();
-    </script>
-</body>
+<h3 style="color:red"> List of Classes</h3>
 <p>
-    <a asp-page="/Books/CreateBook" class="btn btn-crud float-lg-start">Create New Teacher</a>
+    <a asp-page="/Classes/CreateClass">Create New Class</a>
 </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Class id </th>
+            <th> Name </th>
+            <th> Education </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Classes)
+            {
+                <tr>
+                    <td> @item.ClassId </td>
+                    <td>  @item.Name </td>
+                    <td>  @item.Education </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Classes/UpdateClass" asp-route-cid="@item.ClassId"> Update </a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Classes/DeleteClasses" asp-route-cid="@item.ClassId">Delete </a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Classes/ClassInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-cid="@item.ClassId">Class Info </a>
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+</table>
+

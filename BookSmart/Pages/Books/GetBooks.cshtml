@@ -48,9 +48,13 @@
 
                     <td>
                         <p>
-                                    <a asp-page="/Books/UpdateBook" class="btn btn-crud float-lg-end" role="button" asp-route-id="@item.BookId"> Update </a>
-                                    <a asp-page="/Books/DeleteBook" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-id="@item.BookId">Delete </a>
+                            <a asp-page="/Books/UpdateBook" asp-route-bid="@item.BookId"> Update </a>
                         </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Books/DeleteBook" asp-route-bid="@item.BookId">Delete </a>
+                       </p>
                     </td>
                 </tr>
             }

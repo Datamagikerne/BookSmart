@@ -11,12 +11,26 @@ namespace BookSmart.Models
     [Table("Class")]
     public partial class Class
     {
+        public Class()
+        {
+            BookClasses = new HashSet<BookClass>();
+            ClassTeachers = new HashSet<ClassTeacher>();
+        }
+
         [Key]
+        [Column("Class_id")]
+        public int ClassId { get; set; }
+        [Required]
         [StringLength(7)]
         [Unicode(false)]
         public string Name { get; set; }
         [StringLength(20)]
         [Unicode(false)]
         public string Education { get; set; }
+
+        [InverseProperty("Class")]
+        public virtual ICollection<BookClass> BookClasses { get; set; }
+        [InverseProperty("Class")]
+        public virtual ICollection<ClassTeacher> ClassTeachers { get; set; }
     }
 }

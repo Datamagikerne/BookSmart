@@ -1,7 +1,4 @@
-﻿using BookSmart.Models;
-using BookSmart.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
-namespace BookSmart.Services.EFServices
+﻿namespace BookSmart.Services.EFServices
 {
     public class EFClassService : IClassService
     {
@@ -11,29 +8,44 @@ namespace BookSmart.Services.EFServices
         {
             this.context = context;
         }
+
         public void CreateClass(Class Class)
         {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteClass(Class Class)
-        {
-            throw new NotImplementedException();
+            context.Classes.Add(Class);
+            context.SaveChanges();
         }
 
         public Class GetClass(int id)
         {
-            throw new NotImplementedException();
+            return context.Classes.Include(c => c.ClassTeachers).ThenInclude(ct=> ct.InitialsNavigation).AsNoTracking().FirstOrDefault(m => m.ClassId == id);
         }
+        public Class GetClassBooks(int id)
+        {
+            return context.Classes.Include(c => c.BookClasses).ThenInclude(bc => bc.Book).AsNoTracking().FirstOrDefault(m => m.ClassId == id);
+
+        }
+
+
+        public void UpdateClass(Class Class)
+        {
+            Class c = GetClass(Class.ClassId);
+            context.Entry(c).CurrentValues.SetValues(Class);
+            context.SaveChanges();
+        }
+
 
         public IEnumerable<Class> GetClasses()
         {
             return context.Classes;
         }
 
-        public void UpdateClass(Class Class)
+        public void DeleteClass(Class Class)
         {
-            throw new NotImplementedException();
+            context.Classes.Remove(Class);
+            context.SaveChanges();
         }
     }
 }
+
+   
+

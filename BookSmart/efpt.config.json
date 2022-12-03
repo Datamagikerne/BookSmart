@@ -35,11 +35,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Subject-Teacher]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Teacher]",
          "ObjectType": 0
       }
    ],
-   "UiHint": "(localdb)\\MSSQLLocalDB.BookSmartDB",
+   "UiHint": "booksmartdbserver.BookSmartDB",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
    "UseDbContextSplitting": false,

@@ -1,7 +1,7 @@
-using BookSmart.Models;
 using BookSmart.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using BookSmart.Models;
 
 namespace BookSmart.Pages.Teachers
 {

@@ -1,66 +1,47 @@
 ﻿@page
 @model BookSmart.Pages.Teachers.GetTeachersModel
 @{
-    ViewData["Title"] = "GetSubjects";
+    ViewData["Title"] = "GetTeacher";
 }
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
-</script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
-</script>
-<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js">
-</script>
-
-
-<h3 style="color:black"> List of Subjects</h3>
-
-<body>
-    <div class="container" style="width:110%" ;>
-        <table class="table" id="sortTable">
-            <thead>
-                <tr>
-                    <th> Initials </th>
-                    <th> Name  </th>
-                    <th> Mail </th>
-                    <th> Classes </th>
-                    <th class="th-g"> </th>
-
-                </tr>
-            </thead>
-            <tbody>
-
-                @if (Model != null)
-                {
-                    @foreach (var item in Model.Teachers)
-                    {
-                        <tr>
-                            <td>  @item.Initials </td>
-                            <td>  @item.Name </td>
-                            <td>  @item.Mail </td>
-                            
-                            <td>
-                                <p>
-                                    <a asp-page="/Teachers/UpdateTeacher" class="btn btn-crud float-lg-end" role="button" asp-route-sid="@item.Initials"> Update </a>
-                                    <a asp-page="/Teachers/DeleteTeacher" class="btn btn-crud float-lg-end mr-1 " role="button" asp-route-sid="@item.Initials">Delete </a>
-                                </p>
-                            </td>
-
-                        </tr>
-                    }
-                }
-        </table>
-    </div>
-    <script>
-        $('#sortTable').DataTable();
-    </script>
-</body>
+<h3 style="color:red"> List of Teacher</h3>
 <p>
-
-    <a asp-page="/Teachers/CreateTeacher" class="btn btn-crud float-lg-start" role="button">Create New Teacher</a>
+    <a asp-page="/Teachers/CreateTeacher">Create New Teacher</a>
 </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Initials  </th>
+            <th> Name </th>
+            <th> Mail  </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Teachers)
+            {
+                <tr>
+                    <td>  @item.Initials </td>
+                    <td>  @item.Name </td>
+                    <td>  @item.Mail </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Teachers/UpdateTeacher" asp-route-tid="@item.Initials"> Update </a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Teachers/DeleteTeacher" asp-route-tid="@item.Initials">Delete </a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-tid="@item.Initials">Teacher Info </a>
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+</table>

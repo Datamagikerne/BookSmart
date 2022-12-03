@@ -17,10 +17,10 @@ namespace BookSmart.Pages.Books
             bookService = service;
         }
 
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int bid)
         {
             Book = new Book();
-            Book = bookService.GetBook(id);
+            Book = bookService.GetBook(bid);
             return Page();
         }
 

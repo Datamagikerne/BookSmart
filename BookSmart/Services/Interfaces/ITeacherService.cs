@@ -4,16 +4,16 @@ namespace BookSmart.Services.Interfaces
 {
     public interface ITeacherService
     {
-        
         IEnumerable<Teacher> GetTeachers();
 
-        void CreateTeacher(Teacher teacher);
+        void CreateTeacher(Teacher Teacher);
 
-        void DeleteTeacher(Teacher teacher);
+        void UpdateTeacher(Teacher Teacher);
 
-        void UpdateTeacher(Teacher teacher);
+        void DeleteTeacher(Teacher Teacher);
 
-        Teacher GetTeacher(string sid);
-        
+        Teacher GetTeacher(string id);
+        Teacher GetTeachersClasses(string id);
+
     }
 }

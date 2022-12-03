@@ -7,40 +7,52 @@ namespace BookSmart.Services.EFServices
     public class EFTeacherService : ITeacherService
     {
         BookSmartDBContext context;
+
         public EFTeacherService(BookSmartDBContext context)
         {
             this.context = context;
         }
+
+        public void CreateTeacher(Teacher Teacher)
+        {
+            context.Teachers.Add(Teacher);
+            context.SaveChanges();
+        }
+
+        public void DeleteTeacher(Teacher Teacher)
+        {
+            context.Teachers.Remove(Teacher);
+            context.SaveChanges();
+        }
+
+        public Teacher GetTeacher(string id)
+        {
+            var teacher = context.Teachers.Include(t => t.SubjectTeachers).ThenInclude(st => st.Subject).AsNoTracking().FirstOrDefault(m => m.Initials == id);
+            return teacher;
+        }
+        public Teacher GetTeachersClasses(string id)
+        {
+            return context.Teachers.Include(t=>t.ClassTeachers).ThenInclude(ct => ct.Class).AsNoTracking().FirstOrDefault(m => m.Initials == id);
+        }
+
         public IEnumerable<Teacher> GetTeachers()
         {
-            //return context.Teachers.Include(b => b.Subjectid);
             return context.Teachers;
         }
 
-        public void CreateTeacher(Teacher teacher)
-        {
-            context.Teachers.Add(teacher);
-            context.SaveChanges();
-        }
-
-        public void DeleteTeacher(Teacher teacher)
-        {
-            context.Teachers.Remove(teacher);
-            context.SaveChanges();
-        }
-
-        public Teacher GetTeacher(string sid)
-        {
-            return context.Teachers.Find(sid);
-        }
-
-        
-
         public void UpdateTeacher(Teacher teacher)
         {
-            Teacher t = GetTeacher(teacher.Initials);
-            context.Entry(t).CurrentValues.SetValues(teacher);
+            foreach (var t in context.Teachers)
+            {
+                if (t.Initials.Contains(teacher.Initials))
+                {
+                    t.Initials = teacher.Initials;
+                    t.Name = teacher.Name;
+                    t.Mail = teacher.Mail;
+                }
+            }
             context.SaveChanges();
         }
+
     }
 }

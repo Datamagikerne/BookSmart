@@ -1,0 +1,65 @@
+﻿@page
+@model BookSmart.Pages.Classes.ClassInfoModel
+@{
+}
+
+<h3 style="color:black"> Info on @Model.Class.Name </h3>
+
+
+<body>
+    <div class="container" style="width:100%" ;>
+        <table class="table" id="sortTable">
+            <thead>
+                <tr>
+                    <th> Teachers  </th>
+
+                    <th class="th-g"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.Class.ClassTeachers)
+                    {
+                        <tr>
+                            <td>  @item.InitialsNavigation.Name</td>
+                            <td>
+                                <p>
+                                    <a asp-page="/Classes/ClassInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-tid="@item.Initials" asp-route-cid="@item.ClassId">Delete</a>
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                }
+        </table>
+    </div>
+
+    <div class="container" style="width:100%" ;>
+        <table class="table" id="sortTable">
+            <thead>
+                <tr>
+                    <th> Books  </th>
+
+                    <th class="th-g"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.ClassBooks.BookClasses)
+                    {
+                        <tr>
+                            <td>  @item.Book.Title</td>
+                            <td>
+                                <p>
+                                    <a asp-page="/Classes/ClassInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-bid="@item.BookId" asp-route-cid="@item.ClassId">Delete</a>
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                }
+        </table>
+    </div>
+</body>
