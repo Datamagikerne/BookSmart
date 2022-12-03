@@ -1,7 +1,5 @@
 ﻿using BookSmart.Models;
 
-
-
 namespace BookSmart.Services.Interfaces
    
 {

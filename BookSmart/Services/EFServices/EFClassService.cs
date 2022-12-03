@@ -1,4 +1,8 @@
-﻿namespace BookSmart.Services.EFServices
+﻿using BookSmart.Models;
+using BookSmart.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+namespace BookSmart.Services.EFServices
 {
     public class EFClassService : IClassService
     {
