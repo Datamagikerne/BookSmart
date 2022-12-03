@@ -39,6 +39,12 @@ body {
     max-width: 50%;
 }
 
+.img-responsive {
+    max-height: 50%;
+    max-width: 50%;
+    margin-top: 40px;
+}
+
 .container {
     margin-right: 100px;
     margin-top: 200px;
