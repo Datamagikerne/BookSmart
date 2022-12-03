@@ -37,12 +37,10 @@ body {
 }
 .img-login {
     max-width: 50%;
-    margin-left: auto;
 }
 
 .container {
-    margin-right: auto;
+    margin-right: 100px;
     margin-top: 200px;
-    max-width: 100%;
-    vertical-align: middle;
+    max-width: 250%;
 }
