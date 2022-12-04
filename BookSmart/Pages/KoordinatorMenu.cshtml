@@ -1,0 +1,31 @@
+﻿@page
+@model BookSmart.Pages.KoordinatorMenuModel
+@{
+}
+<div class="containerBruger">
+    <div class="overskrift row">
+
+        <div class="column-2 p-2 mx-auto">
+            <div class="card bg-white text-black">
+                <a asp-page="Teachers/GetTeachers">
+                    <p class="centeredTitle"><strong>Teachers</strong></p>
+                </a>
+          </div>
+            <div class="card bg-white text-black">
+                <a asp-page="Subjects/GetSubjects">
+                    <p class="centeredTitle"><strong>Subjects</strong></p>
+                </a>
+          </div>
+            <div class="card bg-white text-black">
+                <a asp-page="Classes/GetClasses">
+                    <p class="centeredTitle"><strong>Classes</strong></p>
+                </a>
+          </div>
+        </div>
+
+    </div>
+    <div>
+        <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-1">Tilbage</a>
+    </div>
+
+</div>
