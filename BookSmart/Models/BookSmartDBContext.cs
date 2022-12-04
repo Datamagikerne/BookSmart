@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BookSmart.Models
 {
@@ -35,7 +36,7 @@ namespace BookSmart.Models
             {
                 var username = _configuration.GetValue<string>("DBLogin");
                 var password = _configuration.GetValue<string>("Password");
-                optionsBuilder.UseSqlServer($"Server=tcp:booksmartdbserver.database.windows.net,1433;Initial Catalog=BookSmartDB;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BookSmartDatabase99;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         
         }
