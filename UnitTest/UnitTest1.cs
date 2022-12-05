@@ -24,8 +24,9 @@ namespace UnitTest
 
 
            var book = bookSmartDB1.Books.Add(new Book { SubjectId = subject.Entity.SubjectId, Author = "Anders" });
-
+            
             bookSmartDB1.SaveChanges();
+
             
             //Act
             
