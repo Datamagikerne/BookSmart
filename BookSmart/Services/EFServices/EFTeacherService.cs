@@ -34,8 +34,6 @@ namespace BookSmart.Services.EFServices
             return context.Teachers.Find(sid);
         }
 
-        
-
         public void UpdateTeacher(Teacher teacher)
         {
             Teacher t = GetTeacher(teacher.Initials);
