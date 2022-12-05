@@ -14,6 +14,7 @@ namespace BookSmart.Models
         {
             _configuration = configuration; 
         }
+        
 
         public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options, IConfiguration configuration)
             : base(options)
