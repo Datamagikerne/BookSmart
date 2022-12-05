@@ -2,3 +2,56 @@
 @model BookSmart.Pages.KoordinatorLoginModel
 @{
 }
+<div class="overskrift"><h1>Choose</h1></div>
+
+<div class="containerBruger">
+    <div class="overskrift row">
+
+        @foreach (var item in Model.Classes)
+        {
+
+                <div class="column-2 p-2 mx-auto">
+                    <div class="card bg-dark text-white">
+
+
+                        <a asp-page="GetClasses" asp-route-id="@item.ClassId">
+                        <img src="~/images/.png" width="550" height="300" alt="Card image">
+                            <p class="centeredTitle"><strong>@item.Name</strong></p>
+                        </a>
+                    </div>
+                </div>
+        }
+        @foreach (var item in Model.Subjects)
+        {
+
+            <div class="column-2 p-2 mx-auto">
+                <div class="card bg-dark text-white">
+
+
+                    <a asp-page="GetSubjects" asp-route-id="@item.SubjectId">
+                        <img src="~/images/.png" width="550" height="300" alt="Card image">
+                        <p class="centeredTitle"><strong>@item.Name</strong></p>
+                    </a>
+                </div>
+            </div>
+        }
+        @foreach (var item in Model.Teachers)
+        {
+
+            <div class="column-2 p-2 mx-auto">
+                <div class="card bg-dark text-white">
+
+
+                    <a asp-page="GetTeachers" asp-route-id="@item.Initials">
+                        <img src="~/images/.png" width="550" height="300" alt="Card image">
+                        <p class="centeredTitle"><strong>@item.Name</strong></p>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-1">Tilbage</a>
+    </div>
+
+</div>
