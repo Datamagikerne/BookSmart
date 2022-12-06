@@ -20,4 +20,31 @@
     <div class="form-group">
         <input type="submit" value="Update" class="btn btn-primary" />
     </div>
+    <label class="custom-control-label"><strong>Choose Classes</strong></label><br />
+    <div>
+        @foreach (var b in Model.Teachers)
+        {
+            Model.Checker = 0;
+            @foreach (var c in Model.Class.ClassTeachers)
+            {
+                @if (b.Initials == c.Initials)
+                {
+                    Model.Checker++;
+                }
+            }
+            @if (Model.Checker == 1)
+            {
+                <input name="ChosenTeacherIds" type="checkbox" value="@b.Initials" checked="" /> @b.Name
+                <br />
+            }
+            else
+            {
+                <input name="ChosenTeacherIds" type="checkbox" value="@b.Initials" /> @b.Name
+                <br />
+            }
+        }
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
 </form>
