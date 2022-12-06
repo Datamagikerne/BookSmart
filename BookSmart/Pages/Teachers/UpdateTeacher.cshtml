@@ -59,6 +59,39 @@
 
 
     </div>
+    <label class="custom-control-label"><strong>Choose Classes</strong></label><br />
+
+    <div>
+        @foreach (var b in Model.Classes)
+        {
+            Model.Checker2 = 0;
+            @foreach (var c in Model.Teacher.ClassTeachers)
+            {
+
+                @if (b.ClassId == c.ClassId)
+                {
+                    Model.Checker2++;
+
+                }
+
+
+            }
+            @if (Model.Checker2 == 1)
+            {
+                <input name="ChosenClassIds" type="checkbox" value="@b.ClassId" checked="" /> @b.Name
+                <br />
+            }
+            else
+            {
+                <input name="ChosenClassIds" type="checkbox" value="@b.ClassId" /> @b.Name
+                <br />
+            }
+
+
+        }
+
+
+    </div>
     <div class="form-group">
         <input type="submit" value="Update" class="btn btn-primary" />
     </div>

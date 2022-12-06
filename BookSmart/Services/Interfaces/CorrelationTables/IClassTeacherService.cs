@@ -6,6 +6,8 @@ namespace BookSmart.Services.Interfaces.CorrelationTables
     {
         void CreateClassTeacher(ClassTeacher classTeacher);
         void DeleteClassTeacher(ClassTeacher classTeacher);
+        void DeleteTeachersClasses(string initials);
+
         ClassTeacher GetClassTeacher(int classId, string initials);
 
     }

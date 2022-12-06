@@ -20,6 +20,19 @@ namespace BookSmart.Services.EFServices.CorrelationTables
             context.ClassTeachers.Remove(classTeacher);
             context.SaveChanges();
         }
+
+        public void DeleteTeachersClasses(string initials)
+        {
+            foreach(var ct in context.ClassTeachers)
+            {
+                if(ct.Initials.Contains(initials))
+                {
+                    context.ClassTeachers.Remove(ct);
+                }
+            }
+            context.SaveChanges();
+        }
+
         public ClassTeacher GetClassTeacher(int classId, string initials)
         {
             foreach (var ct in context.ClassTeachers)
