@@ -60,12 +60,12 @@
             }
             @if (Model.Checker2 == 1)
             {
-                <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials" checked="" /> @c.Initials
+                <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials" checked="" /> @c.Name
                 <br />
             }
             else
             {
-                <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials" /> @c.Initials
+                <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials" /> @c.Name
                 <br />
             }
         }
