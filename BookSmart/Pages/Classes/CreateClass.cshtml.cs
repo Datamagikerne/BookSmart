@@ -19,8 +19,7 @@ namespace BookSmart.Pages.Classes
         IClassTeacherService ctService;
         ITeacherService teacherService;
         [BindProperty]
-        public int InitialCheck { get; private set; }
-        public string InitialCheck2 { get; private set; }
+     
 
         #region Book Checkbox
         public IEnumerable<Book> Books { get; set; }
