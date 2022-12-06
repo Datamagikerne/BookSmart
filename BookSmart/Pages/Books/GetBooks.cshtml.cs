@@ -25,7 +25,7 @@ namespace BookSmart.Pages.Books
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
-                Books = context.GetBooks().Where(b => b.Title.Contains(FilterCriteria));
+                Books = context.GetBooks().Where(b => b.Title.Contains(FilterCriteria) || (b.Author.Contains(FilterCriteria)));
             }
             else
                 Books = context.GetBooks();
