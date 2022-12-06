@@ -14,7 +14,7 @@ namespace BookSmart.Services.Interfaces
 
         Teacher GetTeacher(string id);
 
-        Teacher GetTeachersClasses(string id);
+        //Teacher GetTeachersClasses(string id);
 
     }
 }

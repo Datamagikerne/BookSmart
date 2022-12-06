@@ -33,10 +33,10 @@ namespace BookSmart.Services.EFServices
             return teacher;
         }
 
-        public Teacher GetTeachersClasses(string id)
-        {
-            return context.Teachers.Include(t=>t.ClassTeachers).ThenInclude(ct => ct.Class).AsNoTracking().FirstOrDefault(m => m.Initials == id);
-        }
+        //public Teacher GetTeachersClasses(string id)
+        //{
+        //    return context.Teachers.Include(t=>t.ClassTeachers).ThenInclude(ct => ct.Class).AsNoTracking().FirstOrDefault(m => m.Initials == id);
+        //}
 
         public IEnumerable<Teacher> GetTeachers()
         {

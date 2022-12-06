@@ -14,6 +14,5 @@ namespace BookSmart.Services.Interfaces
 
         Class GetClass(int id);
 
-        Class GetClassBooks(int id);
     }
 }

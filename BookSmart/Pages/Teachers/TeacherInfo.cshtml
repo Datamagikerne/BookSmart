@@ -40,7 +40,7 @@
             <tbody>
                 @if (Model != null)
                 {
-                    @foreach (var item in Model.TeacherClasses.ClassTeachers)
+                    @foreach (var item in Model.Teacher.ClassTeachers)
                     {
                         <tr>
                             <td>  @item.Class.Name</td>
