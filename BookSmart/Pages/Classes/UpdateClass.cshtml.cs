@@ -81,7 +81,7 @@ namespace BookSmart.Pages.Classes
                 ctService.CreateClassTeacher(ClassTeacher);
             }
             
-            bcService.DeleteBookClasses(Book.BookId);
+            bcService.DeleteBookClasses(Class.ClassId);
 
             foreach (var cs in ChosenBookIds)
             {
