@@ -29,7 +29,7 @@ namespace BookSmart.Services.EFServices.CorrelationTables
         {
             foreach (var bc in context.BookClasses)
             {
-                if (bc.BcId == id)
+                if (bc.BookId == id)
                 {
                     context.BookClasses.Remove(bc);
                 }
