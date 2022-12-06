@@ -23,24 +23,24 @@
     </div>
     <label class="custom-control-label"><strong>Choose Books</strong></label><br />
     <div>
-        @foreach (var c in Model.Books)
+        @foreach (var b in Model.Books)
         {
-            Model.Checker = 0;
-            @foreach (var b in Model.Class.BookClasses)
+            Model.Checker2 = 0;
+            @foreach (var c in Model.Class.BookClasses)
             {
-                @if (c.BookId == b.BookId)
+                @if (b.BookId == c.BookId)
                 {
-                    Model.Checker++;
+                    Model.Checker2++;
                 }
             }
-            @if (Model.Checker == 1)
+            @if (Model.Checker2 == 1)
             {
-                <input name="ChosenBooksIds" type="checkbox" value="@c.BookId" checked="" /> @c.Title
+                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" checked="" /> @b.BookId
                 <br />
             }
             else
             {
-                <input name="ChosenBooksIds" type="checkbox" value="@c.BookId" /> @c.Title
+                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" /> @b.BookId
                 <br />
             }
         }
