@@ -25,6 +25,40 @@
         <span asp-validation-for="@Model.Teacher.Mail" class="text-danger"></span>
     </div>
 
+
+    <label class="custom-control-label"><strong>Choose Subjects</strong></label><br />
+
+    <div>
+        @foreach (var b in Model.Subjects)
+        {
+            Model.Checker = 0;
+            @foreach (var s in Model.Teacher.SubjectTeachers)
+            {
+
+                @if (b.SubjectId == s.SubjectId)
+                {
+                    Model.Checker++;
+
+                }
+
+
+            }
+            @if (Model.Checker == 1)
+            {
+                <input name="ChosenSubjectIds" type="checkbox" value="@b.SubjectId" checked="" /> @b.Name
+                <br />
+            }
+            else
+            {
+                <input name="ChosenSubjectIds" type="checkbox" value="@b.SubjectId" /> @b.Name
+                <br />
+            }
+
+
+        }
+
+
+    </div>
     <div class="form-group">
         <input type="submit" value="Update" class="btn btn-primary" />
     </div>

@@ -19,7 +19,6 @@ namespace BookSmart.Pages.Teachers
         IClassService classService;
 
         [BindProperty]
-        public int InitialCheck { get; private set; }
 
         #region Subject Checkbox
         public IEnumerable<Subject> Subjects { get; set; }
