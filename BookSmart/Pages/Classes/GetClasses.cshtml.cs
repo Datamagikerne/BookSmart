@@ -11,6 +11,11 @@ namespace BookSmart.Pages.Classes
 
         private IClassService context;
 
+        public Class Class { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string FilterCriteria { get; set; }
+
         public GetClassesModel(IClassService service)
         {
             context = service;
@@ -18,7 +23,12 @@ namespace BookSmart.Pages.Classes
 
         public void OnGet()
         {
-            Classes = context.GetClasses();
+            if (!String.IsNullOrEmpty(FilterCriteria))
+            {
+                Classes = context.GetClasses().Where(c => c.Name.Contains(FilterCriteria));
+            }
+            else
+                Classes = context.GetClasses();
         }
     }
 }
