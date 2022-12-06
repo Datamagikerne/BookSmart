@@ -38,7 +38,7 @@ namespace BookSmart.Pages.Classes
 
         #region ClassTeacher checkbox
         [BindProperty]
-        public List<int> ChosenTeacherIds { get; set; }
+        public List<string> ChosenTeacherIds { get; set; }
         public IEnumerable<Teacher> Teachers { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
         public int Checker2 { get; set; }
@@ -72,7 +72,7 @@ namespace BookSmart.Pages.Classes
 
             foreach (var ct in ChosenTeacherIds)
             {
-                ClassTeacher = new ClassTeacher() { CtId = Class.ClassId, ClassId = ct };
+                ClassTeacher = new ClassTeacher() { ClassId = Class.ClassId, Initials = ct };
                 ctService.CreateClassTeacher(ClassTeacher);
             }
             return RedirectToPage("GetClasses");
