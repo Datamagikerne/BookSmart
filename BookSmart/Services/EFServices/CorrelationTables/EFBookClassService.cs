@@ -36,5 +36,16 @@ namespace BookSmart.Services.EFServices.CorrelationTables
             }
             return null;
         }
+        public void DeleteBookClasses(int bcId)
+        {
+            foreach (var bk in context.BookClasses)
+            {
+                if (bk.BookId == bcId)
+                {
+                    context.BookClasses.Remove(bk);
+                }
+            }
+            context.SaveChanges();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BookSmart.Models;
+using System.Security.Cryptography;
 
 namespace BookSmart.Services.Interfaces.CorrelationTables
 {
@@ -10,5 +11,6 @@ namespace BookSmart.Services.Interfaces.CorrelationTables
         
         BookClass GetBookClass(int bookId, int classId);
 
+        void DeleteBookClasses(int bcId);
     }
 }

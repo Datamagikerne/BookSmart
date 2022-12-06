@@ -20,4 +20,52 @@
     <div class="form-group">
         <input type="submit" value="Update" class="btn btn-primary" />
     </div>
+    <label class="custom-control-label"><strong>Choose Teachers</strong></label><br />
+    <div>
+        @foreach (var b in Model.Teachers)
+        {
+            Model.Checker = 0;
+            @foreach (var c in Model.Class.ClassTeachers)
+            {
+                @if (b.Initials == c.Initials)
+                {
+                    Model.Checker++;
+                }
+            }
+            @if (Model.Checker == 1)
+            {
+                <input name="ChosenCtIds" type="checkbox" value="@b.Initials" checked="" /> @b.Name
+                <br />
+            }
+            else
+            {
+                <input name="ChosenCtIds" type="checkbox" value="@b.Initials" /> @b.Name
+                <br />
+            }
+        }
+    </div>
+    <label class="custom-control-label"><strong>Choose Books</strong></label><br />
+    <div>
+        @foreach (var b in Model.Books)
+        {
+            Model.Checker2 = 0;
+            @foreach (var c in Model.Class.BookClasses)
+            {
+                @if (b.BookId == c.BookId)
+                {
+                    Model.Checker2++;
+                }
+            }
+            @if (Model.Checker2 == 1)
+            {
+                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" checked="" /> @b.BookId
+                <br />
+            }
+            else
+            {
+                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" /> @b.BookId
+                <br />
+            }
+        }
+    </div>
 </form>
