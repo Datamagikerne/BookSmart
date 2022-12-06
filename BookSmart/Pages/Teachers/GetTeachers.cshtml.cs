@@ -23,7 +23,7 @@ namespace BookSmart.Pages.Teachers
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
-                Teachers = context.GetTeachers().Where(t => t.Name.Contains(FilterCriteria));
+                Teachers = context.GetTeachers().Where(t => t.Name.Contains(FilterCriteria) || (t.Initials.Contains(FilterCriteria) || (t.Mail.Contains(FilterCriteria))));
             }
             else
                 Teachers = context.GetTeachers();
