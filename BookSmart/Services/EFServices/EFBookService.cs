@@ -44,15 +44,5 @@ namespace BookSmart.Services.EFServices
             
         }
 
-        //public IEnumerable<Book> GetBooks(string title, int year)
-        //{
-        //    if (year > 0 && title == null)
-        //        return context.Books.Where(b => b.Year <= year);
-        //    else if (year == 0 && title != null)
-        //        return context.Books.Where(b => b.Title == title);
-        //    else
-        //        return context.Books.Where(b => b.Year <= year && b.Title == title);
-        //}
-
     }
 }

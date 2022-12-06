@@ -15,6 +15,9 @@ namespace BookSmart.Pages.Books
         [BindProperty(SupportsGet = true)]
         public string FilterCriteria { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string FilterCriteriaN { get; set; }
+
         public GetBooksModel(IBookService service)
         {
             context = service;
