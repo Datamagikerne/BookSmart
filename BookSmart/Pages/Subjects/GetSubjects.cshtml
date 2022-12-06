@@ -8,6 +8,13 @@
 <p>
     <a asp-page="/Subjects/CreateSubject">Create A New Subject</a>
 </p>
+<form>
+    <p>
+        Search By Name: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+        <a asp-page="/Subjects/GetSubjects">Back to Full List </a>
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
