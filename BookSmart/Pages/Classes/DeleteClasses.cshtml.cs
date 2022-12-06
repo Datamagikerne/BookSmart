@@ -17,10 +17,12 @@ namespace BookSmart.Pages.Classes
             this.ClassService = service;
             Class = new Class();
         }
+
         public void OnGet(int cid)
         {
             Class = ClassService.GetClass(cid);
         }
+
         public IActionResult OnPost()
         {
             ClassService.DeleteClass(Class);

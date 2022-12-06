@@ -27,9 +27,12 @@ namespace BookSmart.Services.EFServices
 
         public Teacher GetTeacher(string id)
         {
-            var teacher = context.Teachers.Include(t => t.SubjectTeachers).ThenInclude(st => st.Subject).AsNoTracking().FirstOrDefault(m => m.Initials == id);
+            var teacher = context.Teachers
+                .Include(t => t.ClassTeachers).ThenInclude(ct => ct.Class)
+                .Include(t => t.SubjectTeachers).ThenInclude(st => st.Subject).AsNoTracking().FirstOrDefault(m => m.Initials == id);
             return teacher;
         }
+
         public Teacher GetTeachersClasses(string id)
         {
             return context.Teachers.Include(t=>t.ClassTeachers).ThenInclude(ct => ct.Class).AsNoTracking().FirstOrDefault(m => m.Initials == id);
@@ -53,6 +56,5 @@ namespace BookSmart.Services.EFServices
             }
             context.SaveChanges();
         }
-
     }
 }

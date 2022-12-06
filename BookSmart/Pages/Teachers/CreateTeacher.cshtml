@@ -37,12 +37,11 @@
                 }
             </div>
             <br />
-
             <label class="custom-control-label"><strong>Choose Classes</strong></label><br />
             <div>
                 @foreach (var c in Model.Classes)
                 {
-                    <input name="ChosenClassIds" type="checkbox" value="@c.ClassId "  />
+                    <input name="ChosenClassIds" type="checkbox" value="@c.ClassId " />
                     @c.Name
                     <br />
                 }

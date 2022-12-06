@@ -10,10 +10,12 @@ namespace BookSmart.Pages.Subjects
         public IEnumerable<Subject> Subjects { get; set; }
 
         private ISubjectService context;
+
         public GetSubjectsModel(ISubjectService service)
         {
             context = service;
         }
+
         public void OnGet()
         {
             Subjects = context.GetSubjects();

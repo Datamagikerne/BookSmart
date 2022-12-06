@@ -10,10 +10,12 @@ namespace BookSmart.Pages.Classes
         public IEnumerable<Class> Classes { get; set; }
 
         private IClassService context;
+
         public GetClassesModel(IClassService service)
         {
             context = service;
         }
+
         public void OnGet()
         {
             Classes = context.GetClasses();

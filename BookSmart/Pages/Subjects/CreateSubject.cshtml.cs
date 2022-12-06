@@ -13,14 +13,17 @@ namespace BookSmart.Pages.Subjects
         public IEnumerable<Subject> Subjects { get; set; }
 
         ISubjectService SubjectService;
+
         public CreateSubjectModel(ISubjectService service)
         {
             this.SubjectService = service;
         }
+
         public void OnGet()
         {
 
         }
+
         public IActionResult OnPost()
         {
             Subjects = SubjectService.GetSubjects();

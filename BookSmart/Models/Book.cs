@@ -19,19 +19,25 @@ namespace BookSmart.Models
         [Key]
         [Column("Book_id")]
         public int BookId { get; set; }
+
         [StringLength(30)]
         [Unicode(false)]
         public string Title { get; set; }
+
         [StringLength(30)]
         [Unicode(false)]
         public string Author { get; set; }
+
         public int? Year { get; set; }
+
         [Column("Subject_id")]
         public int? SubjectId { get; set; }
 
         [ForeignKey("SubjectId")]
+
         [InverseProperty("Books")]
         public virtual Subject Subject { get; set; }
+
         [InverseProperty("Book")]
         public virtual ICollection<BookClass> BookClasses { get; set; }
     }

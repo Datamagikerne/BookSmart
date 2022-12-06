@@ -29,7 +29,6 @@ namespace BookSmart.Pages.Teachers
             {
                 SubjectTeacher = subjectTeacherService.GetSubectTeacher(sid, tid);
                 subjectTeacherService.DeleteSubjectTeacher(SubjectTeacher);
-
             }
             if(cid>0) 
             {
@@ -39,7 +38,5 @@ namespace BookSmart.Pages.Teachers
             Teacher = context.GetTeacher(tid);
             TeacherClasses = context.GetTeachersClasses(tid);
         }
-
-        
     }
 }

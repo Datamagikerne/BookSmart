@@ -4,34 +4,33 @@
     ViewData["Title"] = "GetSubjects";
 }
 
-<h3 style="color:red"> List of Subjects</h3>
+<h3 style="color:red">List of Subjects</h3>
 <p>
-    <a asp-page="/Subjects/CreateSubject">Create New Subject</a>
+    <a asp-page="/Subjects/CreateSubject">Create A New Subject</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th> Subject Id  </th>
+            <th> Subject Id </th>
             <th> Name </th>
         </tr>
     </thead>
     <tbody>
-
         @if (Model != null)
         {
             @foreach (var item in Model.Subjects)
             {
                 <tr>
-                    <td>  @item.SubjectId </td>
-                    <td>  @item.Name </td>
+                    <td> @item.SubjectId </td>
+                    <td> @item.Name </td>
                     <td>
                         <p>
-                            <a asp-page="/Subjects/UpdateSubject" asp-route-sid="@item.SubjectId"> Update </a>
+                            <a asp-page="/Subjects/UpdateSubject" asp-route-sid="@item.SubjectId">Update</a>
                         </p>
                     </td>
                     <td>
                         <p>
-                            <a asp-page="/Subjects/DeleteSubject" asp-route-sid="@item.SubjectId">Delete </a>
+                            <a asp-page="/Subjects/DeleteSubject" asp-route-sid="@item.SubjectId">Delete</a>
                         </p>
                     </td>
                 </tr>

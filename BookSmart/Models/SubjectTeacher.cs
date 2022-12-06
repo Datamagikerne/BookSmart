@@ -14,15 +14,18 @@ namespace BookSmart.Models
         [Key]
         [Column("ST_id")]
         public int StId { get; set; }
+
         [StringLength(4)]
         [Unicode(false)]
         public string Initials { get; set; }
+
         [Column("Subject_id")]
         public int? SubjectId { get; set; }
 
         [ForeignKey("Initials")]
         [InverseProperty("SubjectTeachers")]
         public virtual Teacher InitialsNavigation { get; set; }
+
         [ForeignKey("SubjectId")]
         [InverseProperty("SubjectTeachers")]
         public virtual Subject Subject { get; set; }

@@ -43,7 +43,5 @@ namespace BookSmart.Services.EFServices
             return context.Books.Include(b => b.Subject);
             
         }
-
-
     }
 }

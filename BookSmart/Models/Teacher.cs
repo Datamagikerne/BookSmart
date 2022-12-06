@@ -21,15 +21,19 @@ namespace BookSmart.Models
         [StringLength(4)]
         [Unicode(false)]
         public string Initials { get; set; }
+
         [StringLength(40)]
         [Unicode(false)]
         public string Name { get; set; }
+
         [StringLength(40)]
         [Unicode(false)]
         public string Mail { get; set; }
 
+
         [InverseProperty("InitialsNavigation")]
         public virtual ICollection<ClassTeacher> ClassTeachers { get; set; }
+
         [InverseProperty("InitialsNavigation")]
         public virtual ICollection<SubjectTeacher> SubjectTeachers { get; set; }
     }

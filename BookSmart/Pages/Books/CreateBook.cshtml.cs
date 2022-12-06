@@ -17,10 +17,12 @@ namespace BookSmart.Pages.Books
         {
             this.BookService = service;
         }
+
         public void OnGet()
         {
             
         }
+
         public IActionResult OnPost()
         {
             Books = BookService.GetBooks();

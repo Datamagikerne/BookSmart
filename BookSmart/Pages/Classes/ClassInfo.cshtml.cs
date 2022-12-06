@@ -23,6 +23,7 @@ namespace BookSmart.Pages.Classes
             classTeacherService = ctService;
             bookClassService = bookClass;
         }
+
         public void OnGet(int cid, string tid, int bid)
         {
             if(tid != null)

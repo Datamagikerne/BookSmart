@@ -6,26 +6,25 @@
 
 <h3 style="color:red"> List of Teacher</h3>
 <p>
-    <a asp-page="/Teachers/CreateTeacher">Create New Teacher</a>
+    <a asp-page="/Teachers/CreateTeacher">Create A New Teacher</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th> Initials  </th>
+            <th> Initials </th>
             <th> Name </th>
-            <th> Mail  </th>
+            <th> Mail </th>
         </tr>
     </thead>
     <tbody>
-
         @if (Model != null)
         {
             @foreach (var item in Model.Teachers)
             {
                 <tr>
-                    <td>  @item.Initials </td>
-                    <td>  @item.Name </td>
-                    <td>  @item.Mail </td>
+                    <td> @item.Initials </td>
+                    <td> @item.Name </td>
+                    <td> @item.Mail </td>
                     <td>
                         <p>
                             <a asp-page="/Teachers/UpdateTeacher" asp-route-tid="@item.Initials"> Update </a>

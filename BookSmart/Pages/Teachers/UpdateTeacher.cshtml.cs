@@ -1,7 +1,6 @@
 using BookSmart.Models;
 using BookSmart.Services.Interfaces;
 using BookSmart.Services.Interfaces.CorrelationTables;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -49,6 +48,7 @@ namespace BookSmart.Pages.Teachers
             Subjects = subjectService.GetSubjects();
             Classes = ClassService.GetClasses();
         }
+
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -56,18 +56,18 @@ namespace BookSmart.Pages.Teachers
                 return Page();
             }
             TeacherService.UpdateTeacher(Teacher);
-
             Teacher = TeacherService.GetTeacher(Teacher.Initials);
+            
             stService.DeleteTeachersSubjects(Teacher.Initials);
-
 
             foreach (var cs in ChosenSubjectIds)
             {
                 SubjectTeacher = new SubjectTeacher() { Initials = Teacher.Initials, SubjectId = cs };
                 stService.CreateSubjectTeacher(SubjectTeacher);
             }
-            
+
             ctService.DeleteTeachersClasses(Teacher.Initials);
+
             foreach (var ct in ChosenClassIds)
             {
                 ClassTeacher = new ClassTeacher() { Initials = Teacher.Initials, ClassId = ct };

@@ -9,13 +9,13 @@ namespace BookSmart.Pages.Books
     {
         public IEnumerable<Book> Books { get; set; }
 
-        
-
         private IBookService context;
+
         public GetBooksModel(IBookService service)
         {
             context = service;
         }
+
         public void OnGet()
         {
             Books = context.GetBooks();

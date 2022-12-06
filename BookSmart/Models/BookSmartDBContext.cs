@@ -37,7 +37,6 @@ namespace BookSmart.Models
                 var password = _configuration.GetValue<string>("Password");
                 optionsBuilder.UseSqlServer($"Server=tcp:booksmartdbserver.database.windows.net,1433;Initial Catalog=BookSmartDB;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
-        
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,7 +48,6 @@ namespace BookSmart.Models
                     .HasForeignKey(d => d.SubjectId)
                     .HasConstraintName("FK__Book__Subject_id__00200768");
             });
-
             modelBuilder.Entity<BookClass>(entity =>
             {
                 entity.HasKey(e => e.BcId)
@@ -67,12 +65,10 @@ namespace BookSmart.Models
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Book-Clas__Class__2FCF1A8A");
             });
-
             modelBuilder.Entity<Class>(entity =>
             {
                 entity.Property(e => e.ClassId).ValueGeneratedNever();
             });
-
             modelBuilder.Entity<ClassTeacher>(entity =>
             {
                 entity.HasKey(e => e.CtId)
@@ -90,7 +86,6 @@ namespace BookSmart.Models
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Class-Tea__Initi__282DF8C2");
             });
-
             modelBuilder.Entity<SubjectTeacher>(entity =>
             {
                 entity.HasKey(e => e.StId)
@@ -108,13 +103,11 @@ namespace BookSmart.Models
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Subject-T__Subje__2BFE89A6");
             });
-
             modelBuilder.Entity<Teacher>(entity =>
             {
                 entity.HasKey(e => e.Initials)
                     .HasName("PK__Teacher__F6EBAFF723CDF5FE");
             });
-
             OnModelCreatingPartial(modelBuilder);
         }
 

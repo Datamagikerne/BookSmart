@@ -14,15 +14,20 @@ namespace BookSmart.Models
         [Key]
         [Column("BC_id")]
         public int BcId { get; set; }
+
         [Column("Class_id")]
         public int? ClassId { get; set; }
+
         [Column("Book_id")]
         public int? BookId { get; set; }
 
         [ForeignKey("BookId")]
+
         [InverseProperty("BookClasses")]
         public virtual Book Book { get; set; }
+
         [ForeignKey("ClassId")]
+
         [InverseProperty("BookClasses")]
         public virtual Class Class { get; set; }
     }

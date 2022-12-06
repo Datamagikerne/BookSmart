@@ -22,6 +22,7 @@ namespace BookSmart.Pages.Classes
         {
             Class = classService.GetClass(cid);
         }
+
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)

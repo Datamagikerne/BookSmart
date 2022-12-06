@@ -19,19 +19,20 @@ namespace BookSmart.Pages.Teachers
         IClassService classService;
 
         [BindProperty]
-
         #region Subject Checkbox
         public IEnumerable<Subject> Subjects { get; set; }
         [BindProperty]
         public List<int> ChosenSubjectIds { get; set; }
         public SubjectTeacher SubjectTeacher { get; set; }
         #endregion
+
         #region Class Checkbox
         public IEnumerable<Class> Classes { get; set; }
         [BindProperty]
         public List<int> ChosenClassIds { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
         #endregion
+
         public CreateTeacherModel(ITeacherService service, ISubjectService subjectService, ISubjectTeacherService stServ, IClassTeacherService ctServ, IClassService classServ)
         {
             this.TeacherService = service;
@@ -47,6 +48,7 @@ namespace BookSmart.Pages.Teachers
             Classes = classService.GetClasses();
 
         }
+
         public IActionResult OnPost()
         {
             Teachers = TeacherService.GetTeachers();
@@ -64,7 +66,6 @@ namespace BookSmart.Pages.Teachers
             TeacherService.CreateTeacher(Teacher);
             Teacher = TeacherService.GetTeacher(Teacher.Initials);
 
-
             foreach (var cs in ChosenSubjectIds)
             {
                 SubjectTeacher = new SubjectTeacher() { Initials = Teacher.Initials, SubjectId = cs };
@@ -77,7 +78,6 @@ namespace BookSmart.Pages.Teachers
                 ctService.CreateClassTeacher(ClassTeacher);
             }
             return RedirectToPage("GetTeachers");
-
         }
     }
 }
