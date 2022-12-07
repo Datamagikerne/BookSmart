@@ -8,7 +8,6 @@ namespace BookSmart.Pages.Teachers
     public class TeacherInfoModel : PageModel
     {
         public Teacher Teacher { get; set; }
-        public Teacher TeacherClasses { get; set; }
         public SubjectTeacher SubjectTeacher { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
 
@@ -36,7 +35,6 @@ namespace BookSmart.Pages.Teachers
                 classTeacherService.DeleteClassTeacher(ClassTeacher);
             }
             Teacher = context.GetTeacher(tid);
-            TeacherClasses = context.GetTeachersClasses(tid);
         }
     }
 }

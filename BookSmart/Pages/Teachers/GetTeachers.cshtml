@@ -8,6 +8,13 @@
 <p>
     <a asp-page="/Teachers/CreateTeacher">Create A New Teacher</a>
 </p>
+<form>
+    <p>
+        Search By Name: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+        <a asp-page="/Teachers/GetTeachers">Back to Full List </a>
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>

@@ -8,6 +8,13 @@
 <p>
     <a asp-page="/Books/CreateBook">Create A New Book</a>
 </p>
+<form>
+    <p>
+        Search By Title: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+        <a asp-page="/Books/GetBooks">Back to Full List </a>
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>

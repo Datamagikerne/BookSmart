@@ -5,7 +5,6 @@ using BookSmart.Services;
 using BookSmart.Services.Interfaces;
 using BookSmart.Services.Interfaces.CorrelationTables;
 using BookSmart.Services.EFServices;
-using BookSmart.Pages.Classes;
 
 namespace BookSmart.Pages.Classes
 {
@@ -57,6 +56,9 @@ namespace BookSmart.Pages.Classes
                 Classes = classService.GetClasses();
                 Teachers = teacherService.GetTeachers();
             }
+
+
+
 
         public IActionResult OnPost()
         {

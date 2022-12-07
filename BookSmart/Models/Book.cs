@@ -28,7 +28,7 @@ namespace BookSmart.Models
         [Unicode(false)]
         public string Author { get; set; }
 
-        public int? Year { get; set; }
+        public int Year { get; set; }
 
         [Column("Subject_id")]
         public int? SubjectId { get; set; }

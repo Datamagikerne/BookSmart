@@ -9,7 +9,6 @@ namespace BookSmart.Pages.Classes
     public class ClassInfoModel : PageModel
     {
         public Class Class { get; set; }
-        public Class ClassBooks { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
         public BookClass BookClass { get; set; }
 
