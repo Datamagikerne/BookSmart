@@ -37,7 +37,7 @@ namespace BookSmart.Pages.Classes
                 bookClassService.DeleteBookClass(BookClass);
             }
             Class = context.GetClass(cid);
-            ClassBooks = context.GetClassBooks(cid);
+            ClassBooks = context.GetClass(cid);
         }
     }
 }
