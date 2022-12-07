@@ -25,15 +25,15 @@
     <div>
         @foreach (var b in Model.Books)
         {
-            Model.Checker2 = 0;
+            Model.Checker = 0;
             @foreach (var c in Model.Class.BookClasses)
             {
                 @if (b.BookId == c.BookId)
                 {
-                    Model.Checker2++;
+                    Model.Checker++;
                 }
             }
-            @if (Model.Checker2 == 1)
+            @if (Model.Checker == 1)
             {
                 <input name="ChosenBookIds" type="checkbox" value="@b.BookId" checked="" /> @b.Title
                 <br />
