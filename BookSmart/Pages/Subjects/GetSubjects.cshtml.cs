@@ -25,7 +25,7 @@ namespace BookSmart.Pages.Subjects
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
-                Subjects = context.GetSubjects().Where(s => s.Name.Contains(FilterCriteria));
+                Subjects = context.GetSubjects().Where(s => s.Name.Contains(FilterCriteria) || (Convert.ToString(s.SubjectId).Contains(FilterCriteria)));
             }
             else
                 Subjects = context.GetSubjects();

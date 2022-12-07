@@ -25,7 +25,7 @@ namespace BookSmart.Pages.Classes
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
-                Classes = context.GetClasses().Where(c => c.Name.Contains(FilterCriteria) || (c.Education.Contains(FilterCriteria)));
+                Classes = context.GetClasses().Where(c => c.Name.Contains(FilterCriteria) || (c.Education.Contains(FilterCriteria) || (Convert.ToString(c.ClassId).Contains(FilterCriteria))));
             }
             else
                 Classes = context.GetClasses();
