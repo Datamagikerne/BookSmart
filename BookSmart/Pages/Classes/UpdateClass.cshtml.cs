@@ -45,6 +45,7 @@ namespace BookSmart.Pages.Classes
             #region ClassTeacher checkbox
             [BindProperty]
             public List<string> ChosenTeacherIds { get; set; }
+            public List<string> ChosenCtIds { get; set; }
             public IEnumerable<Teacher> Teachers { get; set; }
             public ClassTeacher ClassTeacher { get; set; }
             public int Checker2 { get; set; }
@@ -67,7 +68,7 @@ namespace BookSmart.Pages.Classes
             classService.UpdateClass(Class);
             Class = classService.GetClass(Class.ClassId);
 
-            bcService.DeleteBooksClasses(Book.BookId);
+            bcService.DeleteBooksClasses(Class.ClassId);
 
             foreach (var bc in ChosenBooksIds)
             {
