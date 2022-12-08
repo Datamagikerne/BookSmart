@@ -15,13 +15,17 @@ namespace BookSmart.Pages.Classes
 
         [BindProperty(SupportsGet = true)]
         public string FilterCriteria { get; set; }
+        [BindProperty]
+
+        public string LoginDetails { get; set; }
+
 
         public GetClassesModel(IClassService service)
         {
             context = service;
         }
 
-        public void OnGet()
+        public void OnGet(string tid)
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
@@ -29,6 +33,9 @@ namespace BookSmart.Pages.Classes
             }
             else
                 Classes = context.GetClasses();
+
+            LoginDetails = tid;
+            
         }
     }
 }

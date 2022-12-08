@@ -20,7 +20,7 @@
                     @foreach (var item in Model.Class.ClassTeachers)
                     {
                         <tr>
-                            <td> @item.InitialsNavigation.Name</td>
+                            <td> @item.InitialsNavigation.Initials</td>
                             <td>
                                 <p>
                                     <a asp-page="/Classes/ClassInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-tid="@item.Initials" asp-route-cid="@item.ClassId">Delete</a>

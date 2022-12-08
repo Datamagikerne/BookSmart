@@ -11,10 +11,15 @@ namespace BookSmart.Pages
         {
             _logger = logger;
         }
+        [BindProperty]
+        public string LoginDetails { get; set; }
+        
+        
+
 
         public void OnGet()
         {
-
+            
         }
     }
 }

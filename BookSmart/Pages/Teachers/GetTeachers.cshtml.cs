@@ -15,11 +15,13 @@ namespace BookSmart.Pages.Teachers
         [BindProperty(SupportsGet = true)]
         public string FilterCriteria { get; set; }
 
+        public string LoginDetails { get; set; }
+
         public GetTeachersModel(ITeacherService service)
         {
             context = service;
         }
-        public void OnGet()
+        public void OnGet(string tid)
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
@@ -27,6 +29,10 @@ namespace BookSmart.Pages.Teachers
             }
             else
                 Teachers = context.GetTeachers();
+
+            LoginDetails = tid;
+
+            
         }
     }
 }

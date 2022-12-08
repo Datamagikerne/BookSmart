@@ -28,10 +28,11 @@
         {
             @foreach (var item in Model.Classes)
             {
-                <tr>
-                    <td> @item.ClassId </td>
+                    <tr>
+                        <td> @item.ClassId </td> 
                     <td> @item.Name </td>
                     <td> @item.Education </td>
+                    
                     <td>
                         <p>
                             <a asp-page="/Classes/UpdateClass" asp-route-cid="@item.ClassId"> Update </a>
@@ -48,7 +49,8 @@
                         </p>
                     </td>
                 </tr>
-            }
+                }
+            
         }
 </table>
 
