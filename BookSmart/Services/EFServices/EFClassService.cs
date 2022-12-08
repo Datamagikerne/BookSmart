@@ -24,7 +24,8 @@ namespace BookSmart.Services.EFServices
         {
             return context.Classes
                 .Include(c => c.BookClasses).ThenInclude(bc => bc.Book)
-                .Include(c => c.ClassTeachers).ThenInclude(ct => ct.InitialsNavigation).AsNoTracking().FirstOrDefault(m => m.ClassId == id);
+                .Include(c => c.ClassTeachers).ThenInclude(ct => ct.InitialsNavigation)
+                .AsNoTracking().FirstOrDefault(m => m.ClassId == id);
         }
 
         public void UpdateClass(Class Class)
@@ -33,6 +34,7 @@ namespace BookSmart.Services.EFServices
             context.Entry(c).CurrentValues.SetValues(Class);
             context.SaveChanges();
         }
+
         public IEnumerable<Class> GetClasses()
         {
             return context.Classes;

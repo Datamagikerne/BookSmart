@@ -4,7 +4,7 @@
     ViewData["Title"] = "Update";
 }
 
-<h1>Update</h1>
+<h1>Update A Class</h1>
 <form method="post">
     <div class="overskrift form-group">
         <input asp-for="@Model.Class.ClassId" class="form-control" type="hidden" />
@@ -20,7 +20,6 @@
         <input asp-for="@Model.Class.Education" class="form-control" />
         <span asp-validation-for="@Model.Class.Education" class="text-danger"></span>
     </div>
-    
     <label class="custom-control-label"><strong>Choose Teachers</strong></label><br />
     <div>
         @foreach (var b in Model.Teachers)
@@ -45,6 +44,7 @@
             }
         }
     </div>
+    <br/>
     <label class="custom-control-label"><strong>Choose Books</strong></label><br />
     <div>
         @foreach (var b in Model.Books)
@@ -59,12 +59,12 @@
             }
             @if (Model.Checker == 1)
             {
-                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" checked="" /> @b.BookId
+                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" checked="" /> @b.Title
                 <br />
             }
             else
             {
-                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" /> @b.BookId
+                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" /> @b.Title
                 <br />
             }
         }

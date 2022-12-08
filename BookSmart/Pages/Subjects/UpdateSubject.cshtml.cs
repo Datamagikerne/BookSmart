@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BookSmart.Models;
-using BookSmart.Services;
 using BookSmart.Services.Interfaces;
 
 namespace BookSmart.Pages.Subjects

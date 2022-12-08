@@ -7,25 +7,25 @@ namespace BookSmart.Pages.Teachers
 {
     public class DeleteTeacherModel : PageModel
     {
+        ITeacherService teacherService;
+
         [BindProperty]
         public Teacher Teacher { get; set; }
 
-        ITeacherService TeacherService;
-
-        public DeleteTeacherModel(ITeacherService service)
+        public DeleteTeacherModel(ITeacherService tService)
         {
-            this.TeacherService = service;
+            this.teacherService = tService;
             Teacher = new Teacher();
         }
 
         public void OnGet(string tid)
         {
-            Teacher = TeacherService.GetTeacher(tid);
+            Teacher = teacherService.GetTeacher(tid);
         }
 
         public IActionResult OnPost()
         {
-            TeacherService.DeleteTeacher(Teacher);
+            teacherService.DeleteTeacher(Teacher);
             return RedirectToPage("GetTeachers");
         }
     }

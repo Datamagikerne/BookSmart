@@ -35,6 +35,7 @@ namespace BookSmart.Services.EFServices.CorrelationTables
             }
             context.SaveChanges();
         }
+
         public void DeleteClassesTeachers(int id)
         {
             foreach (var ct in context.ClassTeachers)

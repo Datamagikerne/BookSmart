@@ -4,7 +4,7 @@
     ViewData["Title"] = "Update";
 }
 
-<h1>Update</h1>
+<h1>Update A Teacher</h1>
 
 <form method="post">
     <div class="overskrift form-group">
@@ -52,15 +52,15 @@
     <div>
         @foreach (var b in Model.Classes)
         {
-            Model.Checker2 = 0;
+            Model.Checker = 0;
             @foreach (var c in Model.Teacher.ClassTeachers)
             {
                 @if (b.ClassId == c.ClassId)
                 {
-                    Model.Checker2++;
+                    Model.Checker++;
                 }
             }
-            @if (Model.Checker2 == 1)
+            @if (Model.Checker == 1)
             {
                 <input name="ChosenClassIds" type="checkbox" value="@b.ClassId" checked="" /> @b.Name
                 <br />

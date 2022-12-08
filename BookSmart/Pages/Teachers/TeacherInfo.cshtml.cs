@@ -7,17 +7,17 @@ namespace BookSmart.Pages.Teachers
 {
     public class TeacherInfoModel : PageModel
     {
+        ITeacherService teacherService;
+        ISubjectTeacherService subjectTeacherService;
+        IClassTeacherService classTeacherService;
+
         public Teacher Teacher { get; set; }
         public SubjectTeacher SubjectTeacher { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
 
-        private ITeacherService context;
-        private ISubjectTeacherService subjectTeacherService;
-        private IClassTeacherService classTeacherService;
-
-        public TeacherInfoModel(ITeacherService service, ISubjectTeacherService stService, IClassTeacherService ctService)
+        public TeacherInfoModel(ITeacherService tService, ISubjectTeacherService stService, IClassTeacherService ctService)
         {
-            context = service;
+            teacherService = tService;
             subjectTeacherService = stService;
             classTeacherService = ctService;
         }
@@ -34,7 +34,7 @@ namespace BookSmart.Pages.Teachers
                 ClassTeacher = classTeacherService.GetClassTeacher(cid, tid);
                 classTeacherService.DeleteClassTeacher(ClassTeacher);
             }
-            Teacher = context.GetTeacher(tid);
+            Teacher = teacherService.GetTeacher(tid);
         }
     }
 }

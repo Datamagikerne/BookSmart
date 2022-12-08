@@ -4,7 +4,7 @@
     ViewData["Title"] = "GetClasses";
 }
 
-<h3 style="color:red">List of Classes</h3>
+<h1 style="color:black">List of Classes</h1>
 <p>
     <a asp-page="/Classes/CreateClass">Create A New Class</a>
 </p>
@@ -12,7 +12,7 @@
     <p>
         Search: <input type="text" asp-for="FilterCriteria" />
         <input type="submit" value="Filter" />
-        <a asp-page="/Classes/GetClasses">Back to Full List </a>
+        <a asp-page="/Classes/GetClasses">Back to Full List</a>
     </p>
 </form>
 <table class="table">
@@ -44,11 +44,11 @@
                     </td>
                     <td>
                         <p>
-                            <a asp-page="/Classes/ClassInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-cid="@item.ClassId">Class Info </a>
+                            <a asp-page="/Classes/ClassInfo" class="btn btn-crud float-lg-end mr-1" role="button" 
+                            asp-route-cid="@item.ClassId">Class Info </a>
                         </p>
                     </td>
                 </tr>
             }
         }
 </table>
-

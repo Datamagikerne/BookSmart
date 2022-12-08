@@ -1,24 +1,23 @@
 using BookSmart.Models;
 using BookSmart.Services.Interfaces;
 using BookSmart.Services.Interfaces.CorrelationTables;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BookSmart.Pages.Classes
 {
     public class ClassInfoModel : PageModel
     {
+        IClassService classService;
+        IClassTeacherService classTeacherService;
+        IBookClassService bookClassService;
+
         public Class Class { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
         public BookClass BookClass { get; set; }
 
-        IClassService context;
-        IClassTeacherService classTeacherService;
-        IBookClassService bookClassService;
-
-        public ClassInfoModel(IClassService service, IClassTeacherService ctService, IBookClassService bookClass)
+        public ClassInfoModel(IClassService cService, IClassTeacherService ctService, IBookClassService bookClass)
         {
-            context = service;
+            classService = cService;
             classTeacherService = ctService;
             bookClassService = bookClass;
         }
@@ -35,7 +34,7 @@ namespace BookSmart.Pages.Classes
                 BookClass = bookClassService.GetBookClass(bid, cid);
                 bookClassService.DeleteBookClass(BookClass);
             }
-            Class = context.GetClass(cid);
+            Class = classService.GetClass(cid);
         }
     }
 }

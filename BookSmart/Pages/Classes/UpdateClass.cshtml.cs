@@ -14,7 +14,6 @@ namespace BookSmart.Pages.Classes
         IBookService bookService;
         IBookClassService bcService;
 
-
         public UpdateClassModel(IClassService classService, ITeacherService teacherService, IClassTeacherService ctService,
             IBookService bookService, IBookClassService bcService)
         {
@@ -25,22 +24,17 @@ namespace BookSmart.Pages.Classes
             this.bcService = bcService;
         }
 
+        #region BookClass
         [BindProperty]
         public Class Class { get; set; }
-        [BindProperty]
-        public Teacher Teacher { get; set; }
-        [BindProperty]
-        public Book Book { get; set; }
-
         public IEnumerable<Book> Books { get; set; }
         [BindProperty]
         public List<int> ChosenBookIds { get; set; }
         public BookClass BookClass { get; set; }
+        #endregion
 
-
-
+        #region ClassTeacher
         [BindProperty]
-        public List<int> ChosenInitials { get; set; }
         public IEnumerable<Teacher> Teachers { get; set; }
         public IEnumerable<Class> Classes { get; set; }
         [BindProperty]
@@ -48,7 +42,7 @@ namespace BookSmart.Pages.Classes
         [BindProperty]
         public ClassTeacher ClassTeacher { get; set; }
         public int Checker { get; set; }
-
+        #endregion
 
         public void OnGet(int cid)
         {
@@ -77,7 +71,6 @@ namespace BookSmart.Pages.Classes
 
             bcService.DeleteClassesBooks(Class.ClassId);
             
-
             foreach (var cs in ChosenBookIds)
             {
                 BookClass = new BookClass() { BookId = cs, ClassId = Class.ClassId };

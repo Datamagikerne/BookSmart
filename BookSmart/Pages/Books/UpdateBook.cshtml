@@ -4,7 +4,7 @@
     ViewData["Title"] = "Update";
 }
 
-<h1>Update</h1>
+<h1>Update A Book</h1>
 
 <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -29,7 +29,7 @@
         <input asp-for="@Model.Book.SubjectId" class="form-control" />
         <span asp-validation-for="@Model.Book.SubjectId" class="text-danger"></span>
     </div>
-    <input type="submit" value="Update" class="btn btn-danger" /> |
+    <input type="submit" value="Update" class="btn btn-danger"/>
     <a asp-page="GetBooks">Back to List</a>
 </form>
 @*<div>

@@ -7,29 +7,29 @@ namespace BookSmart.Pages.Classes
 {
     public class GetClassesModel : PageModel
     {
-        public IEnumerable<Class> Classes { get; set; }
+        IClassService classService;
 
-        private IClassService context;
+        public IEnumerable<Class> Classes { get; set; }
 
         public Class Class { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string FilterCriteria { get; set; }
 
-        public GetClassesModel(IClassService service)
+        public GetClassesModel(IClassService cService)
         {
-            context = service;
+            classService = cService;
         }
 
         public void OnGet()
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
-                Classes = context.GetClasses().Where(c => c.Name.Contains(FilterCriteria) || (c.Education.Contains(FilterCriteria) || (Convert.ToString(c.ClassId).Contains(FilterCriteria))));
+                Classes = classService.GetClasses().Where(c => c.Name.Contains(FilterCriteria) || 
+                (c.Education.Contains(FilterCriteria) || (Convert.ToString(c.ClassId).Contains(FilterCriteria))));
             }
             else
-                Classes = context.GetClasses();
+                Classes = classService.GetClasses();
         }
     }
 }
-

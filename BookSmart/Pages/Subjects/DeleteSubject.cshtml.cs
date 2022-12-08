@@ -7,25 +7,25 @@ namespace BookSmart.Pages.Subjects
 {
     public class DeleteSubjectModel : PageModel
     {
+        ISubjectService subjectService;
+
         [BindProperty]
         public Subject Subject { get; set; }
 
-        ISubjectService SubjectService;
-
-        public DeleteSubjectModel(ISubjectService service)
+        public DeleteSubjectModel(ISubjectService sService)
         {
-            this.SubjectService = service;
+            this.subjectService = sService;
             Subject = new Subject();
         }
 
         public void OnGet(int sid)
         {
-            Subject = SubjectService.GetSubject(sid);
+            Subject = subjectService.GetSubject(sid);
         }
 
         public IActionResult OnPost()
         {
-            SubjectService.DeleteSubject(Subject);
+            subjectService.DeleteSubject(Subject);
             return RedirectToPage("GetSubjects");
         }
     }

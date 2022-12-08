@@ -8,18 +8,18 @@ namespace BookSmart.Pages.Teachers
 {
     public class CreateTeacherModel : PageModel
     {
-        [BindProperty]
-        public Teacher Teacher { get; set; }
-        public IEnumerable<Teacher> Teachers { get; set; }
-
-        ITeacherService TeacherService;
+        ITeacherService teacherService;
         ISubjectService subjectService;
         ISubjectTeacherService stService;
         IClassTeacherService ctService;
         IClassService classService;
 
         [BindProperty]
+        public Teacher Teacher { get; set; }
+        public IEnumerable<Teacher> Teachers { get; set; }
+
         #region Subject Checkbox
+        [BindProperty]
         public IEnumerable<Subject> Subjects { get; set; }
         [BindProperty]
         public List<int> ChosenSubjectIds { get; set; }
@@ -33,9 +33,10 @@ namespace BookSmart.Pages.Teachers
         public ClassTeacher ClassTeacher { get; set; }
         #endregion
 
-        public CreateTeacherModel(ITeacherService service, ISubjectService subjectService, ISubjectTeacherService stServ, IClassTeacherService ctServ, IClassService classServ)
+        public CreateTeacherModel(ITeacherService tService, ISubjectService subjectService, 
+                                  ISubjectTeacherService stServ, IClassTeacherService ctServ, IClassService classServ)
         {
-            this.TeacherService = service;
+            this.teacherService = tService;
             this.subjectService = subjectService;
             stService = stServ;
             ctService = ctServ;
@@ -46,12 +47,11 @@ namespace BookSmart.Pages.Teachers
         {
             Subjects = subjectService.GetSubjects();
             Classes = classService.GetClasses();
-
         }
 
         public IActionResult OnPost()
         {
-            Teachers = TeacherService.GetTeachers();
+            Teachers = teacherService.GetTeachers();
             foreach (var t in Teachers)
             {
                 if (t.Initials == Teacher.Initials)
@@ -63,8 +63,8 @@ namespace BookSmart.Pages.Teachers
             {
                 return Page();
             }
-            TeacherService.CreateTeacher(Teacher);
-            Teacher = TeacherService.GetTeacher(Teacher.Initials);
+            teacherService.CreateTeacher(Teacher);
+            Teacher = teacherService.GetTeacher(Teacher.Initials);
 
             foreach (var cs in ChosenSubjectIds)
             {

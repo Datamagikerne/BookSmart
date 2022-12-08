@@ -7,28 +7,29 @@ namespace BookSmart.Pages.Subjects
 {
     public class GetSubjectsModel : PageModel
     {
-        public IEnumerable<Subject> Subjects { get; set; }
+        ISubjectService subjectService;
 
-        private ISubjectService context;
+        public IEnumerable<Subject> Subjects { get; set; }
 
         public Subject Subject { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string FilterCriteria { get; set; }
 
-        public GetSubjectsModel(ISubjectService service)
+        public GetSubjectsModel(ISubjectService sService)
         {
-            context = service;
+            subjectService = sService;
         }
 
         public void OnGet()
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
-                Subjects = context.GetSubjects().Where(s => s.Name.Contains(FilterCriteria) || (Convert.ToString(s.SubjectId).Contains(FilterCriteria)));
+                Subjects = subjectService.GetSubjects().Where(s => s.Name.Contains(FilterCriteria) || 
+                (Convert.ToString(s.SubjectId).Contains(FilterCriteria)));
             }
             else
-                Subjects = context.GetSubjects();
+                Subjects = subjectService.GetSubjects();
         }
     }
 }

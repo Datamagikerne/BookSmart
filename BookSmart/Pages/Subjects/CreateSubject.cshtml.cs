@@ -7,16 +7,15 @@ namespace BookSmart.Pages.Subjects
 {
     public class CreateSubjectModel : PageModel
     {
+        ISubjectService subjectService;
 
         [BindProperty]
         public Subject Subject { get; set; }
         public IEnumerable<Subject> Subjects { get; set; }
 
-        ISubjectService SubjectService;
-
-        public CreateSubjectModel(ISubjectService service)
+        public CreateSubjectModel(ISubjectService sService)
         {
-            this.SubjectService = service;
+            this.subjectService = sService;
         }
 
         public void OnGet()
@@ -26,7 +25,7 @@ namespace BookSmart.Pages.Subjects
 
         public IActionResult OnPost()
         {
-            Subjects = SubjectService.GetSubjects();
+            Subjects = subjectService.GetSubjects();
             foreach (var b in Subjects)
             {
                 if (b.SubjectId == Subject.SubjectId)
@@ -38,9 +37,8 @@ namespace BookSmart.Pages.Subjects
             {
                 return Page();
             }
-            SubjectService.CreateSubject(Subject);
+            subjectService.CreateSubject(Subject);
             return RedirectToPage("GetSubjects");
         }
     }
 }
-

@@ -1,5 +1,4 @@
 using BookSmart.Models;
-using BookSmart.Services.EFServices;
 using BookSmart.Services.Interfaces;
 using BookSmart.Services.Interfaces.CorrelationTables;
 using Microsoft.AspNetCore.Mvc;
@@ -9,15 +8,15 @@ namespace BookSmart.Pages.Classes
 {
     public class CreateClassModel : PageModel
     {
-        [BindProperty]
-        public Class Class { get; set; }
-        public IEnumerable<Class> Classes { get; set; }
-
-        IClassService ClassService;
+        IClassService classService;
         IBookService bookService;
         IBookClassService bcService;
         IClassTeacherService ctService;
         ITeacherService teacherService;
+
+        [BindProperty]
+        public Class Class { get; set; }
+        public IEnumerable<Class> Classes { get; set; }
         
         [BindProperty]
 
@@ -35,9 +34,9 @@ namespace BookSmart.Pages.Classes
         public ClassTeacher ClassTeacher { get; set; }
         #endregion
 
-        public CreateClassModel(IClassService service, IBookClassService bcServ, IBookService bookService, IClassTeacherService ctServ, ITeacherService teacherServ)
+        public CreateClassModel(IClassService cService, IBookClassService bcServ, IBookService bookService, IClassTeacherService ctServ, ITeacherService teacherServ)
         {
-            this.ClassService = service;
+            this.classService = cService;
             this.bookService = bookService;
             bcService = bcServ;
             ctService = ctServ;
@@ -50,7 +49,7 @@ namespace BookSmart.Pages.Classes
         }
         public IActionResult OnPost()
         {
-            Classes = ClassService.GetClasses();
+            Classes = classService.GetClasses();
             foreach (var c in Classes)
             {
                 if (c.ClassId == Class.ClassId)
@@ -62,8 +61,8 @@ namespace BookSmart.Pages.Classes
             {
                 return Page();
             }
-            ClassService.CreateClass(Class);
-            Class = ClassService.GetClass(Class.ClassId);
+            classService.CreateClass(Class);
+            Class = classService.GetClass(Class.ClassId);
 
             foreach (var bc in ChosenBookIds)
             {

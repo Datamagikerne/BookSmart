@@ -7,26 +7,28 @@ namespace BookSmart.Pages.Teachers
 {
     public class GetTeachersModel : PageModel
     {
-        public IEnumerable<Teacher> Teachers { get; set; }
+        ITeacherService teacherService;
 
-        private ITeacherService context;
+        public IEnumerable<Teacher> Teachers { get; set; }
+        
         public Teacher Teacher { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string FilterCriteria { get; set; }
 
-        public GetTeachersModel(ITeacherService service)
+        public GetTeachersModel(ITeacherService tService)
         {
-            context = service;
+            teacherService = tService;
         }
         public void OnGet()
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
-                Teachers = context.GetTeachers().Where(t => t.Name.Contains(FilterCriteria) || (t.Initials.Contains(FilterCriteria) || (t.Mail.Contains(FilterCriteria))));
+                Teachers = teacherService.GetTeachers().Where(t => t.Name.Contains(FilterCriteria) || 
+                (t.Initials.Contains(FilterCriteria) || (t.Mail.Contains(FilterCriteria))));
             }
             else
-                Teachers = context.GetTeachers();
+                Teachers = teacherService.GetTeachers();
         }
     }
 }

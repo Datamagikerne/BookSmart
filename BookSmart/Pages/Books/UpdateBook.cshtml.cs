@@ -12,9 +12,9 @@ namespace BookSmart.Pages.Books
         [BindProperty]
         public Book Book { get; set; }
 
-        public EditBookModel(IBookService service)
+        public EditBookModel(IBookService bService)
         {
-            bookService = service;
+            bookService = bService;
         }
 
         public IActionResult OnGet(int bid)

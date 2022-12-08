@@ -8,19 +8,20 @@ namespace BookSmart.Pages.Teachers
 {
     public class UpdateTeacherModel : PageModel
     {
-        ITeacherService TeacherService;
+        ITeacherService teacherService;
         ISubjectTeacherService stService;
         ISubjectService subjectService;
         IClassTeacherService ctService;
-        IClassService ClassService;
+        IClassService classService;
 
-        public UpdateTeacherModel(ITeacherService TeacherService, ISubjectTeacherService stService, ISubjectService subjectService, IClassTeacherService ctService, IClassService ClassService)
+        public UpdateTeacherModel(ITeacherService teacherService, ISubjectTeacherService stService, 
+                                  ISubjectService subjectService, IClassTeacherService ctService,  IClassService classService)
         {
-            this.TeacherService = TeacherService;
+            this.teacherService = teacherService;
             this.stService = stService;
             this.subjectService = subjectService;
             this.ctService = ctService;
-            this.ClassService = ClassService;
+            this.classService = classService;
         }
 
         [BindProperty]
@@ -39,14 +40,13 @@ namespace BookSmart.Pages.Teachers
         public List<int> ChosenClassIds { get; set; }
         public IEnumerable<Class> Classes { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
-        public int Checker2 { get; set; }
         #endregion
 
         public void OnGet(string tid)
         {
-            Teacher = TeacherService.GetTeacher(tid);
+            Teacher = teacherService.GetTeacher(tid);
             Subjects = subjectService.GetSubjects();
-            Classes = ClassService.GetClasses();
+            Classes = classService.GetClasses();
         }
 
         public IActionResult OnPost()
@@ -55,8 +55,8 @@ namespace BookSmart.Pages.Teachers
             {
                 return Page();
             }
-            TeacherService.UpdateTeacher(Teacher);
-            Teacher = TeacherService.GetTeacher(Teacher.Initials);
+            teacherService.UpdateTeacher(Teacher);
+            Teacher = teacherService.GetTeacher(Teacher.Initials);
             
             stService.DeleteTeachersSubjects(Teacher.Initials);
 

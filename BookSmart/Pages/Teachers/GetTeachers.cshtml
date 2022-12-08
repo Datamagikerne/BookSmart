@@ -1,18 +1,18 @@
 ﻿@page
 @model BookSmart.Pages.Teachers.GetTeachersModel
 @{
-    ViewData["Title"] = "GetTeacher";
+    ViewData["Title"] = "GetTeachers";
 }
 
-<h3 style="color:red"> List of Teacher</h3>
+<h1 style="color:black"> List of Teacher </h1>
 <p>
-    <a asp-page="/Teachers/CreateTeacher">Create A New Teacher</a>
+    <a asp-page="/Teachers/CreateTeacher"> Create A New Teacher </a>
 </p>
 <form>
     <p>
-        Search: <input type="text" asp-for="FilterCriteria" />
-        <input type="submit" value="Filter" />
-        <a asp-page="/Teachers/GetTeachers">Back to Full List </a>
+        Search: <input type="text" asp-for="FilterCriteria"/>
+        <input type="submit" value="Filter"/>
+        <a asp-page="/Teachers/GetTeachers"> Back to Full List </a>
     </p>
 </form>
 <table class="table">
@@ -39,12 +39,13 @@
                     </td>
                     <td>
                         <p>
-                            <a asp-page="/Teachers/DeleteTeacher" asp-route-tid="@item.Initials">Delete </a>
+                            <a asp-page="/Teachers/DeleteTeacher" asp-route-tid="@item.Initials"> Delete </a>
                         </p>
                     </td>
                     <td>
                         <p>
-                            <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-tid="@item.Initials">Teacher Info </a>
+                            <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" 
+                            asp-route-tid="@item.Initials"> Teacher Info </a>
                         </p>
                     </td>
                 </tr>

@@ -4,15 +4,15 @@
     ViewData["Title"] = "GetSubjects";
 }
 
-<h3 style="color:red">List of Subjects</h3>
+<h1 style="color:black">List of Subjects</h1>
 <p>
     <a asp-page="/Subjects/CreateSubject">Create A New Subject</a>
 </p>
 <form>
     <p>
-        Search: <input type="text" asp-for="FilterCriteria" />
-        <input type="submit" value="Filter" />
-        <a asp-page="/Subjects/GetSubjects">Back to Full List </a>
+        Search: <input type="text" asp-for="FilterCriteria"/>
+        <input type="submit" value="Filter"/>
+        <a asp-page="/Subjects/GetSubjects">Back to Full List</a>
     </p>
 </form>
 <table class="table">

@@ -7,25 +7,25 @@ namespace BookSmart.Pages.Classes
 {
     public class DeleteClassModel : PageModel
     {
+        IClassService classService;
+
         [BindProperty]
         public Class Class { get; set; }
 
-        IClassService ClassService;
-
-        public DeleteClassModel(IClassService service)
+        public DeleteClassModel(IClassService cService)
         {
-            this.ClassService = service;
+            this.classService = cService;
             Class = new Class();
         }
 
         public void OnGet(int cid)
         {
-            Class = ClassService.GetClass(cid);
+            Class = classService.GetClass(cid);
         }
 
         public IActionResult OnPost()
         {
-            ClassService.DeleteClass(Class);
+            classService.DeleteClass(Class);
             return RedirectToPage("GetClasses");
         }
     }

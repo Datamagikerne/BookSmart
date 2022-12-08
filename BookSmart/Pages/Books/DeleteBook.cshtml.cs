@@ -3,30 +3,29 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BookSmart.Models;
 using BookSmart.Services.Interfaces;
 
-
 namespace BookSmart.Pages.Books
 {
     public class DeleteBookModel : PageModel
     {
+        IBookService bookService;
+
         [BindProperty]
         public Book Book { get; set; }
 
-        IBookService BookService;
-
-        public DeleteBookModel(IBookService service)
+        public DeleteBookModel(IBookService bService)
         {
-            this.BookService = service;
+            this.bookService = bService;
             Book = new Book();
         }
 
        public void OnGet(int bid)
         {
-            Book = BookService.GetBook(bid);
+            Book = bookService.GetBook(bid);
         }
 
         public IActionResult OnPost()
         {
-            BookService.DeleteBook(Book);
+            bookService.DeleteBook(Book);
             return RedirectToPage("GetBooks");
         }
     }
