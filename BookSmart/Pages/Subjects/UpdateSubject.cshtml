@@ -1,7 +1,11 @@
 ﻿@page
 @model BookSmart.Pages.Subjects.UpdateSubjectModel
 @{
+    ViewData["Title"] = "Update";
 }
+
+<h1>Update</h1>
+
 <form method="post">
     <div class="overskrift form-group">
         <input asp-for="@Model.Subject.SubjectId" class="form-control" type="hidden" />

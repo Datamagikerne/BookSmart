@@ -31,9 +31,9 @@
             <div>
                 @foreach (var b in Model.Books)
                 {
-                        <input name="ChosenBookIds" type="checkbox" value="@b.BookId" />
+                    <input name="ChosenBookIds" type="checkbox" value="@b.BookId" />
                     @b.Title
-                        <br />
+                    <br />
                 }
             </div>
             <br />
@@ -41,9 +41,9 @@
             <div>
                 @foreach (var c in Model.Teachers)
                 {
-                        <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials" />
+                    <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials" />
                     @c.Initials
-                        <br />
+                    <br />
                 }
             </div>
             <div class="form-group">

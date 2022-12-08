@@ -18,8 +18,8 @@ namespace BookSmart.Pages.Classes
         IBookClassService bcService;
         IClassTeacherService ctService;
         ITeacherService teacherService;
+        
         [BindProperty]
-     
 
         #region Book Checkbox
         public IEnumerable<Book> Books { get; set; }

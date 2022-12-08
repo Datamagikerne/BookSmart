@@ -1,7 +1,11 @@
 ﻿@page
 @model BookSmart.Pages.Classes.UpdateClassModel
 @{
+    ViewData["Title"] = "Update";
 }
+
+<h1>Update</h1>
+
 <form method="post">
     <div class="overskrift form-group">
         <input asp-for="@Model.Class.ClassId" class="form-control" type="hidden" />
@@ -17,29 +21,51 @@
         <input asp-for="@Model.Class.Education" class="form-control" />
         <span asp-validation-for="@Model.Class.Education" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <input type="submit" value="Update" class="btn btn-primary" />
-    </div>
-    <label class="custom-control-label"><strong>Choose Classes</strong></label><br />
+    <label class="custom-control-label"><strong>Choose Books</strong></label><br />
     <div>
-        @foreach (var b in Model.Teachers)
+        @foreach (var b in Model.Books)
         {
             Model.Checker = 0;
-            @foreach (var c in Model.Class.ClassTeachers)
+            @foreach (var c in Model.Class.BookClasses)
             {
-                @if (b.Initials == c.Initials)
+                @if (b.BookId == c.BookId)
                 {
                     Model.Checker++;
                 }
             }
             @if (Model.Checker == 1)
             {
-                <input name="ChosenTeacherIds" type="checkbox" value="@b.Initials" checked="" /> @b.Name
+                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" checked="" /> @b.Title
                 <br />
             }
             else
             {
-                <input name="ChosenTeacherIds" type="checkbox" value="@b.Initials" /> @b.Name
+                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" /> @b.Title
+                <br />
+            }
+        }
+    </div>
+    <br />
+    <label class="custom-control-label"><strong>Choose Teachers</strong></label><br />
+    <div>
+        @foreach (var c in Model.Teachers)
+        {
+            Model.Checker2 = 0;
+            @foreach (var t in Model.Class.ClassTeachers)
+            {
+                @if (c.Initials == t.Initials)
+                {
+                    Model.Checker2++;
+                }
+            }
+            @if (Model.Checker2 == 1)
+            {
+                <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials" checked="" /> @c.Name
+                <br />
+            }
+            else
+            {
+                <input name="ChosenTeacherIds" type="checkbox" value="@c.Initials" /> @c.Name
                 <br />
             }
         }
