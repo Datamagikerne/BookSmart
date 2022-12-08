@@ -8,19 +8,24 @@ namespace BookSmart.Pages.Books
     public class CreateBookModel : PageModel
     {
         IBookService bookService;
+        ISubjectService subjectService;
 
         [BindProperty]
         public Book Book { get; set; }
         public IEnumerable<Book> Books { get; set; }
-      
-        public CreateBookModel(IBookService bService)
+        public IEnumerable<Subject> Subjects { get; set; }
+        [BindProperty]
+        public int SubjectId { get; set; }
+
+        public CreateBookModel(IBookService bService, ISubjectService subjectService)
         {
             this.bookService = bService;
+            this.subjectService = subjectService;
         }
 
         public void OnGet()
         {
-            
+            Subjects = subjectService.GetSubjects();
         }
 
         public IActionResult OnPost()
@@ -37,6 +42,7 @@ namespace BookSmart.Pages.Books
             {
                 return Page();
             }
+            Book.SubjectId = SubjectId;
             bookService.CreateBook(Book);
             return RedirectToPage("GetBooks");
         }
