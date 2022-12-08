@@ -24,7 +24,7 @@ namespace BookSmart.Pages.Teachers
             classTeacherService = ctService;
         }
 
-        public void OnGet(string tid, int sid, int cid)
+        public void OnGet(string tid, int sid, int cid, string LoginDetails)
         {
             if(sid>0)
             {
@@ -36,7 +36,7 @@ namespace BookSmart.Pages.Teachers
                 ClassTeacher = classTeacherService.GetClassTeacher(cid, tid);
                 classTeacherService.DeleteClassTeacher(ClassTeacher);
             }
-            Teacher = context.GetTeacher(tid);
+            Teacher = context.GetTeacher(LoginDetails);
         }
     }
 }
