@@ -8,7 +8,7 @@ namespace BookSmart.Services.Interfaces.CorrelationTables
 
         void DeleteBookClass(BookClass BookClass);
 
-        void DeleteBooksClasses(int id);
+        void DeleteClassesBooks(int id);
 
         BookClass GetBookClass(int bookId, int classId);
 
