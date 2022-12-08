@@ -27,6 +27,8 @@
         </dl>
         <input type="hidden" asp-for="Subject.SubjectId" />
         <input type="submit" value="Delete" class="btn btn-danger"/>
-        <a asp-page="GetSubjects">Back to List</a>
+        <div>
+            <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-5">Back</a>
+        </div>
     </form>
 </div>
