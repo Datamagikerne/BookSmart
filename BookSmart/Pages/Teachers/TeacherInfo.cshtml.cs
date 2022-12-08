@@ -15,6 +15,8 @@ namespace BookSmart.Pages.Teachers
         private ISubjectTeacherService subjectTeacherService;
         private IClassTeacherService classTeacherService;
 
+        public string LoginDetails { get; set; }
+
         public TeacherInfoModel(ITeacherService service, ISubjectTeacherService stService, IClassTeacherService ctService)
         {
             context = service;

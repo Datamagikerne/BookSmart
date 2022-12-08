@@ -36,7 +36,7 @@
                                             <input asp-for="@Model.LoginDetails" class="form-control"   />
                                             <span asp-validation-for="@Model.LoginDetails" class="text-danger"></span>
                                               <div class="form-group">
-                                                <input type="submit" value="Update" class="btn btn-primary" asp-page="/Classes/GetClasses" asp-route-tid="@Model.LoginDetails" />
+                                                <input type="submit" value="Update" class="btn btn-primary" asp-page="/Teachers/GetTeachers" asp-route-LoginDetails="@Model.LoginDetails" />
                                             
 </div>
                                         <p class="mb-5 pb-lg-2" style="color: #393f81;">

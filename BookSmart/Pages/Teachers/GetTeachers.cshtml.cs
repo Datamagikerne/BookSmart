@@ -21,8 +21,9 @@ namespace BookSmart.Pages.Teachers
         {
             context = service;
         }
-        public void OnGet(string tid)
+        public void OnGet(string LoginDetails)
         {
+            FilterCriteria = LoginDetails;
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
                 Teachers = context.GetTeachers().Where(t => t.Name.Contains(FilterCriteria) || (t.Initials.Contains(FilterCriteria) || (t.Mail.Contains(FilterCriteria))));
@@ -30,7 +31,7 @@ namespace BookSmart.Pages.Teachers
             else
                 Teachers = context.GetTeachers();
 
-            LoginDetails = tid;
+            
 
             
         }

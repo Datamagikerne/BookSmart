@@ -4,15 +4,10 @@
     ViewData["Title"] = "GetTeacher";
 }
 
-<h3 style="color:red"> List of Teacher</h3>
-<p>
-    <a asp-page="/Teachers/CreateTeacher">Create A New Teacher</a>
-</p>
+<h3 style="color:red"> Info on @Model.LoginDetails</h3>
 <form>
     <p>
-        Search By Name: <input type="text" asp-for="FilterCriteria" />
-        <input type="submit" value="Filter" />
-        <a asp-page="/Teachers/GetTeachers">Back to Full List </a>
+       <input type="hidden" asp-for="FilterCriteria"/>
     </p>
 </form>
 <table class="table">
@@ -34,20 +29,11 @@
                     <td> @item.Mail </td>
                     <td>
                         <p>
-                            <a asp-page="/Teachers/UpdateTeacher" asp-route-tid="@item.Initials"> Update </a>
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            <a asp-page="/Teachers/DeleteTeacher" asp-route-tid="@item.Initials">Delete </a>
-                        </p>
-                    </td>
-                    <td>
-                        <p>
                             <a asp-page="/Teachers/TeacherInfo" class="btn btn-crud float-lg-end mr-1" role="button" asp-route-tid="@item.Initials">Teacher Info </a>
                         </p>
                     </td>
                 </tr>
             }
         }
+        
 </table>
