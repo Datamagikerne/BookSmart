@@ -22,6 +22,7 @@ namespace BookSmart.Pages.Subjects
         {
             Subject = subjectService.GetSubject(sid);
         }
+
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)

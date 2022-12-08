@@ -3,19 +3,16 @@
 
 <h3 style="color:black"> Info on @Model.Teacher.Initials </h3>
 
-
 <body>
     <div class="container" style="width:100%" ;>
         <table class="table" id="sortTable">
             <thead>
                 <tr>
-                    <th> Subjects  </th>
-                  
+                    <th> Subjects </th>
                     <th class="th-g"></th>
                 </tr>
             </thead>
             <tbody>
-
                 @if (Model != null)
                 {
                     @foreach (var item in Model.Teacher.SubjectTeachers)
@@ -30,24 +27,20 @@
                         </tr>
                     }
                 }
-
         </table>
     </div>
-
     <div class="container" style="width:100%";>
         <table class="table" id="sortTable">
             <thead>
                 <tr>
-                    <th> Classes  </th>
-
+                    <th> Classes </th>
                     <th class="th-g"></th>
                 </tr>
             </thead>
             <tbody>
-
                 @if (Model != null)
                 {
-                    @foreach (var item in Model.TeacherClasses.ClassTeachers)
+                    @foreach (var item in Model.Teacher.ClassTeachers)
                     {
                         <tr>
                             <td>  @item.Class.Name</td>

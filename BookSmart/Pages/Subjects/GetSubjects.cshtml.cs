@@ -10,13 +10,25 @@ namespace BookSmart.Pages.Subjects
         public IEnumerable<Subject> Subjects { get; set; }
 
         private ISubjectService context;
+
+        public Subject Subject { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string FilterCriteria { get; set; }
+
         public GetSubjectsModel(ISubjectService service)
         {
             context = service;
         }
+
         public void OnGet()
         {
-            Subjects = context.GetSubjects();
+            if (!String.IsNullOrEmpty(FilterCriteria))
+            {
+                Subjects = context.GetSubjects().Where(s => s.Name.Contains(FilterCriteria));
+            }
+            else
+                Subjects = context.GetSubjects();
         }
     }
 }

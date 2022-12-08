@@ -29,11 +29,8 @@
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Class.Education)
-
-            </dd>
-           
+            </dd>  
         </dl>
-
         <input type="hidden" asp-for="Class.ClassId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-page="GetClass">Back to List</a>

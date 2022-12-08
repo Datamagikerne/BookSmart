@@ -14,16 +14,21 @@ namespace BookSmart.Models
         [Key]
         [Column("CT_id")]
         public int CtId { get; set; }
+
         [StringLength(4)]
         [Unicode(false)]
         public string Initials { get; set; }
+
         [Column("Class_id")]
         public int? ClassId { get; set; }
 
         [ForeignKey("ClassId")]
+
         [InverseProperty("ClassTeachers")]
+
         public virtual Class Class { get; set; }
         [ForeignKey("Initials")]
+
         [InverseProperty("ClassTeachers")]
         public virtual Teacher InitialsNavigation { get; set; }
     }

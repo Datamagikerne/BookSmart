@@ -4,15 +4,24 @@
     ViewData["Title"] = "GetBooks";
 }
 
-<h3 style="color:black"> List of Books</h3>
-
-
 <body>
     <div class="container" style="width:100%" ;>
         <table class="table" id="sortTable">
+<h3 style="color:red"> List of Books</h3>
+<p>
+    <a asp-page="/Books/CreateBook">Create A New Book</a>
+</p>
+<form>
+    <p>
+        Search By Title: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+        <a asp-page="/Books/GetBooks">Back to Full List </a>
+    </p>
+</form>
+<table class="table">
     <thead>
         <tr>
-            <th> Book Id  </th>
+            <th> Book Id </th>
             <th> Title </th>
             <th> Author  </th>
             <th> Year  </th>
@@ -21,18 +30,16 @@
         </tr>
     </thead>
     <tbody>
-
         @if (Model != null)
         {
             @foreach (var item in Model.Books)
             {
                 <tr>
-                    <td>  @item.BookId </td>
-                    <td>  @item.Title </td>
-                    <td>  @item.Author </td>
-                    <td>  @item.Year </td>
-                    <td>  @item.Subject.Name </td>
-
+                    <td> @item.BookId </td>
+                    <td> @item.Title </td>
+                    <td> @item.Author </td>
+                    <td> @item.Year </td>
+                    <td> @item.Subject.Name </td>
                     <td>
                         <p>
                             <a asp-page="/Books/UpdateBook" asp-route-bid="@item.BookId"> Update </a>

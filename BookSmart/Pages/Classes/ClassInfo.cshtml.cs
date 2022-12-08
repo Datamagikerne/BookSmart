@@ -9,7 +9,6 @@ namespace BookSmart.Pages.Classes
     public class ClassInfoModel : PageModel
     {
         public Class Class { get; set; }
-        public Class ClassBooks { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
         public BookClass BookClass { get; set; }
 
@@ -23,6 +22,7 @@ namespace BookSmart.Pages.Classes
             classTeacherService = ctService;
             bookClassService = bookClass;
         }
+
         public void OnGet(int cid, string tid, int bid)
         {
             if(tid != null)
@@ -36,7 +36,6 @@ namespace BookSmart.Pages.Classes
                 bookClassService.DeleteBookClass(BookClass);
             }
             Class = context.GetClass(cid);
-            ClassBooks = context.GetClassBooks(cid);
         }
     }
 }

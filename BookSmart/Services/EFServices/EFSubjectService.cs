@@ -36,7 +36,6 @@ namespace BookSmart.Services.EFServices
             context.Entry(s).CurrentValues.SetValues(subject);
             context.SaveChanges();
         }
-       
 
         public void DeleteSubject(Subject subject)
         {

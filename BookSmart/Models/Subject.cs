@@ -20,12 +20,15 @@ namespace BookSmart.Models
         [Key]
         [Column("Subject_id")]
         public int SubjectId { get; set; }
+
         [StringLength(30)]
         [Unicode(false)]
         public string Name { get; set; }
 
+
         [InverseProperty("Subject")]
         public virtual ICollection<Book> Books { get; set; }
+
         [InverseProperty("Subject")]
         public virtual ICollection<SubjectTeacher> SubjectTeachers { get; set; }
     }

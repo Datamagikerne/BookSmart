@@ -13,7 +13,6 @@ namespace BookSmart.Services.Interfaces
         void DeleteTeacher(Teacher Teacher);
 
         Teacher GetTeacher(string id);
-        Teacher GetTeachersClasses(string id);
 
     }
 }

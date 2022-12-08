@@ -18,14 +18,15 @@ namespace BookSmart.Pages.Books
             this.BookService = service;
             Book = new Book();
         }
+
        public void OnGet(int bid)
         {
             Book = BookService.GetBook(bid);
         }
+
         public IActionResult OnPost()
         {
             BookService.DeleteBook(Book);
-
             return RedirectToPage("GetBooks");
         }
     }

@@ -30,18 +30,17 @@
             <div>
                 @foreach(var s in Model.Subjects)
                 {
-                    <input name="ChosenSubjectIds" type="checkbox" value="@s.SubjectId" checked="@(s.SubjectId == Model.InitialCheck)" />
+                    <input name="ChosenSubjectIds" type="checkbox" value="@s.SubjectId" />
                     @s.Name
                     <br />
                 }
             </div>
             <br />
-
             <label class="custom-control-label"><strong>Choose Classes</strong></label><br />
             <div>
                 @foreach (var c in Model.Classes)
                 {
-                    <input name="ChosenClassIds" type="checkbox" value="@c.ClassId " checked="@(c.ClassId == Model.InitialCheck)" />
+                    <input name="ChosenClassIds" type="checkbox" value="@c.ClassId " />
                     @c.Name
                     <br />
                 }
