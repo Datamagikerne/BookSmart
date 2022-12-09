@@ -7,27 +7,10 @@
 <h1 style="color:black"> Info on @Model.Teacher.Initials </h1>
 
 <body>
-    <div class="container" style="width:100%" ;>
-        <table class="table" id="sortTable">
-            <thead>
-                <tr>
-                    <th> Subjects </th>
-                    <th class="th-g"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model != null)
-                {
-                    @foreach (var item in Model.Teacher.SubjectTeachers)
-                    {
-                        <tr>
-                            <td>  @item.Subject.Name </td>
-                        </tr>
-                    }
-                }
-        </table>
-    </div>
-    <div class="container" style="width:100%" ;>
+    <p>
+    <a asp-page="../Books/CreateBook">Create A New Book</a>
+</p>
+    <div class="container" style="width:100%";>
         <table class="table" id="sortTable">
             <thead>
                 <tr>
@@ -42,9 +25,18 @@
                     {
                         <tr>
                             <td>  @item.Class.Name</td>
+                                <td>
+                                    <p>
+                                        <a asp-page="../Books/CreateBook" class="btn btn-crud float-lg-end mr-1" role="button" 
+                                        asp-route-cid="@item.ClassId" asp-route-tid="@item.Initials">Create Booklist</a>
+                                    </p>
+                            </td>
                         </tr>
                     }
                 }
         </table>
+    </div>
+    <div>
+        <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-5">Back</a>
     </div>
 </body>
