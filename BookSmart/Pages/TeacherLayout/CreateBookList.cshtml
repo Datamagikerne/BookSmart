@@ -22,7 +22,8 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" asp-for="@Model.ID"  class="form-control btn btn-primary" />
+                @*<input type="hidden" value="" name="id" />*@
             </div>
         </form>
     </div>

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BookSmart.Services.Interfaces;
 using BookSmart.Services.EFServices;
 using BookSmart.Services.Interfaces.CorrelationTables;
+using System.Security.Cryptography;
 
 namespace BookSmart.Pages.TeacherLayout
 {
@@ -20,35 +21,49 @@ namespace BookSmart.Pages.TeacherLayout
         }
 
         #region Book Checkbox
+
         public IEnumerable<Book> Books { get; set; }
         [BindProperty]
         public List<int> ChosenBookIds { get; set; }
         public BookClass BookClass { get; set; }
         #endregion
 
+
+
         public Class Class { get; set; }
-        public string Initials { get; set; }
-  
+
+
+
+        
+        [BindProperty]
+        public int ID { get; set; }
+
         public void OnGet(int cid, string tid)
         {
             Books = bookService.GetBooks();
             Class = classService.GetClass(cid);
             Initials = tid;
+            ID = cid;
         }
-
-        public IActionResult OnPost()
+        //[BindProperty]
+        public string Initials { get; set; }
+        public IActionResult OnPost(int ID)
         {
+            string b = Initials;
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            Class = classService.GetClass(Class.ClassId);
+            int a = ID;
+            
             foreach (var bc in ChosenBookIds)
             {
-                BookClass = new BookClass() { ClassId = Class.ClassId, BookId = bc };
+                BookClass = new BookClass() { ClassId = ID, BookId = bc };
                 bookClassService.CreateBookClass(BookClass);
             }
-            return RedirectToPage($"TeacherSite?LoginDetails={Initials}");
+            return RedirectToPage("/Classes/GetClasses");
+
         }
     }
 }
