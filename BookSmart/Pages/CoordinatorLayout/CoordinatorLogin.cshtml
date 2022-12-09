@@ -1,0 +1,39 @@
+﻿@page
+@model BookSmart.Pages.CoordinatorLayout.CoordinatorLoginModel
+@{
+}
+<div class="overskrift"><h1>Vælg Tema</h1></div>
+
+<div class="containerBruger">
+    <div class="overskrift row">
+
+        @foreach (var item in Model.Temaer)
+        {
+
+            <div class="column-2 p-2 mx-auto">
+                <div class="card bg-dark text-white">
+
+
+                    <a asp-page="SeTemaUdstillingerBruger" asp-route-id="@item.Id">
+                        <img src="~/images/@item.ImageName" width="550" height="300" alt="Card image">
+                        <p class="centeredTitle"><strong>@item.Name</strong></p>
+                        <p class="centeredDesrib"><em>@item.Description</em></p>
+                    </a>
+                </div>
+            </div>
+        }
+        <div class="column-2 p-2 mx-auto">
+            <div class="card bg-dark text-white">
+                <a asp-page="BrugerKunstner">
+                    <img src="~/images/Gasolinistudiet.png" width="550" height="300" alt="Card image">
+                    <p class="centeredTitle"><strong>Kunstnere</strong></p>
+                    <p class="centeredDesrib"><em>Se kunstnere her</em></p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-1">Tilbage</a>
+    </div>
+
+</div>
