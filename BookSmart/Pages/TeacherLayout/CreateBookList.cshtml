@@ -1,0 +1,29 @@
+﻿@page
+@model BookSmart.Pages.TeacherLayout.CreateBookListModel
+@{
+    ViewData["Title"] = "CreateBooklist";
+}
+
+<h1>Create A Booklist</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary=" ModelOnly " class="text-danger">
+            </div>
+            <label class="custom-control-label"><strong>Choose Books</strong></label><br />
+            <div>
+                @foreach (var b in Model.Books)
+                {
+                    <input name="ChosenBookIds" type="checkbox" value="@b.BookId" />
+                    @b.Title
+                    <br />
+                }
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

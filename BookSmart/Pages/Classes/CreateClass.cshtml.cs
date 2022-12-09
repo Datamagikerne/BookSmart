@@ -17,8 +17,6 @@ namespace BookSmart.Pages.Classes
         [BindProperty]
         public Class Class { get; set; }
         public IEnumerable<Class> Classes { get; set; }
-        
-        [BindProperty]
 
         #region Book Checkbox
         public IEnumerable<Book> Books { get; set; }
