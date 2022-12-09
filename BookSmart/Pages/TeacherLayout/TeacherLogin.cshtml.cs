@@ -7,8 +7,8 @@ namespace BookSmart.Pages.TeacherLayout
 {
     public class TeacherLoginModel : PageModel
     {
-        [BindProperty(SupportsGet = true)]
-        public string Initials { get; set; }
+        [BindProperty]
+        public string LoginDetails { get; set; }
 
         public void OnGet()
         {

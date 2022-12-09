@@ -26,21 +26,17 @@
                             <div class="">
                                 <div class="card-body p-4 p-lg-4 text-black">
                                     <form>
-                                    <div class="form-outline mb-4">
-                                            <label class="form-label" for="form2Example17">Initials</label>
-                                        <input type="" id="form2Example17" class="form-control form-control-lg" required />
-                                    </div>
-                                    <div class="form-outline mb-4">
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example27">Initials</label>
+                                            <input asp-for="@Model.LoginDetails" class="form-control"   />
+                                            <span asp-validation-for="@Model.LoginDetails" class="text-danger"></span>
+                                        <div class="form-outline mb-4">
                                             <label class="form-label" for="form2Example27">Password</label>
-                                        <input type="password" id="form2Example27" class="form-control form-control-lg" />   
-                                    </div>
-                                    <div class="text-end">
-                                    <a class="pt-1 mb-4" asp-area="" asp-page="../Teachers/TeacherInfo" asp-route-tid="">
-                                        <button class="btn btn-crud btn-lg mt-3" type="button" style="border-radius: 2rem; padding-right: 8%; padding-left: 8%;">Login</button>
-                                    </a>
-                                    </div>
-                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">
-                                    </p>
+                                            <input type="password" id="form2Example27" class="form-control form-control-lg" />   
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-crud btn-lg mt-3" style="border-radius: 2rem; padding-right: 8%; padding-left: 8%" asp-page="/TeacherLayout/TeacherSite" asp-route-LoginDetails="@Model.LoginDetails" />
+                                        </div>
                                     </form>
                                 </div>
                             </div>
