@@ -21,7 +21,7 @@ namespace BookSmart.Pages.Classes
             classService = cService;
         }
 
-        public void OnGet()
+        public void OnGet(string tid)
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
