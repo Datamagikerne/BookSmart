@@ -16,6 +16,7 @@ html {
 body {
     margin-bottom: 60px;
     overflow-x: hidden;
+    font-family: 'Century Gothic', sans-serif;
 }
 
 .btn-crud {
@@ -59,5 +60,9 @@ body {
 }
 
 .card3 {
+    width: 600px;
+    height: 300px;
     align-content: center;
+    margin-top: 45px;
+    font-weight: bold;
 }

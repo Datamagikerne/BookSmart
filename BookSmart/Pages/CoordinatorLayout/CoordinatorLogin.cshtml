@@ -2,37 +2,58 @@
 @model BookSmart.Pages.CoordinatorLayout.CoordinatorLoginModel
 @{
     ViewData["Title"] = "CoordinatorMenu";
+    Layout = null;
 }
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookSmart</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookSmart.styles.css" asp-append-version="true" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div class="card mb-3" style="background: #fff387;">
-                <div class="card-body">
-                    <h5 class="card-title">Button 1</h5>
-                    <p class="card-text">Click this button to go to page 1.</p>
-                    <a href="page1" class="btn btn-primary">Go to page 1</a>
-                </div>
+            <div class="card card3 btn btn-outline-dark" style="background: #fff387;">
+                <a class="card-block stretched-link m-auto" href="/Teachers/GetTeachers">
+                    <p class="btn btn-block card-title" style="font-size: 25px">Teachers</p>
+                    </br>
+                    <i class="fa fa-address-card-o fa-5x text-black"></i>
+                </a>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card mb-3" style="background: #fff387;">
-                <div class="card-body">
-                    <h5 class="card-title">Button 2</h5>
-                    <p class="card-text">Click this button to go to page 2.</p>
-                    <a href="page2" class="btn btn-primary">Go to page 2</a>
-                </div>
+            <div class="card card3 btn btn-outline-dark" style="background: #fff387;">
+                <a class="card-block stretched-link m-auto" href="/Classes/GetClasses">
+                    <p class="btn btn-block card-title" style="font-size: 25px">Classes</p>
+                    </br>
+                    <i class="fa fa-graduation-cap fa-5x text-black"></i>
+                </a>
             </div>
         </div>
     </div>
+    </br>
     <div class="row">
         <div class="col-md-6">
-            <div class="card card3 mb-3" style="background: #fff387;">
-                <div class="card-body">
-                    <h5 class="card-title">Button 3</h5>
-                    <p class="card-text">Click this button to go to page 3.</p>
-                    <a href="page3" class="btn btn-primary">Go to page 3</a>
-                </div>
+            <div class="card card3 btn btn-outline-dark" style="background: #fff387;">
+                <a class="card-block stretched-link m-auto" href="/Subjects/GetSubjects">
+                    <p class="btn btn-block card-title" style="font-size: 25px">Subjects</p>
+                    </br>
+                    <i class="fa fa-hand-spock-o fa-5x text-black"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card3 btn btn-outline-dark" style="background: #fff387;">
+                <a class="card-block stretched-link m-auto" href="/Books/GetBooks">
+                    <p class="btn btn-block card-title" style="font-size: 25px">Books</p>
+                    </br>
+                    <i class="fa fa-book fa-4x text-black"></i>
+                </a>
             </div>
         </div>
     </div>
