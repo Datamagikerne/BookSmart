@@ -26,16 +26,6 @@
                 <input asp-for="@Model.Class.Education" class="form-control" />
                 <span asp-validation-for="@Model.Class.Education" class="text-danger"></span>
             </div>
-            <br/>
-            <label class="custom-control-label"><strong>Choose Books</strong></label><br />
-            <div>
-                @foreach (var b in Model.Books)
-                {
-                    <input name="ChosenBookIds" type="checkbox" value="@b.BookId" />
-                    @b.Title
-                    <br />
-                }
-            </div>
             <br />
             <label class="custom-control-label"><strong>Choose Teachers</strong></label><br />
             <div>

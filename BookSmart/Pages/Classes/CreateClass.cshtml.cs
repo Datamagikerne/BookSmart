@@ -9,7 +9,6 @@ namespace BookSmart.Pages.Classes
     public class CreateClassModel : PageModel
     {
         IClassService classService;
-        IBookService bookService;
         IBookClassService bcService;
         IClassTeacherService ctService;
         ITeacherService teacherService;
@@ -18,12 +17,6 @@ namespace BookSmart.Pages.Classes
         public Class Class { get; set; }
         public IEnumerable<Class> Classes { get; set; }
 
-        #region Book Checkbox
-        public IEnumerable<Book> Books { get; set; }
-        [BindProperty]
-        public List<int> ChosenBookIds { get; set; }
-        public BookClass BookClass { get; set; }
-        #endregion
 
         #region Teacher Checkbox
         public IEnumerable<Teacher> Teachers { get; set; }
@@ -32,17 +25,15 @@ namespace BookSmart.Pages.Classes
         public ClassTeacher ClassTeacher { get; set; }
         #endregion
 
-        public CreateClassModel(IClassService cService, IBookClassService bcServ, IBookService bookService, IClassTeacherService ctServ, ITeacherService teacherServ)
+        public CreateClassModel(IClassService cService, IBookClassService bcServ, IClassTeacherService ctServ, ITeacherService teacherServ)
         {
             this.classService = cService;
-            this.bookService = bookService;
             bcService = bcServ;
             ctService = ctServ;
             teacherService = teacherServ;
         }
         public void OnGet()
         {
-            Books = bookService.GetBooks();
             Teachers = teacherService.GetTeachers(); 
         }
         public IActionResult OnPost()
@@ -62,11 +53,6 @@ namespace BookSmart.Pages.Classes
             classService.CreateClass(Class);
             Class = classService.GetClass(Class.ClassId);
 
-            foreach (var bc in ChosenBookIds)
-            {
-                BookClass = new BookClass() { ClassId = Class.ClassId , BookId = bc };
-                bcService.CreateBookClass(BookClass);
-            }
 
             foreach (var ct in ChosenTeacherIds)
             {
