@@ -1,39 +1,39 @@
 ﻿@page
 @model BookSmart.Pages.CoordinatorLayout.CoordinatorLoginModel
 @{
+    ViewData["Title"] = "CoordinatorMenu";
 }
-<div class="overskrift"><h1>Vælg Tema</h1></div>
 
-<div class="containerBruger">
-    <div class="overskrift row">
-
-        @foreach (var item in Model.Temaer)
-        {
-
-            <div class="column-2 p-2 mx-auto">
-                <div class="card bg-dark text-white">
-
-
-                    <a asp-page="SeTemaUdstillingerBruger" asp-route-id="@item.Id">
-                        <img src="~/images/@item.ImageName" width="550" height="300" alt="Card image">
-                        <p class="centeredTitle"><strong>@item.Name</strong></p>
-                        <p class="centeredDesrib"><em>@item.Description</em></p>
-                    </a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3" style="background: #fff387;">
+                <div class="card-body">
+                    <h5 class="card-title">Button 1</h5>
+                    <p class="card-text">Click this button to go to page 1.</p>
+                    <a href="page1" class="btn btn-primary">Go to page 1</a>
                 </div>
             </div>
-        }
-        <div class="column-2 p-2 mx-auto">
-            <div class="card bg-dark text-white">
-                <a asp-page="BrugerKunstner">
-                    <img src="~/images/Gasolinistudiet.png" width="550" height="300" alt="Card image">
-                    <p class="centeredTitle"><strong>Kunstnere</strong></p>
-                    <p class="centeredDesrib"><em>Se kunstnere her</em></p>
-                </a>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3" style="background: #fff387;">
+                <div class="card-body">
+                    <h5 class="card-title">Button 2</h5>
+                    <p class="card-text">Click this button to go to page 2.</p>
+                    <a href="page2" class="btn btn-primary">Go to page 2</a>
+                </div>
             </div>
         </div>
     </div>
-    <div>
-        <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-1">Tilbage</a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card3 mb-3" style="background: #fff387;">
+                <div class="card-body">
+                    <h5 class="card-title">Button 3</h5>
+                    <p class="card-text">Click this button to go to page 3.</p>
+                    <a href="page3" class="btn btn-primary">Go to page 3</a>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>

@@ -53,3 +53,11 @@ body {
 .containers {
     max-width: 190%;
 }
+
+.card {
+    text-align: center;
+}
+
+.card3 {
+    align-content: center;
+}
