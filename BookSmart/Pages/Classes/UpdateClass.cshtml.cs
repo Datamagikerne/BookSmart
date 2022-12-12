@@ -11,28 +11,19 @@ namespace BookSmart.Pages.Classes
         IClassService classService;
         IClassTeacherService ctService;
         ITeacherService teacherService;
-        IBookService bookService;
-        IBookClassService bcService;
+        
 
-        public UpdateClassModel(IClassService classService, ITeacherService teacherService, IClassTeacherService ctService,
-            IBookService bookService, IBookClassService bcService)
+        public UpdateClassModel(IClassService classService, ITeacherService teacherService, IClassTeacherService ctService)
         {
             this.classService = classService;
             this.teacherService = teacherService;
-            this.ctService = ctService;
-            this.bookService = bookService;
-            this.bcService = bcService;
+            this.ctService = ctService; 
         }
 
-        #region BookClass
+      
         [BindProperty]
         public Class Class { get; set; }
-        public IEnumerable<Book> Books { get; set; }
-        [BindProperty]
-        public List<int> ChosenBookIds { get; set; }
-        public BookClass BookClass { get; set; }
-        #endregion
-
+      
         #region ClassTeacher
         [BindProperty]
         public IEnumerable<Teacher> Teachers { get; set; }
@@ -49,7 +40,6 @@ namespace BookSmart.Pages.Classes
             Class = classService.GetClass(cid);
             Teachers = teacherService.GetTeachers();
             Classes = classService.GetClasses();
-            Books = bookService.GetBooks();
         }
 
         public IActionResult OnPost()
@@ -67,14 +57,6 @@ namespace BookSmart.Pages.Classes
             {
                 ClassTeacher = new ClassTeacher() { Initials = cs, ClassId = Class.ClassId };
                 ctService.CreateClassTeacher(ClassTeacher);
-            }
-
-            bcService.DeleteClassesBooks(Class.ClassId);
-            
-            foreach (var cs in ChosenBookIds)
-            {
-                BookClass = new BookClass() { BookId = cs, ClassId = Class.ClassId };
-                bcService.CreateBookClass(BookClass);
             }
             return RedirectToPage("GetClasses");
         }
