@@ -5,6 +5,12 @@
     Layout = "../Pages/Shared/TeacherLayout";
 }
 
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</head>
+
 <h1>Create A Booklist for @Model.Class.Name</h1>
 <br />
 <br />
@@ -49,13 +55,38 @@
             }
     </table>
     <div class="form-group">
-        <input type="hidden" asp-for="Class.ClassId" />
-        <input type="hidden" asp-for="Teacher.Initials" />
-        <input type="submit" value="Create" class="btn" style="background-color: #fff387; font-weight:bold" />
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" style="background-color: #fff387; font-weight:bold" data-toggle="modal" data-target="#exampleModal">
+            Send To Polyteknisk
+        </button>
         <a asp-page="TeacherSite" asp-route-LoginDetails="@Model.TID" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
 
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Book list to Polyteknisk?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    IS this booklist ready to be sent to Polyteknisk?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    <input type="hidden" asp-for="Class.ClassId" />
+                    <input type="hidden" asp-for="Teacher.Initials" />
+                    <input type="submit" value="Send To Polyteknisk" class="btn" style="background-color: #fff387; font-weight:bold" />
+
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 
 
