@@ -1,61 +1,89 @@
 using BookSmart.Models;
+using BookSmart.Services.Interfaces;
+using BookSmart.Services.Interfaces.CorrelationTables;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using BookSmart.Services.Interfaces;
-using BookSmart.Services.EFServices;
-using BookSmart.Services.Interfaces.CorrelationTables;
-using System.Security.Cryptography;
 
 namespace BookSmart.Pages.TeacherLayout
 {
     public class CreateBookListModel : PageModel
     {
-        IBookService bookService;
-        IClassService classService;
-        IBookClassService bookClassService;
-        public CreateBookListModel(IBookService bookService, IClassService classService, IBookClassService bookClassService)
+        private IBookService bookService;
+        private IClassService classService;
+        private IBookClassService bookClassService;
+        private ITeacherService teacherService;
+
+        public CreateBookListModel(IBookService bookService, IClassService classService, IBookClassService bookClassService, ITeacherService teacherService)
         {
             this.bookService = bookService;
             this.classService = classService;
             this.bookClassService = bookClassService;
+            this.teacherService = teacherService;
         }
 
         #region Book Checkbox
+
         public IEnumerable<Book> Books { get; set; }
+
         [BindProperty]
         public List<int> ChosenBookIds { get; set; }
-        public BookClass BookClass { get; set; }
-        #endregion
 
-        public Class Class { get; set; }
-        [BindProperty]
-        public int ID { get; set; }
-        [BindProperty]
+        public BookClass BookClass { get; set; }
+
+        #endregion Book Checkbox
+
+        [BindProperty(SupportsGet = true)]
+        public int CID { get; set; }
+
+        [BindProperty(SupportsGet = true)]
         public string TID { get; set; }
 
-        public void OnGet(int cid, string tid)
+        [BindProperty(SupportsGet = true)]
+        public string FilterCriteria { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public Class Class { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public Teacher Teacher { get; set; }
+
+        public IActionResult OnGet(int cid, string tid)
         {
-            Books = bookService.GetBooks();
-            Class = classService.GetClass(cid);
-            TID = tid;
-            ID = cid;
+            if (!String.IsNullOrEmpty(FilterCriteria))
+            {
+                FilterCriteria = FilterCriteria.ToUpper();
+                Books = bookService.GetBooks().Where(b => b.Title.ToUpper().Contains(FilterCriteria) || (b.Author.ToUpper().Contains(FilterCriteria) ||
+                (Convert.ToString(b.Year).Contains(FilterCriteria) || (Convert.ToString(b.BookId).Contains(FilterCriteria)))));
+
+                Class = classService.GetClass(CID);
+                Teacher = teacherService.GetTeacher(tid);
+            }
+            else if (tid != null && cid != 0)
+            {
+                Books = bookService.GetBooks();
+                Class = classService.GetClass(cid);
+                Teacher = teacherService.GetTeacher(tid);
+                TID = tid;
+                CID = cid;
+            }
+
+            return Page();
+
         }
-        
+
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-            
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
             foreach (var bc in ChosenBookIds)
             {
-                BookClass = new BookClass() { ClassId = ID, BookId = bc };
+                BookClass = new BookClass() { ClassId = Class.ClassId, BookId = bc };
                 bookClassService.CreateBookClass(BookClass);
             }
-            string url = $"https://localhost:7031/TeacherLayout/TeacherSite?LoginDetails={TID}";
+            string url = $"https://localhost:7031/TeacherLayout/TeacherSite?LoginDetails={Teacher.Initials}";
             return Redirect(url);
-
         }
     }
 }
