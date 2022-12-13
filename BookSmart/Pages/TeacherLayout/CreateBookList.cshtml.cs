@@ -21,48 +21,40 @@ namespace BookSmart.Pages.TeacherLayout
         }
 
         #region Book Checkbox
-
         public IEnumerable<Book> Books { get; set; }
         [BindProperty]
         public List<int> ChosenBookIds { get; set; }
         public BookClass BookClass { get; set; }
         #endregion
 
-
-
         public Class Class { get; set; }
-
-
-
-        
         [BindProperty]
         public int ID { get; set; }
+        [BindProperty]
+        public string TID { get; set; }
 
         public void OnGet(int cid, string tid)
         {
             Books = bookService.GetBooks();
             Class = classService.GetClass(cid);
-            Initials = tid;
+            TID = tid;
             ID = cid;
         }
-        //[BindProperty]
-        public string Initials { get; set; }
-        public IActionResult OnPost(int ID)
+        
+        public IActionResult OnPost()
         {
-            string b = Initials;
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            int a = ID;
             
             foreach (var bc in ChosenBookIds)
             {
                 BookClass = new BookClass() { ClassId = ID, BookId = bc };
                 bookClassService.CreateBookClass(BookClass);
             }
-            return RedirectToPage("/Classes/GetClasses");
+            string url = $"https://localhost:7031/TeacherLayout/TeacherSite?LoginDetails={TID}";
+            return Redirect(url);
 
         }
     }
