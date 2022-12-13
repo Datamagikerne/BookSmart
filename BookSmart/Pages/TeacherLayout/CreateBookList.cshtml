@@ -2,13 +2,10 @@
 @model BookSmart.Pages.TeacherLayout.CreateBookListModel
 @{
     ViewData["Title"] = "CreateBooklist";
+    Layout = "../Pages/Shared/TeacherLayout";
 }
 
 <h1>Create A Booklist for @Model.Class.Name</h1>
-<br />
-<br />
-
-<a asp-page="/Books/CreateBook">Create A New Book </a>
 <br />
 <br />
 
@@ -54,11 +51,13 @@
     <div class="form-group">
         <input type="hidden" asp-for="Class.ClassId" />
         <input type="hidden" asp-for="Teacher.Initials" />
-        <input type="submit" value="Create BookList" class="btn btn-danger" />
+        <input type="submit" value="Create" class="btn" style="background-color: #fff387; font-weight:bold" />
+        <a asp-page="TeacherSite" asp-route-LoginDetails="@Model.TID" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
+
     </div>
+
 </form>
 
-<p>
-    <a asp-page="/TeacherLayout/TeacherSite" asp-route-tid="TID"> Delete </a>
-</p>
+
+
 
