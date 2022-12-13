@@ -18,13 +18,24 @@ namespace BookSmart.Pages.TeacherLayout
 
         public IActionResult OnGet(string LoginDetails)
         {
-            if (LoginDetails == null)
+            
+
+            int count = 0;
+            foreach (var teacher in teacherService.GetTeachers())
             {
-                return RedirectToPage("TeacherLogin");
+                if (LoginDetails.ToLower() == teacher.Initials.ToLower())
+                {
+                    count++;
+                }
+
+            }
+            if (count > 0)
+            {
+                Teacher = teacherService.GetTeacher(LoginDetails);
             }
             else
             {
-                Teacher = teacherService.GetTeacher(LoginDetails);
+                return RedirectToPage("TeacherLogin");
             }
             return Page();
         }
