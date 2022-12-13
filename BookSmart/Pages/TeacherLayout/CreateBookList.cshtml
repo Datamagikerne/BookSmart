@@ -5,26 +5,55 @@
 }
 
 <h1>Create A Booklist</h1>
+<br />
+<br />
 
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary=" ModelOnly " class="text-danger">
-            </div>
-            <label class="custom-control-label"><strong>Choose Books</strong></label><br />
-            <div>
-                @foreach (var b in Model.Books)
+<a asp-page="/Books/CreateBook">Create A New Book</a>
+<br />
+<br />
+
+<form>
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria" />
+        <input type="hidden" asp-for="TID" />
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Filter" />
+        <a asp-page="/TeacherLayout/CreateBookList" asp-route-cid="@Model.Class.ClassId" asp-route-tid="@Model.Teacher.Initials">Back to Full List</a>
+    </p>
+</form>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Book Id </th>
+                <th> Title </th>
+                <th> Author </th>
+                <th> Year </th>
+                <th> Subject </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model.Books)
                 {
-                    <input name="ChosenBookIds" type="checkbox" value="@b.BookId" />
-                    @b.Title
-                    <br />
+                    <tr>
+                        <td> @item.BookId </td>
+                        <td> @item.Title </td>
+                        <td> @item.Author </td>
+                        <td> @item.Year </td>
+                        <td> @item.Subject.Name </td>
+                        <td>
+                            <input name="ChosenBookIds" type="checkbox" value="@item.BookId" />
+                        </td>
+                    </tr>
                 }
-            </div>
-            <br />
-            <div class="form-group">
-                <input type="submit" asp-for="@Model.ID" asp-for="@Model.TID" class="form-control btn btn-primary" />
-                @*<input type="hidden" value="" name="id" />*@
-            </div>
-        </form>
+            }
+    </table>
+    <div class="form-group">
+        <input type="hidden" asp-for="Class.ClassId" />
+        <input type="hidden" asp-for="Teacher.Initials" />
+        <input type="submit" value="Create BookList" class="btn btn-danger" />
     </div>
-</div>
+</form>
