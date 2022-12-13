@@ -33,7 +33,7 @@ namespace BookSmart.Pages.TeacherLayout
         #endregion Book Checkbox
 
         [BindProperty(SupportsGet = true)]
-        public int ID { get; set; }
+        public int CID { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string TID { get; set; }
@@ -55,7 +55,7 @@ namespace BookSmart.Pages.TeacherLayout
                 Books = bookService.GetBooks().Where(b => b.Title.ToUpper().Contains(FilterCriteria) || (b.Author.ToUpper().Contains(FilterCriteria) ||
                 (Convert.ToString(b.Year).Contains(FilterCriteria) || (Convert.ToString(b.BookId).Contains(FilterCriteria)))));
 
-                Class = classService.GetClass(ID);
+                Class = classService.GetClass(CID);
                 Teacher = teacherService.GetTeacher(tid);
             }
             else if(tid != null && cid != 0)
@@ -64,13 +64,9 @@ namespace BookSmart.Pages.TeacherLayout
                 Class = classService.GetClass(cid);
                 Teacher = teacherService.GetTeacher(tid);
                 TID = tid;
-                ID = cid;
+                CID = cid;
             }
-            else
-            {
-                string url = $"https://localhost:7031/TeacherLayout/TeacherSite?LoginDetails={TID}";
-                return Redirect(url);
-            }
+
             return Page();
             
         }
