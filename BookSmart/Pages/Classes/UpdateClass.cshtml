@@ -44,31 +44,6 @@
             }
         }
     </div>
-    <br/>
-    <label class="custom-control-label"><strong>Choose Books</strong></label><br />
-    <div>
-        @foreach (var b in Model.Books)
-        {
-            Model.Checker = 0;
-            @foreach (var c in Model.Class.BookClasses)
-            {
-                @if (b.BookId == c.BookId)
-                {
-                    Model.Checker++;
-                }
-            }
-            @if (Model.Checker == 1)
-            {
-                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" checked="" /> @b.Title
-                <br />
-            }
-            else
-            {
-                <input name="ChosenBookIds" type="checkbox" value="@b.BookId" /> @b.Title
-                <br />
-            }
-        }
-    </div>
     <div>
         <input type="submit" value="Update" class="btn" style="background-color: #fff387; font-weight: bold" />
         <a href="javascript:history.back()" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
