@@ -16,6 +16,7 @@ html {
 body {
     margin-bottom: 60px;
     overflow-x: hidden;
+    font-family: 'Century Gothic', sans-serif;
 }
 
 .btn-crud {
@@ -50,14 +51,13 @@ body {
     margin-top: 40px;
 }
 
-.containers {
-    max-width: 190%;
-}
-
-.card {
-    text-align: center;
-}
-
 .card3 {
-    align-content: center;
+    width: 600px;
+    height: 300px;
+    margin-top: 40px;
+}
+
+h1 {
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
 }

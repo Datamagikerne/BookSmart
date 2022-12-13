@@ -29,9 +29,8 @@
         <input asp-for="@Model.Book.SubjectId" class="form-control" />
         <span asp-validation-for="@Model.Book.SubjectId" class="text-danger"></span>
     </div>
-    <input type="submit" value="Update" class="btn btn-danger"/>
-    <a asp-page="GetBooks">Back to List</a>
+    <div>
+        <input type="submit" value="Update" class=" btn" style="background-color: #fff387; font-weight: bold" />
+        <a href="javascript:history.back()" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
+    </div>
 </form>
-@*<div>
-    <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-1">Tilbage</a>
-</div>*@

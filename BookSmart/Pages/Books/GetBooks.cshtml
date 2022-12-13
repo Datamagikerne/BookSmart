@@ -2,16 +2,17 @@
 @model BookSmart.Pages.Books.GetBooksModel
 @{
     ViewData["Title"] = "GetBooks";
+    Layout = "../Pages/Shared/CoordinatorLayout";
 }
 
-<h1 style="color:black"> List of Books</h1>
+<h1> List of Books</h1>
 <p>
     <a asp-page="/Books/CreateBook">Create A New Book</a>
 </p>
 <form>
     <p>
-        Search: <input type="text" asp-for="FilterCriteria" />
-        <input type="submit" value="Filter" />
+        <strong>Search:</strong> <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" style="font-weight: bold"/>
         <a asp-page="/Books/GetBooks">Back to Full List </a>
     </p>
 </form>
@@ -50,3 +51,6 @@
             }
         }
 </table>
+<div>
+    <a href="javascript:history.back()" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
+</div>

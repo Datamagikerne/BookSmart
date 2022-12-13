@@ -21,10 +21,11 @@
                 }
             </div>
             <br />
-            <div class="form-group">
-                <input type="submit" asp-for="@Model.ID" asp-for="@Model.TID" class="form-control btn btn-primary" />
-                @*<input type="hidden" value="" name="id" />*@
+            <div>
+                <input type="submit" asp-for="@Model.ID" value="Create" class="btn" style="background-color: #fff387; font-weight:bold" />
+                <a href="javascript:history.back()" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
             </div>
+                @*<input type="hidden" value="" name="id" />*@
         </form>
     </div>
 </div>
