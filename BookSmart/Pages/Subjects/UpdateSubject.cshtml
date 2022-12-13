@@ -16,7 +16,8 @@
         <input asp-for="@Model.Subject.Name" class="form-control"/>
         <span asp-validation-for="@Model.Subject.Name" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <input type="submit" value="Update" class="btn btn-primary"/>
+    <div>
+        <input type="submit" value="Update" class="btn" style="background-color: #fff387; font-weight: bold"/>
+        <a href="javascript:history.back()" class="overskrift btn"  style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
     </div>
 </form>

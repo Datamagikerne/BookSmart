@@ -5,14 +5,14 @@
     Layout = "../Pages/Shared/CoordinatorLayout";
 }
 
-<h1 style="color:black">List of Subjects</h1>
+<h1>List of Subjects</h1>
 <p>
     <a asp-page="/Subjects/CreateSubject">Create A New Subject</a>
 </p>
 <form>
     <p>
-        Search: <input type="text" asp-for="FilterCriteria"/>
-        <input type="submit" value="Filter"/>
+        <strong>Search:</strong> <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" style="font-weight: bold"/>
         <a asp-page="/Subjects/GetSubjects">Back to Full List</a>
     </p>
 </form>
@@ -45,3 +45,6 @@
             }
         }
 </table>
+<div>
+    <a href="javascript:history.back()" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
+</div>

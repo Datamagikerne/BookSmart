@@ -36,12 +36,10 @@
             <input asp-for="@Model.Book.SubjectId" class="form-control" />
             <span asp-validation-for="@Model.Book.SubjectId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div>
+                <input type="submit" value="Create" class="btn" style="background-color: #fff387; font-weight:bold" />
+                <a href="javascript:history.back()" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
             </div>
         </form>
     </div>
-</div>
-<div>
-    <a href="javascript:history.back()" class="overskrift btn btn-secondary mt-5">Back</a>
 </div>
