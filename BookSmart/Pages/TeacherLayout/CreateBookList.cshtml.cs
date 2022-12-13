@@ -47,7 +47,7 @@ namespace BookSmart.Pages.TeacherLayout
         [BindProperty(SupportsGet = true)]
         public Teacher Teacher { get; set; }
 
-        public void OnGet(int cid, string tid)
+        public IActionResult OnGet(int cid, string tid)
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
@@ -68,8 +68,10 @@ namespace BookSmart.Pages.TeacherLayout
             }
             else
             {
-                throw new ArgumentException();
+                string url = $"https://localhost:7031/TeacherLayout/TeacherSite?LoginDetails={TID}";
+                return Redirect(url);
             }
+            return Page();
             
         }
 
