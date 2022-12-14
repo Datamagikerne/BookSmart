@@ -6,16 +6,13 @@ namespace BookSmart.Models
 {
     public partial class BookSmartDBContext : DbContext
     {
-        IConfiguration _configuration;
-        public BookSmartDBContext(IConfiguration configuration)
+        public BookSmartDBContext()
         {
-            _configuration = configuration; 
         }
 
-        public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options, IConfiguration configuration)
+        public BookSmartDBContext(DbContextOptions<BookSmartDBContext> options)
             : base(options)
         {
-            _configuration = configuration;
         }
 
         public virtual DbSet<Book> Books { get; set; }
@@ -30,9 +27,9 @@ namespace BookSmart.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var username = _configuration.GetValue<string>("DBLogin");
-                var password = _configuration.GetValue<string>("Password");
-                optionsBuilder.UseSqlServer($"Server=tcp:booksmartdbserver.database.windows.net,1433;Initial Catalog=BookSmartDB;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BooSma;Integrated Security=True");
+
+
             }
         }
 
