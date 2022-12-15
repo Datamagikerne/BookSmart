@@ -9,14 +9,9 @@ namespace BookSmart.Pages.TeacherLayout
     {
         [BindProperty]
         public string LoginDetails { get; set; }
-        public string FailedLogin { get; set; }
 
-        public void OnGet(string failedLogin)
+        public void OnGet()
         {
-            if(!string.IsNullOrEmpty(failedLogin))
-            {
-                FailedLogin = failedLogin;
-            }
         }
 
         public void OnPost() 
