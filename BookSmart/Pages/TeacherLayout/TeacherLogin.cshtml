@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BookSmart.styles.css" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+
 </head>
 
 <body style="background: #fff387">
@@ -21,28 +27,55 @@
                 <div>
                     <img class="img-login" style="float: left;" src="~/images/ProductBoxProjekt2.png" />
                 </div>
-                    <div class="card" style="border-radius: 2rem;">                  
-                        <div class="row g-0">
-                            <div class="">
-                                <div class="card-body p-8 p-lg-8 text-black">
-                                    <form>
-                                        <div class="form-outline mb-4">
-                                            <label class="form-label" for="form2Example27">Initials</label>
-                                            <input asp-for="@Model.LoginDetails" class="form-control"/>
-                                            <span asp-validation-for="@Model.LoginDetails" class="text-danger"></span>
+                <div class="card" style="border-radius: 2rem;">
+                    <div class="row g-0">
+                        <div class="">
+                            <div class="card-body p-8 p-lg-8 text-black">
+                                <form>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form2Example27">Initials</label>
+                                        <input asp-for="@Model.LoginDetails" class="form-control" />
+                                        <span asp-validation-for="@Model.LoginDetails" class="text-danger"></span>
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="form2Example27">Password</label>
-                                            <input type="password" id="form2Example27" class="form-control"/>   
+                                            <input type="password" id="form2Example27" class="form-control" />
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-crud btn-lg mt-4" style="border-radius: 2rem; padding-right: 8%; padding-left: 8%" asp-page="/TeacherLayout/TeacherSite" asp-route-LoginDetails="@Model.LoginDetails" />
                                         </div>
-                                    </form>
-                                </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    @if (Model.ErrorMessage != null)
+    {
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Username not found</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
             </div>
         </div>
     </div>
+    }
 </body>
+<script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>

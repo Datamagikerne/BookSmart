@@ -35,7 +35,7 @@ namespace BookSmart.Pages.TeacherLayout
             }
             else
             {
-                return RedirectToPage("TeacherLogin");
+                return RedirectToPage("TeacherLogin", new {errorMessage = "Wrong Password"});
             }
             return Page();
         }
