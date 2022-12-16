@@ -15,7 +15,7 @@
         <table class="table" id="sortTable">
             <thead>
                 <tr>
-                    <th> Classes </th>
+                    <th> Classes That Needs A Booklist </th>
                     <th class="th-g"></th>
                 </tr>
             </thead>
@@ -24,17 +24,44 @@
                 {
                     @foreach (var item in Model.Teacher.ClassTeachers)
                     {
-                        <tr>
-                            <td>  @item.Class.Name</td>
+                        @if (item.HasBookList == false)
+                        {
+                            <tr>
+                                <td>  @item.Class.Name</td>
                                 <td>
                                     <p>
                                         <a asp-page="/TeacherLayout/CreateBooklist" class="btn btn-crud float-lg-end mr-1" role="button" 
                                         asp-route-cid="@item.ClassId" asp-route-tid="@item.Initials">Create Booklist</a>
                                     </p>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        }
                     }
                 }
+                </tbody>
+        </table>
+        <table class="table" id="sortTable">
+            <thead>
+                <tr>
+                    <th> Classes With A Booklist - Sent To Polyteknisk </th>
+                    <th class="th-g"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.Teacher.ClassTeachers)
+                    {
+                        @if (item.HasBookList == true)
+                        {
+                            <tr>
+                                <td>  @item.Class.Name</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
         </table>
     </div>
+    <p>Want To Edit Your Booklist? Please Contact: <a href="#">poly@polyteknisk.dk</a></p>
 </body>

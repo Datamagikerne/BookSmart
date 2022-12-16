@@ -12,13 +12,15 @@ namespace BookSmart.Pages.TeacherLayout
         private IClassService classService;
         private IBookClassService bookClassService;
         private ITeacherService teacherService;
+        private IClassTeacherService classTeacherService;
 
-        public CreateBookListModel(IBookService bookService, IClassService classService, IBookClassService bookClassService, ITeacherService teacherService)
+        public CreateBookListModel(IBookService bookService, IClassService classService, IBookClassService bookClassService, ITeacherService teacherService, IClassTeacherService classTeacherService)
         {
             this.bookService = bookService;
             this.classService = classService;
             this.bookClassService = bookClassService;
             this.teacherService = teacherService;
+            this.classTeacherService = classTeacherService;
         }
 
         #region Book Checkbox
@@ -73,14 +75,11 @@ namespace BookSmart.Pages.TeacherLayout
 
         public IActionResult OnPost()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
             foreach (var bc in ChosenBookIds)
             {
                 BookClass = new BookClass() { ClassId = Class.ClassId, BookId = bc };
                 bookClassService.CreateBookClass(BookClass);
+                classTeacherService.ChangeBooklistStatus(CID, TID);
             }
             string url = $"https://localhost:7031/TeacherLayout/TeacherSite?LoginDetails={Teacher.Initials}";
             return Redirect(url);
