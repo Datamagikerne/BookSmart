@@ -34,18 +34,8 @@
         </dl>
         <div>
             <input type="hidden" asp-for="Teacher.Initials" />
-            <input type="submit" value="Delete" class="btn" style="background-color: #fff387; font-weight: bold" />
-            <a href="javascript:history.back()" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
+            <input type="submit" value="Delete" class="btn btn-crud" />
+            <a asp-page="/Teachers/GetTeachers" class="btn btn-crud">Back</a>
         </div>
     </form>
 </div>
-@*<script>
-  function deleteItem() {
-    var result = confirm("Are you sure you want to delete this Teacher?");
-    if (result) {
-      // Delete the item
-    }
-  }
-</script>
-onclick="deleteItem"
-*@

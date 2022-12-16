@@ -56,10 +56,10 @@
     </table>
     <div class="form-group">
         <!-- Button trigger modal -->
-        <button type="button" class="btn" style="background-color: #fff387; font-weight:bold" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-crud" data-toggle="modal" data-target="#exampleModal">
             Send To Polyteknisk
         </button>
-        <a asp-page="TeacherSite" asp-route-LoginDetails="@Model.TID" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
+        <a asp-page="TeacherSite" asp-route-LoginDetails="@Model.TID" class="btn btn-crud"><b>Back</b></a>
 
     </div>
 
@@ -77,18 +77,12 @@
                     IS this booklist ready to be sent to Polyteknisk?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+                    <button type="button" class="btn btn-crud" data-dismiss="modal">Close</button>
                     <input type="hidden" asp-for="Class.ClassId" />
                     <input type="hidden" asp-for="Teacher.Initials" />
-                    <input type="submit" value="Send To Polyteknisk" class="btn" style="background-color: #fff387; font-weight:bold" />
-
+                    <input type="submit" value="Send To Polyteknisk" class="btn btn-crud"/>
                 </div>
             </div>
         </div>
     </div>
 </form>
-
-
-
-

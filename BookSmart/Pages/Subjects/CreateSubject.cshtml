@@ -18,8 +18,8 @@
                 <span asp-validation-for="@Model.Subject.Name" class="text-danger"></span>
             </div>
             <div>
-                <input type="submit" value="Create" class="btn" style="background-color: #fff387; font-weight:bold" />
-                <a href="javascript:history.back()" class="overskrift btn" style="position: relative; left: 15px; background-color: #fff387"><b>Back</b></a>
+                <input type="submit" value="Create" class="btn btn-crud"/>
+                <a asp-page="/Subjects/GetSubjects" class="btn btn-crud">Back</a>
             </div>
         </form>
     </div>
