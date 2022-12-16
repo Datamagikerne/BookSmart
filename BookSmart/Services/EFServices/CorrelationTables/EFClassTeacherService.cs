@@ -13,6 +13,10 @@ namespace BookSmart.Services.EFServices.CorrelationTables
             this.context = context;
         }
 
+        public EFClassTeacherService()
+        {
+        }
+
         public void CreateClassTeacher(ClassTeacher classTeacher)
         {
             classTeacher.HasBookList = false;
