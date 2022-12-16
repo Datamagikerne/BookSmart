@@ -19,7 +19,10 @@ namespace BookSmart.Pages.TeacherLayout
         public IActionResult OnGet(string LoginDetails)
         {
             
-
+            if(string.IsNullOrEmpty(LoginDetails))
+            {
+                return RedirectToPage("TeacherLogin", new { errorMessage = "Wrong username" });
+            }
             int count = 0;
             foreach (var teacher in teacherService.GetTeachers())
             {
@@ -35,7 +38,7 @@ namespace BookSmart.Pages.TeacherLayout
             }
             else
             {
-                return RedirectToPage("TeacherLogin");
+                return RedirectToPage("TeacherLogin", new {errorMessage = "Wrong username"});
             }
             return Page();
         }

@@ -63,9 +63,3 @@ h1 {
     text-decoration-thickness: from-font;
 }
 
-.modal {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}

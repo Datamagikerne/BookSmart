@@ -9,9 +9,11 @@ namespace BookSmart.Pages.TeacherLayout
     {
         [BindProperty]
         public string LoginDetails { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public void OnGet()
+        public void OnGet(string errorMessage)
         {
+                ErrorMessage = errorMessage;
         }
 
         public void OnPost() 
