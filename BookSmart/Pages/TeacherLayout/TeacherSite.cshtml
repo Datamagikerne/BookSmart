@@ -9,7 +9,7 @@
 
 <body>
     <p>
-    <a asp-page="../Books/CreateBook">Create A New Book</a>
+        <a asp-page="../Books/CreateBook" asp-route-LoginDetails="@Model.Teacher.Initials">Create A New Book</a>
 </p>
     <div class="container" style="width:100%";>
         <table class="table" id="sortTable">
