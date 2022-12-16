@@ -48,5 +48,10 @@ namespace BookSmart.Services.EFServices.CorrelationTables
             }
             return null;
         }
+
+        public IEnumerable<BookClass> GetBookClasses()
+        {
+            return context.BookClasses;
+        }
     }
 }

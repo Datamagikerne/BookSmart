@@ -12,5 +12,8 @@ namespace BookSmart.Services.Interfaces.CorrelationTables
 
         BookClass GetBookClass(int bookId, int classId);
 
+        IEnumerable<BookClass> GetBookClasses();
+
+
     }
 }
