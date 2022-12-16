@@ -12,6 +12,8 @@ namespace BookSmart.Services.Interfaces.CorrelationTables
 
         void DeleteClassesTeachers(int id);
 
+        void ChangeBooklistStatus(int CID, string TID);
+
         ClassTeacher GetClassTeacher(int classId, string initials);
     }
 }
