@@ -33,15 +33,14 @@ namespace UnitTestBookSmart
 
             BookSmartDBContext context;
             EFClassTeacherService classTeacherService = new EFClassTeacherService();
+            classTeacher.CtId = 1;
             classTeacher.Initials = teacher.Initials;
             classTeacher.ClassId = Class.ClassId;
             classTeacherService.CreateClassTeacher(classTeacher);
 
-            Assert.AreEqual(classTeacher.)
+            Assert.AreEqual(classTeacher.HasBookList, false);
            
         }
-
-      
 
     }
 }
