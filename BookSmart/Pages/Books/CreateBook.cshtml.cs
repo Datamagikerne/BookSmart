@@ -8,19 +8,25 @@ namespace BookSmart.Pages.Books
     public class CreateBookModel : PageModel
     {
         IBookService bookService;
+        ITeacherService teacherService;
 
         [BindProperty]
         public Book Book { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public Teacher Teacher { get; set; }
+
         public IEnumerable<Book> Books { get; set; }
       
-        public CreateBookModel(IBookService bService)
+        public CreateBookModel(IBookService bService, ITeacherService teacherService)
         {
             this.bookService = bService;
+            this.teacherService = teacherService;   
         }
 
-        public void OnGet()
+        public void OnGet(string LoginDetails)
         {
-            
+            Teacher = teacherService.GetTeacher(LoginDetails);
         }
 
         public IActionResult OnPost()
@@ -38,7 +44,9 @@ namespace BookSmart.Pages.Books
                 return Page();
             }
             bookService.CreateBook(Book);
-            return RedirectToPage("GetBooks");
+            string a = Teacher.Initials;
+            string url = $"https://localhost:7031/TeacherLayout/TeacherSite?LoginDetails={Teacher.Initials}";
+            return Redirect(url);
         }
     }
 }

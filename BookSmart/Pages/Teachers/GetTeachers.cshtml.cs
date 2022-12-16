@@ -24,8 +24,9 @@ namespace BookSmart.Pages.Teachers
         {
             if (!String.IsNullOrEmpty(FilterCriteria))
             {
-                Teachers = teacherService.GetTeachers().Where(t => t.Name.Contains(FilterCriteria) || 
-                (t.Initials.Contains(FilterCriteria) || (t.Mail.Contains(FilterCriteria))));
+                FilterCriteria = FilterCriteria.ToUpper();
+                Teachers = teacherService.GetTeachers().Where(t => t.Name.ToUpper().Contains(FilterCriteria) || 
+                (t.Initials.ToUpper().Contains(FilterCriteria) || (t.Mail.ToUpper().Contains(FilterCriteria))));
             }
             else
                 Teachers = teacherService.GetTeachers();

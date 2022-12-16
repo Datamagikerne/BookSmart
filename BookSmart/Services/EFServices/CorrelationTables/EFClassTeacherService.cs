@@ -1,5 +1,6 @@
 ﻿using BookSmart.Models;
 using BookSmart.Services.Interfaces.CorrelationTables;
+using System.Security.Cryptography;
 
 namespace BookSmart.Services.EFServices.CorrelationTables
 {
@@ -18,6 +19,7 @@ namespace BookSmart.Services.EFServices.CorrelationTables
 
         public void CreateClassTeacher(ClassTeacher classTeacher)
         {
+            classTeacher.HasBookList = false;
             context.ClassTeachers.Add(classTeacher);
             context.SaveChanges();
         }
@@ -62,6 +64,13 @@ namespace BookSmart.Services.EFServices.CorrelationTables
                 }
             }
             return null;
+        }
+
+        public void ChangeBooklistStatus(int CID, string TID)
+        {
+            ClassTeacher ct = GetClassTeacher(CID, TID);
+            ct.HasBookList = true;
+            context.SaveChanges();
         }
     }
 }
