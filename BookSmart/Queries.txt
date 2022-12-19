@@ -1,0 +1,57 @@
+﻿CREATE TABLE [dbo].[Book] (
+    [Book_id]    INT          NOT NULL,
+    [Title]      VARCHAR (30) NULL,
+    [Author]     VARCHAR (30) NULL,
+    [Year]       INT          NULL,
+    [Subject_id]    INT          NULL,
+    PRIMARY KEY CLUSTERED ([Book_id] ASC),
+    FOREIGN KEY ([Subject_id]) REFERENCES [dbo].[Subject] ([Subject_id]) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE [dbo].[Book-Class] (
+    [BC_id]      INT IDENTITY (1, 1) NOT NULL,
+    [Class_id]    INT NULL,
+    [Book_id]     INT NULL,
+    PRIMARY KEY CLUSTERED ([BC_id] ASC),
+    FOREIGN KEY ([Class_id]) REFERENCES [dbo].[Class] ([Class_id]) ON DELETE CASCADE,
+    FOREIGN KEY ([Book_id]) REFERENCES [dbo].[Book] ([Book_id]) ON DELETE CASCADE
+);
+
+CREATE TABLE [dbo].[Class] (
+    [Class_id]   INT          NOT NULL,
+    [Name]      VARCHAR (7)  NOT NULL,
+    [Education] VARCHAR (20) NULL,
+    PRIMARY KEY CLUSTERED ([Class_id] ASC)
+);
+
+CREATE TABLE [dbo].[Class-Teacher] (
+    [CT_id]    INT     IDENTITY (1, 1) NOT NULL,
+    [Initials]    VARCHAR (4) NULL,
+    [Class_id]    INT         NULL,
+    [HasBookList] BIT NOT NULL,
+    PRIMARY KEY CLUSTERED ([CT_id] ASC),
+    FOREIGN KEY ([Initials]) REFERENCES [dbo].[Teacher] ([Initials]) ON DELETE CASCADE,
+    FOREIGN KEY ([Class_id]) REFERENCES [dbo].[Class] ([Class_id]) ON DELETE CASCADE
+);
+
+CREATE TABLE [dbo].[Subject] (
+    [Subject_id]   INT IDENTITY (1, 1) NOT NULL,
+    [Name]       VARCHAR (30) NULL,
+    PRIMARY KEY CLUSTERED ([Subject_id] ASC)
+);
+
+CREATE TABLE [dbo].[Subject-Teacher] (
+    [ST_id]      INT IDENTITY (1, 1) NOT NULL,
+    [Initials]    VARCHAR (4) NULL,
+    [Subject_id]   INT         NULL,
+    PRIMARY KEY CLUSTERED ([ST_id] ASC),
+    FOREIGN KEY ([Subject_id]) REFERENCES [dbo].[Subject] ([Subject_id]) ON DELETE CASCADE,
+    FOREIGN KEY ([Initials]) REFERENCES [dbo].[Teacher] ([Initials]) ON DELETE CASCADE
+);
+
+CREATE TABLE [dbo].[Teacher] (
+    [Initials]    VARCHAR (4)  NOT NULL,
+    [Name]     VARCHAR (40) NULL,
+    [Mail]     VARCHAR (40) NULL,
+    PRIMARY KEY CLUSTERED ([Initials] ASC)
+);
