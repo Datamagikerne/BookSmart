@@ -1,4 +1,16 @@
-﻿CREATE TABLE [dbo].[Book] (
+﻿CREATE TABLE [dbo].[Subject] (
+    [Subject_id]   INT IDENTITY (1, 1) NOT NULL,
+    [Name]       VARCHAR (30) NULL,
+    PRIMARY KEY CLUSTERED ([Subject_id] ASC)
+);
+CREATE TABLE [dbo].[Teacher] (
+    [Initials]    VARCHAR (4)  NOT NULL,
+    [Name]     VARCHAR (40) NULL,
+    [Mail]     VARCHAR (40) NULL,
+    PRIMARY KEY CLUSTERED ([Initials] ASC)
+);
+
+CREATE TABLE [dbo].[Book] (
     [Book_id]    INT          NOT NULL,
     [Title]      VARCHAR (30) NULL,
     [Author]     VARCHAR (30) NULL,
@@ -7,23 +19,12 @@
     PRIMARY KEY CLUSTERED ([Book_id] ASC),
     FOREIGN KEY ([Subject_id]) REFERENCES [dbo].[Subject] ([Subject_id]) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-CREATE TABLE [dbo].[Book-Class] (
-    [BC_id]      INT IDENTITY (1, 1) NOT NULL,
-    [Class_id]    INT NULL,
-    [Book_id]     INT NULL,
-    PRIMARY KEY CLUSTERED ([BC_id] ASC),
-    FOREIGN KEY ([Class_id]) REFERENCES [dbo].[Class] ([Class_id]) ON DELETE CASCADE,
-    FOREIGN KEY ([Book_id]) REFERENCES [dbo].[Book] ([Book_id]) ON DELETE CASCADE
-);
-
 CREATE TABLE [dbo].[Class] (
     [Class_id]   INT          NOT NULL,
     [Name]      VARCHAR (7)  NOT NULL,
     [Education] VARCHAR (20) NULL,
     PRIMARY KEY CLUSTERED ([Class_id] ASC)
 );
-
 CREATE TABLE [dbo].[Class-Teacher] (
     [CT_id]    INT     IDENTITY (1, 1) NOT NULL,
     [Initials]    VARCHAR (4) NULL,
@@ -34,11 +35,20 @@ CREATE TABLE [dbo].[Class-Teacher] (
     FOREIGN KEY ([Class_id]) REFERENCES [dbo].[Class] ([Class_id]) ON DELETE CASCADE
 );
 
-CREATE TABLE [dbo].[Subject] (
-    [Subject_id]   INT IDENTITY (1, 1) NOT NULL,
-    [Name]       VARCHAR (30) NULL,
-    PRIMARY KEY CLUSTERED ([Subject_id] ASC)
+
+CREATE TABLE [dbo].[Book-Class] (
+    [BC_id]      INT IDENTITY (1, 1) NOT NULL,
+    [Class_id]    INT NULL,
+    [Book_id]     INT NULL,
+    PRIMARY KEY CLUSTERED ([BC_id] ASC),
+    FOREIGN KEY ([Class_id]) REFERENCES [dbo].[Class] ([Class_id]) ON DELETE CASCADE,
+    FOREIGN KEY ([Book_id]) REFERENCES [dbo].[Book] ([Book_id]) ON DELETE CASCADE
 );
+
+
+
+
+
 
 CREATE TABLE [dbo].[Subject-Teacher] (
     [ST_id]      INT IDENTITY (1, 1) NOT NULL,
@@ -49,22 +59,21 @@ CREATE TABLE [dbo].[Subject-Teacher] (
     FOREIGN KEY ([Initials]) REFERENCES [dbo].[Teacher] ([Initials]) ON DELETE CASCADE
 );
 
-CREATE TABLE [dbo].[Teacher] (
-    [Initials]    VARCHAR (4)  NOT NULL,
-    [Name]     VARCHAR (40) NULL,
-    [Mail]     VARCHAR (40) NULL,
-    PRIMARY KEY CLUSTERED ([Initials] ASC)
-);
+INSERT INTO [dbo].[Teacher] ([Initials], [Name], [Mail]) VALUES (N'JEAN', N'Jens-Peter Andersen', N'jean@edu.zealand.dk')
+INSERT INTO [dbo].[Teacher] ([Initials], [Name], [Mail]) VALUES (N'VISA', N'Vibeke Sandau', N'visa@edu.zealand.dk')
+
+SET IDENTITY_INSERT [dbo].[Subject] ON
+INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (1, N'Software Design')
+INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (2, N'Software Konstruktion')
+INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (3, N'Software Udvikling')
+INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (13, N'Machine Learning')
+INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (14, N'Udviklings laboratorie')
+INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (15, N'Spiludvikling for begyndere')
+SET IDENTITY_INSERT [dbo].[Subject] OFF
 
 INSERT INTO [dbo].[Book] ([Book_id], [Title], [Author], [Year], [Subject_id]) VALUES (1, N'Agile Samurai', N'Jonathan Rasmusson', 2011, 1)
 INSERT INTO [dbo].[Book] ([Book_id], [Title], [Author], [Year], [Subject_id]) VALUES (2, N'Clean Code', N'Robert Marti', 2009, 2)
 INSERT INTO [dbo].[Book] ([Book_id], [Title], [Author], [Year], [Subject_id]) VALUES (3, N'Computer Networking', N'James Kurose og Keith Ross', 2021, 2)
-
-SET IDENTITY_INSERT [dbo].[Book-Class] ON
-INSERT INTO [dbo].[Book-Class] ([BC_id], [Class_id], [Book_id]) VALUES (307, 1, 1)
-INSERT INTO [dbo].[Book-Class] ([BC_id], [Class_id], [Book_id]) VALUES (308, 1, 2)
-INSERT INTO [dbo].[Book-Class] ([BC_id], [Class_id], [Book_id]) VALUES (309, 1, 3)
-SET IDENTITY_INSERT [dbo].[Book-Class] OFF
 
 INSERT INTO [dbo].[Class] ([Class_id], [Name], [Education]) VALUES (1, N'DAT22V2', N'Datamatiker')
 INSERT INTO [dbo].[Class] ([Class_id], [Name], [Education]) VALUES (2, N'ERV21S5', N'Erhvervsøkonomi')
@@ -79,14 +88,7 @@ INSERT INTO [dbo].[Class-Teacher] ([CT_id], [Initials], [Class_id], [HasBookList
 INSERT INTO [dbo].[Class-Teacher] ([CT_id], [Initials], [Class_id], [HasBookList]) VALUES (557, N'VISA', 5, 0)
 SET IDENTITY_INSERT [dbo].[Class-Teacher] OFF
 
-SET IDENTITY_INSERT [dbo].[Subject] ON
-INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (1, N'Software Design')
-INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (2, N'Software Konstruktion')
-INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (3, N'Software Udvikling')
-INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (13, N'Machine Learning')
-INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (14, N'Udviklings laboratorie')
-INSERT INTO [dbo].[Subject] ([Subject_id], [Name]) VALUES (15, N'Spiludvikling for begyndere')
-SET IDENTITY_INSERT [dbo].[Subject] OFF
+
 
 SET IDENTITY_INSERT [dbo].[Subject-Teacher] ON
 INSERT INTO [dbo].[Subject-Teacher] ([ST_id], [Initials], [Subject_id]) VALUES (233, N'JEAN', 2)
@@ -94,6 +96,11 @@ INSERT INTO [dbo].[Subject-Teacher] ([ST_id], [Initials], [Subject_id]) VALUES (
 INSERT INTO [dbo].[Subject-Teacher] ([ST_id], [Initials], [Subject_id]) VALUES (235, N'VISA', 1)
 SET IDENTITY_INSERT [dbo].[Subject-Teacher] OFF
 
-INSERT INTO [dbo].[Teacher] ([Initials], [Name], [Mail]) VALUES (N'JEAN', N'Jens-Peter Andersen', N'jean@edu.zealand.dk')
-INSERT INTO [dbo].[Teacher] ([Initials], [Name], [Mail]) VALUES (N'VISA', N'Vibeke Sandau', N'visa@edu.zealand.dk')
+
+
+SET IDENTITY_INSERT [dbo].[Book-Class] ON
+INSERT INTO [dbo].[Book-Class] ([BC_id], [Class_id], [Book_id]) VALUES (307, 1, 1)
+INSERT INTO [dbo].[Book-Class] ([BC_id], [Class_id], [Book_id]) VALUES (308, 1, 2)
+INSERT INTO [dbo].[Book-Class] ([BC_id], [Class_id], [Book_id]) VALUES (309, 1, 3)
+SET IDENTITY_INSERT [dbo].[Book-Class] OFF
 
