@@ -8,14 +8,14 @@ namespace BookSmart.Pages.Teachers
 {
     public class UpdateTeacherModel : PageModel
     {
-        ITeacherService teacherService;
-        ISubjectTeacherService stService;
-        ISubjectService subjectService;
-        IClassTeacherService ctService;
-        IClassService classService;
+        private ITeacherService teacherService;
+        private ISubjectTeacherService stService;
+        private ISubjectService subjectService;
+        private IClassTeacherService ctService;
+        private IClassService classService;
 
-        public UpdateTeacherModel(ITeacherService teacherService, ISubjectTeacherService stService, 
-                                  ISubjectService subjectService, IClassTeacherService ctService,  IClassService classService)
+        public UpdateTeacherModel(ITeacherService teacherService, ISubjectTeacherService stService,
+                                  ISubjectService subjectService, IClassTeacherService ctService, IClassService classService)
         {
             this.teacherService = teacherService;
             this.stService = stService;
@@ -28,19 +28,25 @@ namespace BookSmart.Pages.Teachers
         public Teacher Teacher { get; set; }
 
         #region SubjectTeacher checkbox
+
         [BindProperty]
         public List<int> ChosenSubjectIds { get; set; }
+
         public IEnumerable<Subject> Subjects { get; set; }
         public SubjectTeacher SubjectTeacher { get; set; }
         public int Checker { get; set; }
-        #endregion
+
+        #endregion SubjectTeacher checkbox
 
         #region ClassTeacher checkbox
+
         [BindProperty]
         public List<int> ChosenClassIds { get; set; }
+
         public IEnumerable<Class> Classes { get; set; }
         public ClassTeacher ClassTeacher { get; set; }
-        #endregion
+
+        #endregion ClassTeacher checkbox
 
         public void OnGet(string tid)
         {
@@ -48,16 +54,17 @@ namespace BookSmart.Pages.Teachers
             Subjects = subjectService.GetSubjects();
             Classes = classService.GetClasses();
         }
-
+        public IEnumerable<ClassTeacher> ClassTeachers { get; set; }
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+
             teacherService.UpdateTeacher(Teacher);
             Teacher = teacherService.GetTeacher(Teacher.Initials);
-            
+
             stService.DeleteTeachersSubjects(Teacher.Initials);
 
             foreach (var cs in ChosenSubjectIds)
@@ -66,13 +73,8 @@ namespace BookSmart.Pages.Teachers
                 stService.CreateSubjectTeacher(SubjectTeacher);
             }
 
-            ctService.DeleteTeachersClasses(Teacher.Initials);
-
-            foreach (var ct in ChosenClassIds)
-            {
-                ClassTeacher = new ClassTeacher() { Initials = Teacher.Initials, ClassId = ct };
-                ctService.CreateClassTeacher(ClassTeacher);
-            }
+            ctService.UpdateTeachersClasses(ChosenClassIds, Teacher);
+            
             return RedirectToPage("GetTeachers");
         }
     }
